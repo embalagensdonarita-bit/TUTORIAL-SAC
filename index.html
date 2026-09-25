@@ -1,0 +1,2082 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tutorial em Vídeo · Sistema SAC Dona Rita Embalagens</title>
+<style>
+    :root {
+        --primary: #3C1053;
+        --primary-light: #5B2A86;
+        --primary-dark: #1A0033;
+        --accent: #7C3AED;
+        --accent-light: #A78BFA;
+        --bg: #0F0518;
+        --card: #FFFFFF;
+        --text: #1A1A2E;
+        --text-light: #5C5C8A;
+        --border: #C5CAE9;
+        --success: #4CAF50;
+        --danger: #E53935;
+        --warning: #F57C00;
+        --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        font-family: var(--font);
+    }
+    body {
+        background: radial-gradient(circle at 20% 20%, #2D0A4E 0%, #0F0518 70%),
+                    radial-gradient(circle at 80% 80%, #3C1053 0%, transparent 60%);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+    }
+
+    /* ============ CONTAINER PRINCIPAL ============ */
+    .tutorial-app {
+        width: 100%;
+        max-width: 1400px;
+        height: calc(100vh - 32px);
+        max-height: 900px;
+        display: flex;
+        flex-direction: column;
+        background: #0A0210;
+        border-radius: 24px;
+        box-shadow: 0 30px 80px rgba(0,0,0,0.8),
+                    0 0 0 1px rgba(167, 139, 250, 0.2),
+                    0 0 80px rgba(124, 58, 237, 0.25);
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* ============ HEADER ============ */
+    .app-header {
+        background: linear-gradient(135deg, #1A0033 0%, #3C1053 50%, #5B2A86 100%);
+        padding: 14px 26px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 2px solid var(--accent);
+        flex-shrink: 0;
+    }
+    .app-header-left {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+    .app-header-logo {
+        width: 42px;
+        height: 42px;
+        background: rgba(255,255,255,0.12);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        border: 1.5px solid rgba(255,255,255,0.2);
+        backdrop-filter: blur(8px);
+    }
+    .app-header-title {
+        font-size: 1rem;
+        font-weight: 800;
+        letter-spacing: 0.4px;
+        line-height: 1.2;
+    }
+    .app-header-subtitle {
+        font-size: 0.66rem;
+        font-weight: 700;
+        letter-spacing: 1.6px;
+        color: var(--accent-light);
+        text-transform: uppercase;
+    }
+    .app-header-badge {
+        background: rgba(255,255,255,0.1);
+        border: 1.5px solid rgba(255,255,255,0.18);
+        padding: 8px 16px;
+        border-radius: 12px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        backdrop-filter: blur(8px);
+    }
+    .rec-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--danger);
+        box-shadow: 0 0 12px var(--danger);
+        animation: recPulse 1.6s ease-in-out infinite;
+    }
+    @keyframes recPulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(1.25); }
+    }
+
+    /* ============ TELA DO VÍDEO ============ */
+    .video-stage {
+        flex: 1;
+        position: relative;
+        overflow: hidden;
+        background: #05010A;
+        min-height: 0;
+    }
+    .slides-viewport {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    .slide {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(1.03);
+        transition: opacity 0.6s ease, transform 0.6s ease, visibility 0.6s;
+        padding: 26px 34px;
+        overflow: hidden;
+    }
+    .slide.active {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+    }
+
+    .slide-title {
+        font-size: 1.15rem;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 4px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .slide-title .badge-num {
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+        color: #fff;
+        font-size: 0.7rem;
+        font-weight: 800;
+        padding: 4px 10px;
+        border-radius: 20px;
+        letter-spacing: 1px;
+    }
+    .slide-desc {
+        font-size: 0.82rem;
+        color: rgba(255,255,255,0.65);
+        margin-bottom: 16px;
+        font-weight: 500;
+    }
+
+    /* ============ MOCKUP DO SISTEMA ============ */
+    .mockup {
+        flex: 1;
+        background: #1A0033;
+        background-image: linear-gradient(135deg, #1A0033 0%, #2D0A4E 30%, #3C1053 70%, #1A0033 100%);
+        border-radius: 16px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.6),
+                    0 0 0 1px rgba(167, 139, 250, 0.15);
+        min-height: 0;
+        position: relative;
+    }
+    .mk-header {
+        background: linear-gradient(135deg, #1A0033 0%, #3C1053 30%, #5B2A86 55%, #7C3AED 100%);
+        padding: 10px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 2px solid var(--accent);
+        flex-shrink: 0;
+    }
+    .mk-header-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .mk-logo {
+        width: 28px;
+        height: 28px;
+        background: rgba(255,255,255,0.12);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+    .mk-title {
+        font-size: 0.78rem;
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: 0.3px;
+    }
+    .mk-badge-sac {
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+        color: #fff;
+        padding: 1px 8px;
+        border-radius: 20px;
+        font-size: 0.5rem;
+        font-weight: 800;
+        letter-spacing: 1.2px;
+        margin-left: 4px;
+    }
+    .mk-header-right {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+    }
+    .mk-stat {
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.18);
+        border-radius: 6px;
+        padding: 3px 8px;
+        text-align: center;
+        min-width: 46px;
+    }
+    .mk-stat-val {
+        font-size: 0.72rem;
+        font-weight: 800;
+        color: #fff;
+        line-height: 1;
+    }
+    .mk-stat-lbl {
+        font-size: 0.42rem;
+        font-weight: 700;
+        color: rgba(255,255,255,0.7);
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        margin-top: 1px;
+    }
+    .mk-stat.alerta {
+        background: linear-gradient(135deg, #B71C1C 0%, #F44336 100%);
+        border-color: rgba(255,255,255,0.4);
+    }
+    .mk-user {
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.18);
+        border-radius: 8px;
+        padding: 4px 10px;
+        font-size: 0.6rem;
+        font-weight: 700;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .mk-user .role {
+        background: rgba(255,255,255,0.22);
+        padding: 1px 6px;
+        border-radius: 6px;
+        font-size: 0.48rem;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        font-weight: 800;
+    }
+    .mk-logout {
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(255,255,255,0.25);
+        border-radius: 6px;
+        padding: 4px 10px;
+        font-size: 0.58rem;
+        font-weight: 700;
+        color: #fff;
+    }
+
+    .mk-tabs {
+        display: flex;
+        gap: 5px;
+        padding: 8px 12px;
+        background: rgba(255,255,255,0.04);
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        flex-shrink: 0;
+    }
+    .mk-tab {
+        padding: 5px 12px;
+        border-radius: 7px;
+        font-size: 0.62rem;
+        font-weight: 700;
+        color: rgba(255,255,255,0.6);
+        background: transparent;
+    }
+    .mk-tab.active {
+        background: linear-gradient(135deg, #3C1053 0%, #5B2A86 100%);
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(60,16,83,0.6);
+    }
+
+    .mk-body {
+        flex: 1;
+        padding: 14px 16px;
+        overflow: hidden;
+        min-height: 0;
+    }
+    .mk-card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 14px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+    .mk-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 3px;
+        background: linear-gradient(90deg, #3C1053, #7C3AED, #A78BFA);
+    }
+    .mk-card-title {
+        font-size: 0.82rem;
+        font-weight: 800;
+        color: #3C1053;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding-bottom: 8px;
+        border-bottom: 1.5px solid #E8EAF6;
+    }
+
+    /* ============ FORM GRID MOCKUP ============ */
+    .mk-form-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        flex: 1;
+        overflow: hidden;
+    }
+    .mk-field {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+    .mk-field.full { grid-column: 1 / -1; }
+    .mk-field.span2 { grid-column: span 2; }
+    .mk-label {
+        font-size: 0.55rem;
+        font-weight: 800;
+        color: #1A1A2E;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+    }
+    .mk-label .req { color: #D32F2F; }
+    .mk-input {
+        background: #FAFAFE;
+        border: 1.5px solid #C5CAE9;
+        border-radius: 6px;
+        padding: 5px 8px;
+        font-size: 0.62rem;
+        color: #1A1A2E;
+        font-weight: 600;
+        min-height: 22px;
+        display: flex;
+        align-items: center;
+    }
+    .mk-input.filled { background: #fff; border-color: #A78BFA; }
+    .mk-input.placeholder { color: #9A9AB8; font-weight: 500; }
+    .mk-textarea {
+        background: #FAFAFE;
+        border: 1.5px solid #C5CAE9;
+        border-radius: 6px;
+        padding: 5px 8px;
+        font-size: 0.62rem;
+        color: #1A1A2E;
+        font-weight: 500;
+        min-height: 34px;
+        line-height: 1.35;
+    }
+    .mk-radio-group {
+        display: flex;
+        gap: 6px;
+    }
+    .mk-radio {
+        flex: 1;
+        border: 1.5px solid #C5CAE9;
+        border-radius: 6px;
+        padding: 4px 8px;
+        font-size: 0.58rem;
+        font-weight: 700;
+        text-align: center;
+        color: #5C5C8A;
+    }
+    .mk-radio.checked {
+        border-color: #3C1053;
+        background: #F3E5F5;
+        color: #3C1053;
+    }
+    .mk-btn-row {
+        display: flex;
+        gap: 8px;
+        margin-top: 6px;
+    }
+    .mk-btn {
+        padding: 6px 14px;
+        border-radius: 7px;
+        font-size: 0.6rem;
+        font-weight: 800;
+        letter-spacing: 0.3px;
+    }
+    .mk-btn.primary {
+        background: linear-gradient(135deg, #3C1053 0%, #7C3AED 100%);
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(60,16,83,0.4);
+    }
+    .mk-btn.outline {
+        background: transparent;
+        border: 1.5px solid #3C1053;
+        color: #3C1053;
+    }
+
+    /* ============ TABELA MOCKUP ============ */
+    .mk-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.55rem;
+        flex: 1;
+    }
+    .mk-table thead {
+        background: linear-gradient(135deg, #3C1053 0%, #5B2A86 100%);
+        color: #fff;
+    }
+    .mk-table th {
+        padding: 6px 6px;
+        text-align: left;
+        font-size: 0.5rem;
+        font-weight: 800;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+    .mk-table td {
+        padding: 5px 6px;
+        border-bottom: 1px solid #E8EAF6;
+        color: #1A1A2E;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+    .mk-table tbody tr:nth-child(even) { background: #FAFAFE; }
+    .mk-table tbody tr.alerta {
+        background: linear-gradient(90deg, rgba(255,235,235,0.9) 0%, rgba(255,248,245,0.6) 100%);
+        border-left: 3px solid #E53935;
+    }
+    .mk-badge {
+        display: inline-block;
+        padding: 2px 7px;
+        border-radius: 12px;
+        font-size: 0.48rem;
+        font-weight: 800;
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+    }
+    .mk-badge.abertura { background: #E3F2FD; color: #3C1053; border: 1px solid #90CAF9; }
+    .mk-badge.concluido { background: #F3E5F5; color: #3C1053; border: 1px solid #B39DDB; }
+    .mk-badge.prazo {
+        background: linear-gradient(135deg, #E53935 0%, #FF6B6B 100%);
+        color: #fff;
+        padding: 2px 7px;
+        animation: badgePulse 1.8s ease-in-out infinite;
+    }
+    @keyframes badgePulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(229,57,53,0.6); }
+        50% { box-shadow: 0 0 0 6px rgba(229,57,53,0); }
+    }
+    .mk-filter-bar {
+        display: flex;
+        gap: 8px;
+        padding: 8px 0;
+        border-bottom: 1.5px solid #E8EAF6;
+        margin-bottom: 8px;
+        flex-wrap: wrap;
+        align-items: flex-end;
+    }
+    .mk-filter {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+    .mk-filter-lbl {
+        font-size: 0.46rem;
+        font-weight: 800;
+        color: #5C5C8A;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+    }
+    .mk-filter-inp {
+        border: 1.5px solid #C5CAE9;
+        border-radius: 5px;
+        padding: 3px 8px;
+        font-size: 0.55rem;
+        font-weight: 600;
+        color: #1A1A2E;
+        background: #FAFAFE;
+        min-width: 70px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    /* ============ DASHBOARD CHARTS MOCKUP ============ */
+    .mk-charts-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        flex: 1;
+        min-height: 0;
+    }
+    .mk-chart {
+        background: #FAFAFE;
+        border: 1.5px solid #C5CAE9;
+        border-radius: 8px;
+        padding: 7px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    .mk-chart-title {
+        font-size: 0.52rem;
+        font-weight: 800;
+        color: #3C1053;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        border-bottom: 1px solid #E8EAF6;
+        padding-bottom: 4px;
+        margin-bottom: 5px;
+    }
+    .mk-chart-area {
+        flex: 1;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-around;
+        gap: 6px;
+        padding: 4px;
+        min-height: 0;
+        position: relative;
+    }
+    .mk-bar {
+        width: 22px;
+        border-radius: 4px 4px 0 0;
+        background: linear-gradient(180deg, #A78BFA 0%, #7C3AED 100%);
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+    .mk-bar span {
+        position: absolute;
+        top: -12px;
+        font-size: 0.45rem;
+        font-weight: 800;
+        color: #3C1053;
+    }
+    .mk-pie {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .mk-pie-inner {
+        width: 82px;
+        height: 82px;
+        border-radius: 50%;
+        background: conic-gradient(
+            #7C3AED 0% 32%,
+            #A78BFA 32% 58%,
+            #5B2A86 58% 76%,
+            #F57C00 76% 90%,
+            #3C1053 90% 100%
+        );
+        position: relative;
+        box-shadow: 0 4px 12px rgba(60,16,83,0.3);
+    }
+    .mk-pie-inner::after {
+        content: '';
+        position: absolute;
+        inset: 18px;
+        background: #FAFAFE;
+        border-radius: 50%;
+    }
+    .mk-pie-holes {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+        font-size: 0.6rem;
+        font-weight: 800;
+        color: #3C1053;
+    }
+
+    /* ============ ALERTA PRAZO MOCKUP ============ */
+    .mk-alerta-box {
+        background: linear-gradient(135deg, #FFF3F3 0%, #FFEBEE 100%);
+        border: 2px solid #E53935;
+        border-left: 6px solid #E53935;
+        border-radius: 10px;
+        padding: 10px 14px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 10px;
+        animation: alertaPulse 2s ease-in-out infinite;
+    }
+    @keyframes alertaPulse {
+        0%, 100% { box-shadow: 0 4px 15px rgba(229,57,53,0.25); }
+        50% { box-shadow: 0 8px 25px rgba(229,57,53,0.5); }
+    }
+    .mk-alerta-icon {
+        width: 38px;
+        height: 38px;
+        background: linear-gradient(135deg, #E53935 0%, #FF6B6B 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        flex-shrink: 0;
+    }
+    .mk-alerta-text {
+        flex: 1;
+        color: #8B0000;
+    }
+    .mk-alerta-title {
+        font-size: 0.7rem;
+        font-weight: 800;
+        color: #C62828;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 2px;
+    }
+    .mk-alerta-desc {
+        font-size: 0.62rem;
+        font-weight: 600;
+        color: #B71C1C;
+        line-height: 1.35;
+    }
+    .mk-alerta-desc strong { color: #E53935; font-weight: 800; }
+
+    /* ============ LOGIN MOCKUP ============ */
+    .mk-login-wrapper {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background-image: radial-gradient(circle at 30% 30%, rgba(124,58,237,0.2) 0%, transparent 50%),
+                          radial-gradient(circle at 70% 70%, rgba(139,92,246,0.15) 0%, transparent 50%);
+    }
+    .mk-login-box {
+        background: #fff;
+        border-radius: 14px;
+        padding: 20px 24px;
+        max-width: 280px;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        border: 2px solid transparent;
+        border-image: linear-gradient(135deg, #3C1053 0%, #7C3AED 100%) 1;
+    }
+    .mk-login-logo {
+        width: 52px;
+        height: 52px;
+        margin: 0 auto 8px;
+        background: linear-gradient(135deg, #3C1053 0%, #7C3AED 100%);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+        color: #fff;
+        box-shadow: 0 8px 22px rgba(124,58,237,0.5);
+    }
+    .mk-login-title {
+        font-size: 0.82rem;
+        font-weight: 800;
+        color: #3C1053;
+        margin-bottom: 2px;
+    }
+    .mk-login-sub {
+        font-size: 0.5rem;
+        font-weight: 800;
+        color: #7C3AED;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+    }
+    .mk-login-input {
+        width: 100%;
+        padding: 7px 10px;
+        border: 1.5px solid #C5CAE9;
+        border-radius: 6px;
+        font-size: 0.62rem;
+        margin-bottom: 7px;
+        background: #FAFAFE;
+        color: #1A1A2E;
+        font-weight: 600;
+    }
+    .mk-login-input.filled { background: #fff; border-color: #A78BFA; }
+    .mk-login-btn {
+        width: 100%;
+        padding: 8px;
+        border-radius: 6px;
+        background: linear-gradient(135deg, #3C1053 0%, #7C3AED 100%);
+        color: #fff;
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.4px;
+        margin-top: 4px;
+        box-shadow: 0 6px 16px rgba(60,16,83,0.4);
+    }
+    .mk-cursor {
+        display: inline-block;
+        width: 2px;
+        height: 12px;
+        background: #7C3AED;
+        animation: blink 1s steps(2) infinite;
+        vertical-align: middle;
+        margin-left: 1px;
+    }
+    @keyframes blink {
+        0%, 50% { opacity: 1; }
+        51%, 100% { opacity: 0; }
+    }
+
+    /* ============ SLIDE INTRO / FIM ============ */
+    .slide-intro {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 100%;
+        padding: 20px;
+        position: relative;
+        background-image: radial-gradient(circle at 30% 30%, rgba(124,58,237,0.2) 0%, transparent 50%),
+                          radial-gradient(circle at 70% 70%, rgba(139,92,246,0.15) 0%, transparent 50%);
+    }
+    .slide-intro-logo {
+        width: 110px;
+        height: 110px;
+        background: linear-gradient(135deg, #3C1053 0%, #7C3AED 100%);
+        border-radius: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 56px;
+        margin-bottom: 22px;
+        box-shadow: 0 20px 50px rgba(124,58,237,0.55),
+                    0 0 80px rgba(124,58,237,0.35);
+        animation: introFloat 3s ease-in-out infinite;
+    }
+    @keyframes introFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+    .slide-intro h1 {
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        margin-bottom: 6px;
+        background: linear-gradient(135deg, #fff 0%, #A78BFA 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .slide-intro .sub {
+        font-size: 0.85rem;
+        color: rgba(255,255,255,0.7);
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 26px;
+    }
+    .slide-intro .tag-line {
+        font-size: 0.95rem;
+        color: rgba(255,255,255,0.8);
+        max-width: 600px;
+        line-height: 1.6;
+    }
+    .slide-intro .tag-line strong { color: var(--accent-light); }
+
+    /* ============ CONTROLES ============ */
+    .video-controls {
+        background: linear-gradient(180deg, #1A0033 0%, #0F0518 100%);
+        padding: 14px 22px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        border-top: 1px solid rgba(167,139,250,0.15);
+        flex-shrink: 0;
+    }
+    .ctrl-btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        border: 2px solid rgba(167,139,250,0.4);
+        background: rgba(124,58,237,0.15);
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        transition: all 0.25s ease;
+        flex-shrink: 0;
+    }
+    .ctrl-btn:hover {
+        background: rgba(124,58,237,0.4);
+        border-color: var(--accent-light);
+        transform: scale(1.06);
+        box-shadow: 0 0 20px rgba(124,58,237,0.5);
+    }
+    .ctrl-btn.primary-ctrl {
+        width: 52px;
+        height: 52px;
+        background: linear-gradient(135deg, #3C1053 0%, #7C3AED 100%);
+        border-color: var(--accent-light);
+        font-size: 20px;
+        box-shadow: 0 6px 20px rgba(124,58,237,0.5);
+    }
+    .progress-wrap {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+    }
+    .progress-rail {
+        flex: 1;
+        height: 8px;
+        background: rgba(255,255,255,0.08);
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        min-width: 80px;
+    }
+    .progress-fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #5B2A86 0%, #7C3AED 50%, #A78BFA 100%);
+        border-radius: 10px;
+        transition: width 0.4s ease;
+        box-shadow: 0 0 15px rgba(124,58,237,0.6);
+    }
+    .time-display {
+        font-size: 0.72rem;
+        font-weight: 800;
+        color: rgba(255,255,255,0.85);
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+        min-width: 90px;
+        text-align: right;
+    }
+    .slide-counter {
+        font-size: 0.72rem;
+        font-weight: 800;
+        color: var(--accent-light);
+        background: rgba(124,58,237,0.15);
+        border: 1px solid rgba(167,139,250,0.3);
+        padding: 6px 12px;
+        border-radius: 10px;
+        white-space: nowrap;
+    }
+    .voice-select {
+        background: rgba(124,58,237,0.15);
+        border: 1.5px solid rgba(167,139,250,0.3);
+        color: #fff;
+        padding: 7px 10px;
+        border-radius: 8px;
+        font-size: 0.68rem;
+        font-weight: 700;
+        font-family: var(--font);
+        cursor: pointer;
+        max-width: 180px;
+        outline: none;
+    }
+    .voice-select option { background: #1A0033; color: #fff; }
+
+    /* ============ OVERLAY INICIAR ============ */
+    .start-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(10,2,16,0.92);
+        backdrop-filter: blur(14px);
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 22px;
+        transition: opacity 0.5s ease;
+    }
+    .start-overlay.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+    .start-btn {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #3C1053 0%, #7C3AED 100%);
+        border: 3px solid rgba(167,139,250,0.5);
+        color: #fff;
+        font-size: 44px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 20px 60px rgba(124,58,237,0.6),
+                    0 0 100px rgba(124,58,237,0.35);
+        transition: all 0.3s ease;
+        padding-left: 8px;
+    }
+    .start-btn:hover {
+        transform: scale(1.08);
+        box-shadow: 0 25px 70px rgba(124,58,237,0.8),
+                    0 0 120px rgba(124,58,237,0.5);
+    }
+    .start-text {
+        text-align: center;
+    }
+    .start-text h2 {
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin-bottom: 6px;
+        background: linear-gradient(135deg, #fff 0%, #A78BFA 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .start-text p {
+        font-size: 0.82rem;
+        color: rgba(255,255,255,0.6);
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+
+    /* ============ DOTS ============ */
+    .dots-container {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        padding: 8px 0 0;
+        flex-shrink: 0;
+    }
+    .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.2);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .dot.active {
+        background: linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%);
+        width: 26px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(124,58,237,0.6);
+    }
+    .dot:hover { background: rgba(167,139,250,0.6); }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 900px) {
+        .slide { padding: 18px 20px; }
+        .slide-title { font-size: 1rem; }
+        .slide-desc { font-size: 0.75rem; }
+        .slide-intro h1 { font-size: 1.5rem; }
+        .mk-form-grid { grid-template-columns: 1fr 1fr; }
+        .mk-charts-grid { grid-template-columns: 1fr; }
+        .video-controls { padding: 10px 14px; gap: 10px; flex-wrap: wrap; }
+        .voice-select { max-width: 130px; font-size: 0.62rem; }
+    }
+    @media (max-width: 620px) {
+        body { padding: 6px; }
+        .tutorial-app { height: calc(100vh - 12px); border-radius: 16px; }
+        .app-header { padding: 10px 14px; }
+        .app-header-title { font-size: 0.82rem; }
+        .app-header-subtitle { font-size: 0.55rem; letter-spacing: 1px; }
+        .app-header-badge { padding: 5px 10px; font-size: 0.62rem; }
+        .slide { padding: 12px 12px; }
+        .slide-title { font-size: 0.85rem; }
+        .slide-desc { font-size: 0.68rem; margin-bottom: 10px; }
+        .mk-header { padding: 6px 10px; }
+        .mk-header-right .mk-stat { padding: 2px 5px; min-width: 36px; }
+        .mk-stat-val { font-size: 0.6rem; }
+        .mk-stat-lbl { font-size: 0.36rem; }
+        .mk-user, .mk-logout { font-size: 0.5rem; padding: 3px 6px; }
+        .mk-tab { font-size: 0.55rem; padding: 4px 8px; }
+        .mk-form-grid { grid-template-columns: 1fr; gap: 5px; }
+        .mk-form-grid .mk-field.span2 { grid-column: 1 / -1; }
+        .voice-select { display: none; }
+        .time-display { min-width: auto; font-size: 0.62rem; }
+        .ctrl-btn { width: 36px; height: 36px; font-size: 14px; }
+        .ctrl-btn.primary-ctrl { width: 44px; height: 44px; font-size: 16px; }
+        .slide-intro-logo { width: 80px; height: 80px; font-size: 40px; }
+        .slide-intro h1 { font-size: 1.2rem; }
+        .slide-intro .sub { font-size: 0.65rem; letter-spacing: 2px; }
+        .slide-intro .tag-line { font-size: 0.78rem; }
+        .slide-counter { font-size: 0.6rem; padding: 4px 8px; }
+    }
+</style>
+</head>
+<body>
+
+<div class="tutorial-app">
+
+    <!-- ================= HEADER ================= -->
+    <header class="app-header">
+        <div class="app-header-left">
+            <div class="app-header-logo">📦</div>
+            <div>
+                <div class="app-header-title">DONA RITA EMBALAGENS</div>
+                <div class="app-header-subtitle">Tutorial em Vídeo · Sistema SAC</div>
+            </div>
+        </div>
+        <div class="app-header-badge">
+            <span class="rec-dot"></span>
+            <span>TUTORIAL INTERATIVO</span>
+        </div>
+    </header>
+
+    <!-- ================= PALCO DO VÍDEO ================= -->
+    <div class="video-stage">
+        <div class="slides-viewport" id="slidesViewport">
+
+            <!-- ============= SLIDE 1: INTRO ============= -->
+            <div class="slide active" data-slide="0">
+                <div class="slide-intro">
+                    <div class="slide-intro-logo">📦</div>
+                    <h1>DONA RITA EMBALAGENS</h1>
+                    <div class="sub">Tutorial Completo · Sistema SAC</div>
+                    <p class="tag-line">
+                        Aprenda <strong>passo a passo</strong> como registrar não conformidades, acompanhar o histórico,
+                        analisar o dashboard e gerar relatórios profissionais em PDF.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ============= SLIDE 2: LOGIN ============= -->
+            <div class="slide" data-slide="1">
+                <div class="slide-title"><span class="badge-num">CAPÍTULO 01</span> Acesso ao Sistema</div>
+                <div class="slide-desc">Login seguro com dois níveis de permissão: Administrador e Padrão.</div>
+                <div class="mockup">
+                    <div class="mk-header">
+                        <div class="mk-header-left">
+                            <div class="mk-logo">📦</div>
+                            <div class="mk-title">DONA RITA EMBALAGENS <span class="mk-badge-sac">SAC</span></div>
+                        </div>
+                        <div class="mk-header-right">
+                            <div class="mk-stat"><div class="mk-stat-val">128</div><div class="mk-stat-lbl">Registros</div></div>
+                            <div class="mk-stat"><div class="mk-stat-val">42</div><div class="mk-stat-lbl">Pendentes</div></div>
+                            <div class="mk-stat alerta"><div class="mk-stat-val">3</div><div class="mk-stat-lbl">⚠️ Atraso</div></div>
+                        </div>
+                    </div>
+                    <div class="mk-login-wrapper">
+                        <div class="mk-login-box">
+                            <div class="mk-login-logo">📦</div>
+                            <div class="mk-login-title">DONA RITA EMBALAGENS</div>
+                            <div class="mk-login-sub">Sistema SAC · Acesso Restrito</div>
+                            <div class="mk-login-input filled">👤 Duda<span class="mk-cursor"></span></div>
+                            <div class="mk-login-input filled">🔒 ••••••</div>
+                            <div class="mk-login-btn">🔓 Entrar</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============= SLIDE 3: REGISTRO (PARTE 1) ============= -->
+            <div class="slide" data-slide="2">
+                <div class="slide-title"><span class="badge-num">CAPÍTULO 02</span> Registro de Não Conformidade</div>
+                <div class="slide-desc">Preencha os campos obrigatórios para cadastrar uma nova reclamação.</div>
+                <div class="mockup">
+                    <div class="mk-header">
+                        <div class="mk-header-left">
+                            <div class="mk-logo">📦</div>
+                            <div class="mk-title">DONA RITA EMBALAGENS <span class="mk-badge-sac">SAC</span></div>
+                        </div>
+                        <div class="mk-header-right">
+                            <div class="mk-user">👤 Duda <span class="role">👑 Admin</span></div>
+                            <div class="mk-logout">🚪 Sair</div>
+                        </div>
+                    </div>
+                    <div class="mk-tabs">
+                        <div class="mk-tab active">📝 Registro</div>
+                        <div class="mk-tab">📋 Histórico</div>
+                        <div class="mk-tab">📊 Dashboard</div>
+                        <div class="mk-tab">👥 Usuários</div>
+                    </div>
+                    <div class="mk-body">
+                        <div class="mk-card">
+                            <div class="mk-card-title">📝 Registrar Não Conformidade / Reclamação</div>
+                            <div class="mk-form-grid">
+                                <div class="mk-field">
+                                    <div class="mk-label">Nº Registro <span class="req">*</span></div>
+                                    <div class="mk-input filled">RNC-2025-0451<span class="mk-cursor"></span></div>
+                                </div>
+                                <div class="mk-field">
+                                    <div class="mk-label">Cliente <span class="req">*</span></div>
+                                    <div class="mk-input filled">Supermercado Bom Preço Ltda</div>
+                                </div>
+                                <div class="mk-field">
+                                    <div class="mk-label">Data da Ocorrência <span class="req">*</span></div>
+                                    <div class="mk-input filled">15/03/2025</div>
+                                </div>
+                                <div class="mk-field">
+                                    <div class="mk-label">Área Envolvida <span class="req">*</span></div>
+                                    <div class="mk-input filled">Produção ▾</div>
+                                </div>
+                                <div class="mk-field">
+                                    <div class="mk-label">Origem <span class="req">*</span></div>
+                                    <div class="mk-radio-group">
+                                        <div class="mk-radio checked">🏭 Interno</div>
+                                        <div class="mk-radio">🌐 Externo</div>
+                                    </div>
+                                </div>
+                                <div class="mk-field">
+                                    <div class="mk-label">Causa Resumida <span class="req">*</span></div>
+                                    <div class="mk-input filled">Falha na selagem do pote</div>
+                                </div>
+                                <div class="mk-field full">
+                                    <div class="mk-label">Causa do Problema (Completo) <span class="req">*</span></div>
+                                    <div class="mk-textarea">Detectada falha intermitente no sistema de selagem da linha D32, ocasionando vazamento em potes de 500ml durante teste de estanqueidade.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============= SLIDE 4: REGISTRO (PARTE 2) ============= -->
+            <div class="slide" data-slide="3">
+                <div class="slide-title"><span class="badge-num">CAPÍTULO 03</span> Detalhes Complementares</div>
+                <div class="slide-desc">Complete com produto, quantidades, valores e solução aplicada.</div>
+                <div class="mockup">
+                    <div class="mk-header">
+                        <div class="mk-header-left">
+                            <div class="mk-logo">📦</div>
+                            <div class="mk-title">DONA RITA EMBALAGENS <span class="mk-badge-sac">SAC</span></div>
+                        </div>
+                        <div class="mk-header-right">
+                            <div class="mk-user">👤 Duda <span class="role">👑 Admin</span></div>
+                            <div class="mk-logout">🚪 Sair</div>
+                        </div>
+                    </div>
+                    <div class="mk-tabs">
+                        <div class="mk-tab active">📝 Registro</div>
+                        <div class="mk-tab">📋 Histórico</div>
+                        <div class="mk-tab">📊 Dashboard</div>
+                        <div class="mk-tab">👥 Usuários</div>
+                    </div>
+                    <div class="mk-body">
+                        <div class="mk-card">
+                            <div class="mk-card-title">📝 Produto · Quantidades · Valores · Solução</div>
+                            <div class="mk-form-grid">
+                                <div class="mk-field">
+                                    <div class="mk-label">Código do Item</div>
+                                    <div class="mk-input filled">100011</div>
+                                </div>
+                                <div class="mk-field span2">
+                                    <div class="mk-label">Descrição do Produto</div>
+                                    <div class="mk-input filled">D50 R PR<span class="mk-cursor"></span></div>
+                                </div>
+                                <div class="mk-field">
+                                    <div class="mk-label">Quantidade Reclamada</div>
+                                    <div class="mk-input filled">1.250</div>
+                                </div>
+                                <div class="mk-field">
+                                    <div class="mk-label">Atrasos / Dias</div>
+                                    <div class="mk-input filled">4</div>
+                                </div>
+                                <div class="mk-field">
+                                    <div class="mk-label">Andamento <span class="req">*</span></div>
+                                    <div class="mk-input filled">🔓 Abertura da RNC ▾</div>
+                                </div>
+                                <div class="mk-field full">
+                                    <div class="mk-label">Solução do Problema</div>
+                                    <div class="mk-textarea">Ajuste no cabeçote de selagem, substituição do filme e treinamento operacional. Lote reprocessado e reinspecionado — 100% aprovado.</div>
+                                </div>
+                                <div class="mk-field">
+                                    <div class="mk-label">Nf / Nfd</div>
+                                    <div class="mk-input filled">4.580,00</div>
+                                </div>
+                                <div class="mk-field">
+                                    <div class="mk-label">Bonificação (R$)</div>
+                                    <div class="mk-input filled">350,00</div>
+                                </div>
+                                <div class="mk-field">
+                                    <div class="mk-label">Prorrogação (dias)</div>
+                                    <div class="mk-input filled">2</div>
+                                </div>
+                                <div class="mk-field full">
+                                    <div class="mk-btn-row">
+                                        <div class="mk-btn primary">💾 Salvar Registro</div>
+                                        <div class="mk-btn outline">🧹 Limpar Formulário</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============= SLIDE 5: HISTÓRICO ============= -->
+            <div class="slide" data-slide="4">
+                <div class="slide-title"><span class="badge-num">CAPÍTULO 04</span> Histórico e Filtros</div>
+                <div class="slide-desc">Consulte todos os registros com filtros por data, mês e busca inteligente.</div>
+                <div class="mockup">
+                    <div class="mk-header">
+                        <div class="mk-header-left">
+                            <div class="mk-logo">📦</div>
+                            <div class="mk-title">DONA RITA EMBALAGENS <span class="mk-badge-sac">SAC</span></div>
+                        </div>
+                        <div class="mk-header-right">
+                            <div class="mk-user">👤 Duda <span class="role">👑 Admin</span></div>
+                            <div class="mk-logout">🚪 Sair</div>
+                        </div>
+                    </div>
+                    <div class="mk-tabs">
+                        <div class="mk-tab">📝 Registro</div>
+                        <div class="mk-tab active">📋 Histórico</div>
+                        <div class="mk-tab">📊 Dashboard</div>
+                        <div class="mk-tab">👥 Usuários</div>
+                    </div>
+                    <div class="mk-body">
+                        <div class="mk-card">
+                            <div class="mk-card-title">📋 Histórico de Não Conformidades</div>
+                            <div class="mk-filter-bar">
+                                <div class="mk-filter"><div class="mk-filter-lbl">📅 Data</div><div class="mk-filter-inp">15/03/2025</div></div>
+                                <div class="mk-filter"><div class="mk-filter-lbl">📆 Mês</div><div class="mk-filter-inp">2025-03</div></div>
+                                <div class="mk-filter"><div class="mk-filter-lbl">🔍 Buscar</div><div class="mk-filter-inp" style="min-width:120px;">Bom Preço<span class="mk-cursor"></span></div></div>
+                                <div class="mk-btn outline" style="padding:4px 10px;">✖ Limpar</div>
+                                <div class="mk-btn primary" style="padding:4px 10px;">📄 PDF</div>
+                            </div>
+                            <table class="mk-table">
+                                <thead>
+                                    <tr>
+                                        <th>Nº</th><th>Data</th><th>Cliente</th><th>Área</th><th>Origem</th>
+                                        <th>Causa</th><th>Andamento</th><th>Atrasos</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="alerta">
+                                        <td><strong>#0451</strong> <span class="mk-badge prazo">⏰ 12 DIAS</span></td>
+                                        <td>15/03/2025</td><td>Bom Preço</td><td>Produção</td><td>🏭 Interno</td>
+                                        <td>Falha selagem</td>
+                                        <td><span class="mk-badge abertura">🔓 Abertura</span></td>
+                                        <td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>#0450</strong></td>
+                                        <td>14/03/2025</td><td>Atacadão Central</td><td>Transporte</td><td>🌐 Externo</td>
+                                        <td>Atraso entrega</td>
+                                        <td><span class="mk-badge abertura">⏳ Nota dev.</span></td>
+                                        <td>7</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>#0449</strong></td>
+                                        <td>13/03/2025</td><td>Mercado Silva</td><td>Qualidade</td><td>🏭 Interno</td>
+                                        <td>Medida fora</td>
+                                        <td><span class="mk-badge concluido">✅ Concluído</span></td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>#0448</strong></td>
+                                        <td>12/03/2025</td><td>Rede Aliança</td><td>Expedição</td><td>🌐 Externo</td>
+                                        <td>Qtd divergente</td>
+                                        <td><span class="mk-badge concluido">✅ Concluído</span></td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>#0447</strong></td>
+                                        <td>11/03/2025</td><td>Bom Preço</td><td>Produção</td><td>🏭 Interno</td>
+                                        <td>Trinca em pote</td>
+                                        <td><span class="mk-badge abertura">🔐 Liberação</span></td>
+                                        <td>2</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============= SLIDE 6: ALERTA PRAZO ============= -->
+            <div class="slide" data-slide="5">
+                <div class="slide-title"><span class="badge-num">CAPÍTULO 05</span> Alerta Automático de Prazo</div>
+                <div class="slide-desc">O sistema destaca reclamações abertas há mais de 10 dias com alerta pulsante.</div>
+                <div class="mockup">
+                    <div class="mk-header">
+                        <div class="mk-header-left">
+                            <div class="mk-logo">📦</div>
+                            <div class="mk-title">DONA RITA EMBALAGENS <span class="mk-badge-sac">SAC</span></div>
+                        </div>
+                        <div class="mk-header-right">
+                            <div class="mk-stat"><div class="mk-stat-val">128</div><div class="mk-stat-lbl">Registros</div></div>
+                            <div class="mk-stat"><div class="mk-stat-val">42</div><div class="mk-stat-lbl">Pendentes</div></div>
+                            <div class="mk-stat alerta"><div class="mk-stat-val">3</div><div class="mk-stat-lbl">⚠️ Atraso</div></div>
+                        </div>
+                    </div>
+                    <div class="mk-tabs">
+                        <div class="mk-tab active">📝 Registro</div>
+                        <div class="mk-tab">📋 Histórico</div>
+                        <div class="mk-tab">📊 Dashboard</div>
+                        <div class="mk-tab">👥 Usuários</div>
+                    </div>
+                    <div class="mk-body">
+                        <div class="mk-card">
+                            <div class="mk-card-title">🔍 Detalhes do Registro</div>
+                            <div class="mk-alerta-box">
+                                <div class="mk-alerta-icon">⏰</div>
+                                <div class="mk-alerta-text">
+                                    <div class="mk-alerta-title">🚨 Alerta de Prazo Excedido</div>
+                                    <div class="mk-alerta-desc">
+                                        Esta reclamação está aberta há <strong>12 dias</strong>.
+                                        O prazo máximo de <strong>10 dias</strong> foi ultrapassado.
+                                        Verifique o andamento e priorize a tratativa.
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px;">
+                                <div style="padding:4px 0;border-bottom:1px solid #F0F0F8;">
+                                    <div style="font-size:0.46rem;font-weight:800;color:#5C5C8A;text-transform:uppercase;letter-spacing:0.5px;">Nº Registro</div>
+                                    <div style="font-size:0.7rem;font-weight:700;color:#1A1A2E;">#0451</div>
+                                </div>
+                                <div style="padding:4px 0;border-bottom:1px solid #F0F0F8;">
+                                    <div style="font-size:0.46rem;font-weight:800;color:#5C5C8A;text-transform:uppercase;letter-spacing:0.5px;">Cliente</div>
+                                    <div style="font-size:0.7rem;font-weight:700;color:#1A1A2E;">Supermercado Bom Preço</div>
+                                </div>
+                                <div style="padding:4px 0;border-bottom:1px solid #F0F0F8;">
+                                    <div style="font-size:0.46rem;font-weight:800;color:#5C5C8A;text-transform:uppercase;letter-spacing:0.5px;">Andamento</div>
+                                    <div style="font-size:0.7rem;font-weight:700;color:#1A1A2E;">🔓 Abertura da RNC</div>
+                                </div>
+                                <div style="padding:4px 0;border-bottom:1px solid #F0F0F8;">
+                                    <div style="font-size:0.46rem;font-weight:800;color:#5C5C8A;text-transform:uppercase;letter-spacing:0.5px;">Tempo Total</div>
+                                    <div style="font-size:0.7rem;font-weight:700;color:#1A1A2E;">12d 4h 22min</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============= SLIDE 7: DASHBOARD ============= -->
+            <div class="slide" data-slide="6">
+                <div class="slide-title"><span class="badge-num">CAPÍTULO 06</span> Dashboard Analítico</div>
+                <div class="slide-desc">Gráficos interativos sobre áreas, motivos, status, produtos e valores.</div>
+                <div class="mockup">
+                    <div class="mk-header">
+                        <div class="mk-header-left">
+                            <div class="mk-logo">📦</div>
+                            <div class="mk-title">DONA RITA EMBALAGENS <span class="mk-badge-sac">SAC</span></div>
+                        </div>
+                        <div class="mk-header-right">
+                            <div class="mk-user">👤 Duda <span class="role">👑 Admin</span></div>
+                            <div class="mk-logout">🚪 Sair</div>
+                        </div>
+                    </div>
+                    <div class="mk-tabs">
+                        <div class="mk-tab">📝 Registro</div>
+                        <div class="mk-tab">📋 Histórico</div>
+                        <div class="mk-tab active">📊 Dashboard</div>
+                        <div class="mk-tab">👥 Usuários</div>
+                    </div>
+                    <div class="mk-body">
+                        <div class="mk-card">
+                            <div class="mk-card-title">📊 Dashboard de Gráficos</div>
+                            <div class="mk-charts-grid">
+                                <div class="mk-chart">
+                                    <div class="mk-chart-title">Ocorrência por Área</div>
+                                    <div class="mk-chart-area">
+                                        <div class="mk-pie">
+                                            <div class="mk-pie-inner"></div>
+                                            <div class="mk-pie-holes">128</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mk-chart">
+                                    <div class="mk-chart-title">Motivos Resumidos</div>
+                                    <div class="mk-chart-area" style="gap:4px;">
+                                        <div class="mk-bar" style="height:70%;"><span>32</span></div>
+                                        <div class="mk-bar" style="height:52%;background:linear-gradient(180deg,#7C3AED 0%,#5B2A86 100%);"><span>24</span></div>
+                                        <div class="mk-bar" style="height:40%;background:linear-gradient(180deg,#F57C00 0%,#E65100 100%);"><span>18</span></div>
+                                        <div class="mk-bar" style="height:28%;background:linear-gradient(180deg,#5B2A86 0%,#3C1053 100%);"><span>12</span></div>
+                                        <div class="mk-bar" style="height:18%;background:linear-gradient(180deg,#D32F2F 0%,#B71C1C 100%);"><span>8</span></div>
+                                    </div>
+                                </div>
+                                <div class="mk-chart">
+                                    <div class="mk-chart-title">Abertas vs Concluídas</div>
+                                    <div class="mk-chart-area" style="gap:14px;justify-content:center;">
+                                        <div class="mk-bar" style="height:60%;width:32px;background:linear-gradient(180deg,#F57C00 0%,#E65100 100%);"><span>42</span></div>
+                                        <div class="mk-bar" style="height:80%;width:32px;background:linear-gradient(180deg,#5B2A86 0%,#3C1053 100%);"><span>86</span></div>
+                                    </div>
+                                </div>
+                                <div class="mk-chart">
+                                    <div class="mk-chart-title">Qtd. Reclamada por Produto</div>
+                                    <div class="mk-chart-area" style="gap:3px;align-items:flex-end;">
+                                        <div class="mk-bar" style="height:35%;width:14px;"><span>1k</span></div>
+                                        <div class="mk-bar" style="height:60%;width:14px;background:linear-gradient(180deg,#7C3AED 0%,#5B2A86 100%);"><span>2k</span></div>
+                                        <div class="mk-bar" style="height:85%;width:14px;background:linear-gradient(180deg,#A78BFA 0%,#7C3AED 100%);"><span>3k</span></div>
+                                        <div class="mk-bar" style="height:48%;width:14px;"><span>1.5k</span></div>
+                                        <div class="mk-bar" style="height:100%;width:14px;background:linear-gradient(180deg,#3C1053 0%,#1A0033 100%);"><span>4k</span></div>
+                                        <div class="mk-bar" style="height:22%;width:14px;background:linear-gradient(180deg,#F57C00 0%,#E65100 100%);"><span>800</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============= SLIDE 8: USUÁRIOS ============= -->
+            <div class="slide" data-slide="7">
+                <div class="slide-title"><span class="badge-num">CAPÍTULO 07</span> Gerenciamento de Usuários</div>
+                <div class="slide-desc">Administradores criam e removem usuários com perfis de acesso controlados.</div>
+                <div class="mockup">
+                    <div class="mk-header">
+                        <div class="mk-header-left">
+                            <div class="mk-logo">📦</div>
+                            <div class="mk-title">DONA RITA EMBALAGENS <span class="mk-badge-sac">SAC</span></div>
+                        </div>
+                        <div class="mk-header-right">
+                            <div class="mk-user">👤 Duda <span class="role">👑 Admin</span></div>
+                            <div class="mk-logout">🚪 Sair</div>
+                        </div>
+                    </div>
+                    <div class="mk-tabs">
+                        <div class="mk-tab">📝 Registro</div>
+                        <div class="mk-tab">📋 Histórico</div>
+                        <div class="mk-tab">📊 Dashboard</div>
+                        <div class="mk-tab active">👥 Usuários</div>
+                    </div>
+                    <div class="mk-body">
+                        <div class="mk-card">
+                            <div class="mk-card-title">👥 Gerenciar Usuários do Sistema</div>
+                            <div class="mk-form-grid" style="grid-template-columns:1fr 1fr 1fr auto;margin-bottom:10px;">
+                                <div class="mk-field">
+                                    <div class="mk-label">Usuário <span class="req">*</span></div>
+                                    <div class="mk-input filled">maria.souza<span class="mk-cursor"></span></div>
+                                </div>
+                                <div class="mk-field">
+                                    <div class="mk-label">Senha <span class="req">*</span></div>
+                                    <div class="mk-input filled">••••••</div>
+                                </div>
+                                <div class="mk-field">
+                                    <div class="mk-label">Tipo <span class="req">*</span></div>
+                                    <div class="mk-input filled">👤 Padrão ▾</div>
+                                </div>
+                                <div class="mk-field">
+                                    <div class="mk-label">&nbsp;</div>
+                                    <div class="mk-btn primary" style="text-align:center;">➕ Criar</div>
+                                </div>
+                            </div>
+                            <table class="mk-table">
+                                <thead>
+                                    <tr><th>Usuário</th><th>Tipo</th><th>Status</th><th>Ações</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>👑 Duda</strong> <em style="color:#5C5C8A;">(admin fixo)</em></td>
+                                        <td><span class="mk-badge concluido">👑 Administrador</span></td>
+                                        <td><span style="color:#2E7D32;font-weight:800;">✅ Ativo</span></td>
+                                        <td><em style="color:#5C5C8A;">🔒 Protegido</em></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>👤 maria.souza</strong></td>
+                                        <td><span class="mk-badge abertura">👤 Padrão</span></td>
+                                        <td><span style="color:#2E7D32;font-weight:800;">✅ Ativo</span></td>
+                                        <td><span class="mk-badge" style="background:#FFEBEE;color:#C62828;border:1px solid #F5B7B1;">🗑️ Excluir</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>👤 carlos.gerente</strong></td>
+                                        <td><span class="mk-badge concluido">👑 Administrador</span></td>
+                                        <td><span style="color:#2E7D32;font-weight:800;">✅ Ativo</span></td>
+                                        <td><span class="mk-badge" style="background:#FFEBEE;color:#C62828;border:1px solid #F5B7B1;">🗑️ Excluir</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============= SLIDE 9: PDF ============= -->
+            <div class="slide" data-slide="8">
+                <div class="slide-title"><span class="badge-num">CAPÍTULO 08</span> Relatórios em PDF</div>
+                <div class="slide-desc">Exporte o histórico e o dashboard em PDF — separados por Interno, Externo e Total.</div>
+                <div class="mockup">
+                    <div class="mk-header">
+                        <div class="mk-header-left">
+                            <div class="mk-logo">📦</div>
+                            <div class="mk-title">DONA RITA EMBALAGENS <span class="mk-badge-sac">SAC</span></div>
+                        </div>
+                        <div class="mk-header-right">
+                            <div class="mk-user">👤 Duda <span class="role">👑 Admin</span></div>
+                            <div class="mk-logout">🚪 Sair</div>
+                        </div>
+                    </div>
+                    <div class="mk-tabs">
+                        <div class="mk-tab">📝 Registro</div>
+                        <div class="mk-tab">📋 Histórico</div>
+                        <div class="mk-tab active">📊 Dashboard</div>
+                        <div class="mk-tab">👥 Usuários</div>
+                    </div>
+                    <div class="mk-body">
+                        <div class="mk-card">
+                            <div class="mk-card-title">📄 Gerando relatório profissional</div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;height:100%;">
+                                <div style="background:linear-gradient(135deg,#FAFAFE 0%,#F3E5F5 100%);border:2px solid #B39DDB;border-radius:10px;padding:12px;display:flex;flex-direction:column;justify-content:space-between;">
+                                    <div>
+                                        <div style="font-size:0.68rem;font-weight:800;color:#3C1053;margin-bottom:6px;">📋 PDF do HISTÓRICO</div>
+                                        <div style="font-size:0.55rem;color:#5C5C8A;line-height:1.5;">
+                                            • Cabeçalho oficial Dona Rita<br>
+                                            • Cartões de totais (Pendentes, Concluídos)<br>
+                                            • Tabela completa com todos os filtros<br>
+                                            • Destaque vermelho em atrasos
+                                        </div>
+                                    </div>
+                                    <div class="mk-btn primary" style="text-align:center;margin-top:8px;">📄 Gerar PDF do Histórico</div>
+                                </div>
+                                <div style="background:linear-gradient(135deg,#FAFAFE 0%,#EDE7F6 100%);border:2px solid #B39DDB;border-radius:10px;padding:12px;display:flex;flex-direction:column;justify-content:space-between;">
+                                    <div>
+                                        <div style="font-size:0.68rem;font-weight:800;color:#3C1053;margin-bottom:6px;">📊 PDF do DASHBOARD</div>
+                                        <div style="font-size:0.55rem;color:#5C5C8A;line-height:1.5;">
+                                            • 3 versões: Interno · Externo · Total<br>
+                                            • 6 cartões de estatísticas<br>
+                                            • Todos os gráficos em imagem<br>
+                                            • Lista detalhada de atrasos
+                                        </div>
+                                    </div>
+                                    <div class="mk-btn primary" style="text-align:center;margin-top:8px;background:linear-gradient(135deg,#7C3AED 0%,#A78BFA 100%);">📄 Gerar PDF do Dashboard</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============= SLIDE 10: FIM ============= -->
+            <div class="slide" data-slide="9">
+                <div class="slide-intro">
+                    <div class="slide-intro-logo">✅</div>
+                    <h1>TUTORIAL CONCLUÍDO</h1>
+                    <div class="sub">Você está pronto para usar o SAC</div>
+                    <p class="tag-line">
+                        Agora você domina <strong>login, registro, histórico, alertas, dashboard,
+                        usuários e geração de PDF</strong>. Lembre-se: o sistema também envia
+                        notificações automáticas via WhatsApp a cada ação importante.
+                    </p>
+                    <div style="margin-top:24px;display:flex;gap:12px;">
+                        <div style="background:rgba(124,58,237,0.15);border:1.5px solid rgba(167,139,250,0.4);border-radius:12px;padding:12px 20px;">
+                            <div style="font-size:1.4rem;font-weight:800;color:#A78BFA;">📦</div>
+                            <div style="font-size:0.65rem;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:1px;">DONA RITA EMBALAGENS</div>
+                        </div>
+                        <div style="background:rgba(124,58,237,0.15);border:1.5px solid rgba(167,139,250,0.4);border-radius:12px;padding:12px 20px;">
+                            <div style="font-size:1.4rem;font-weight:800;color:#A78BFA;">💜</div>
+                            <div style="font-size:0.65rem;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:1px;">SISTEMA SAC</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ============ OVERLAY INICIAR ============ -->
+        <div class="start-overlay" id="startOverlay">
+            <button class="start-btn" id="startBtn" aria-label="Iniciar Tutorial">▶</button>
+            <div class="start-text">
+                <h2>Pronto para começar?</h2>
+                <p>Clique no botão para iniciar o tutorial narrado</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= DOTS ================= -->
+    <div class="dots-container" id="dotsContainer"></div>
+
+    <!-- ================= CONTROLES ================= -->
+    <div class="video-controls">
+        <button class="ctrl-btn primary-ctrl" id="playPauseBtn" title="Play/Pause">⏸</button>
+        <button class="ctrl-btn" id="restartBtn" title="Reiniciar">🔄</button>
+        <div class="progress-wrap">
+            <div class="progress-rail" id="progressRail">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span class="time-display" id="timeDisplay">00:00 / 00:00</span>
+        </div>
+        <select class="voice-select" id="voiceSelect" title="Escolha a voz da narração"></select>
+        <span class="slide-counter" id="slideCounter">1 / 10</span>
+    </div>
+</div>
+
+<script>
+(function() {
+    'use strict';
+
+    // ======================================================
+    // CONTEÚDO DA NARRAÇÃO (texto falado em cada slide)
+    // ======================================================
+    const narracoes = [
+        // 0 - Intro
+        "Bem-vindo ao tutorial completo do Sistema SAC da Dona Rita Embalagens. " +
+        "Neste vídeo você vai aprender, passo a passo, como registrar não conformidades, " +
+        "acompanhar o histórico, analisar o dashboard e gerar relatórios profissionais em PDF. " +
+        "Vamos começar!",
+
+        // 1 - Login
+        "O acesso ao sistema é feito por usuário e senha. " +
+        "Existem dois níveis de permissão. " +
+        "O perfil Administrador tem acesso total a todas as abas e funcionalidades. " +
+        "O perfil Padrão pode apenas visualizar o histórico e o dashboard, " +
+        "sem permissão para editar registros ou gerar relatórios. " +
+        "Após o login, o sistema envia automaticamente uma notificação via WhatsApp " +
+        "informando o acesso realizado.",
+
+        // 2 - Registro parte 1
+        "Ao entrar no sistema, você é direcionado para a aba Registro. " +
+        "Aqui você cadastra uma nova não conformidade. " +
+        "Preencha o número do registro, o nome do cliente, a data da ocorrência, " +
+        "a área envolvida, a origem interna ou externa, " +
+        "uma causa resumida para aparecer na tabela, " +
+        "e a causa completa detalhando todo o problema. " +
+        "Os campos marcados com asterisco vermelho são obrigatórios.",
+
+        // 3 - Registro parte 2
+        "Na parte complementar do formulário, informe o código do item e a descrição do produto. " +
+        "Ao digitar o código, a descrição é preenchida automaticamente. " +
+        "Informe a quantidade reclamada, os dias de atraso, " +
+        "e selecione o andamento atual da reclamação, " +
+        "que pode ir de Abertura da RNC até Concluído. " +
+        "Descreva também a solução do problema, o valor de Nf ou Nfd, " +
+        "a bonificação, a prorrogação e a reemissão. " +
+        "Ao salvar, o sistema dispara um aviso em tempo real pelo WhatsApp.",
+
+        // 4 - Histórico
+        "Na aba Histórico você visualiza todas as reclamações cadastradas. " +
+        "É possível filtrar por dia específico, por mês, " +
+        "ou pesquisar por cliente, número de registro, causa ou nota fiscal. " +
+        "Cada linha mostra o número, data, cliente, área, origem, causa, " +
+        "andamento, tempo total em aberto, atrasos e bonificação. " +
+        "Ao lado de cada registro há botões para visualizar detalhes, editar ou excluir.",
+
+        // 5 - Alerta prazo
+        "Um dos recursos mais importantes do sistema é o alerta automático de prazo. " +
+        "Reclamações abertas há mais de dez dias são destacadas em vermelho, " +
+        "com animação pulsante, tanto na tabela quanto no topo da tela. " +
+        "Ao abrir os detalhes, um aviso completo aparece com o número de dias em aberto. " +
+        "Assim, nenhuma ocorrência fica esquecida.",
+
+        // 6 - Dashboard
+        "No Dashboard, você encontra gráficos interativos e inteligentes. " +
+        "O primeiro mostra a distribuição de ocorrências por área envolvida. " +
+        "O segundo exibe os motivos mais frequentes das reclamações. " +
+        "O terceiro compara ocorrências abertas e concluídas. " +
+        "Em seguida vêm os gráficos de quantidade reclamada por produto, " +
+        "valores de Nf e Nfd por área, e por fim o gráfico exclusivo de Transporte, " +
+        "com atrasos e prorrogações, incluindo médias e lista detalhada.",
+
+        // 7 - Usuários
+        "Administradores podem gerenciar usuários pela aba Usuários. " +
+        "Basta informar nome de usuário, senha e escolher o tipo: " +
+        "Padrão, que apenas visualiza, ou Administrador, com acesso total. " +
+        "Usuários padrão cadastrados aparecem na lista e podem ser excluídos a qualquer momento. " +
+        "O administrador principal Duda é fixo e protegido pelo sistema.",
+
+        // 8 - PDF
+        "O sistema gera relatórios profissionais em PDF. " +
+        "Na aba Histórico, o botão Gerar PDF cria um documento completo em formato paisagem, " +
+        "com cabeçalho da empresa, cartões de totais, tabela formatada " +
+        "e destaque em vermelho para reclamações em atraso. " +
+        "No Dashboard, o botão gera três PDFs separados: " +
+        "um de reclamações internas, um de externas e um total consolidado, " +
+        "sempre com todos os gráficos e estatísticas do filtro aplicado.",
+
+        // 9 - Fim
+        "Parabéns! Você concluiu o tutorial do Sistema SAC da Dona Rita Embalagens. " +
+        "Agora você domina todas as funcionalidades: login seguro, registro de não conformidades, " +
+        "histórico com filtros, alerta automático de prazo, dashboard analítico, " +
+        "gerenciamento de usuários e geração de relatórios em PDF. " +
+        "Lembre-se de que o sistema também envia notificações automáticas via WhatsApp " +
+        "a cada ação importante. Bom trabalho!"
+    ];
+
+    // ======================================================
+    // ESTADO
+    // ======================================================
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    let currentSlide = 0;
+    let isPlaying = false;
+    let utterance = null;
+    let currentVoice = null;
+    let estimatedDurations = [];   // segundos estimados por slide
+    let completedSlides = [];      // controle de tempo real
+
+    // Elementos
+    const startOverlay = document.getElementById('startOverlay');
+    const startBtn = document.getElementById('startBtn');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const restartBtn = document.getElementById('restartBtn');
+    const progressFill = document.getElementById('progressFill');
+    const progressRail = document.getElementById('progressRail');
+    const timeDisplay = document.getElementById('timeDisplay');
+    const slideCounter = document.getElementById('slideCounter');
+    const dotsContainer = document.getElementById('dotsContainer');
+    const voiceSelect = document.getElementById('voiceSelect');
+
+    // ======================================================
+    // VOZES DISPONÍVEIS
+    // ======================================================
+    let voicesLoaded = false;
+    function loadVoices() {
+        const voices = window.speechSynthesis.getVoices();
+        if (!voices || voices.length === 0) return;
+
+        voicesLoaded = true;
+        voiceSelect.innerHTML = '';
+
+        // Prioriza vozes pt-BR, depois pt, depois todas
+        const ptBR = voices.filter(v => v.lang && v.lang.toLowerCase() === 'pt-br');
+        const ptOthers = voices.filter(v => v.lang && v.lang.toLowerCase().startsWith('pt') && v.lang.toLowerCase() !== 'pt-br');
+        const others = voices.filter(v => !v.lang || !v.lang.toLowerCase().startsWith('pt'));
+
+        const ordered = [...ptBR, ...ptOthers, ...others];
+
+        ordered.forEach((voice, i) => {
+            const opt = document.createElement('option');
+            opt.value = voice.name;
+            opt.textContent = `${voice.name} (${voice.lang})${voice.lang.toLowerCase().startsWith('pt') ? ' ⭐' : ''}`;
+            voiceSelect.appendChild(opt);
+        });
+
+        // Seleciona a melhor voz pt-BR automaticamente
+        const best = ptBR[0] || ptOthers[0] || ordered[0];
+        if (best) {
+            currentVoice = best;
+            voiceSelect.value = best.name;
+        }
+    }
+
+    if (typeof speechSynthesis !== 'undefined') {
+        speechSynthesis.onvoiceschanged = loadVoices;
+        loadVoices();
+        setTimeout(loadVoices, 200);
+        setTimeout(loadVoices, 800);
+        setTimeout(loadVoices, 1600);
+    }
+
+    voiceSelect.addEventListener('change', function() {
+        const voices = window.speechSynthesis.getVoices();
+        const found = voices.find(v => v.name === this.value);
+        if (found) currentVoice = found;
+    });
+
+    // ======================================================
+    // ESTIMATIVA DE DURAÇÃO (para barra de progresso)
+    // ======================================================
+    function calcularDuracoes() {
+        // Aproximação: ~14 caracteres por segundo na fala pt-BR
+        estimatedDurations = narracoes.map(txt => {
+            const chars = txt.length;
+            return Math.max(4, chars / 14);
+        });
+    }
+    calcularDuracoes();
+
+    const totalDuration = estimatedDurations.reduce((a, b) => a + b, 0);
+
+    function formatarTempo(seg) {
+        seg = Math.max(0, Math.floor(seg));
+        const m = Math.floor(seg / 60).toString().padStart(2, '0');
+        const s = (seg % 60).toString().padStart(2, '0');
+        return `${m}:${s}`;
+    }
+
+    // ======================================================
+    // DOTS
+    // ======================================================
+    function buildDots() {
+        dotsContainer.innerHTML = '';
+        slides.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.dataset.idx = i;
+            dot.title = `Slide ${i + 1}`;
+            dot.addEventListener('click', () => {
+                if (!isPlaying) return;
+                speechSynthesis.cancel();
+                irParaSlide(i);
+            });
+            dotsContainer.appendChild(dot);
+        });
+    }
+    buildDots();
+
+    function atualizarDots() {
+        document.querySelectorAll('.dot').forEach((d, i) => {
+            d.classList.toggle('active', i === currentSlide);
+        });
+    }
+
+    // ======================================================
+    // PROGRESSO
+    // ======================================================
+    let slideStartTime = 0;
+    let progressInterval = null;
+
+    function iniciarProgresso() {
+        slideStartTime = Date.now();
+        if (progressInterval) clearInterval(progressInterval);
+        progressInterval = setInterval(atualizarProgresso, 200);
+    }
+
+    function pararProgresso() {
+        if (progressInterval) {
+            clearInterval(progressInterval);
+            progressInterval = null;
+        }
+    }
+
+    function atualizarProgresso() {
+        let elapsed = 0;
+        for (let i = 0; i < currentSlide; i++) {
+            elapsed += estimatedDurations[i];
+        }
+        const tempoNoSlide = (Date.now() - slideStartTime) / 1000;
+        elapsed += Math.min(tempoNoSlide, estimatedDurations[currentSlide] || 5);
+
+        const pct = Math.min(100, (elapsed / totalDuration) * 100);
+        progressFill.style.width = pct + '%';
+
+        // Ajusta o tempo no slide atual
+        const tempoReal = (Date.now() - slideStartTime) / 1000;
+        const slidePct = Math.min(100, (tempoReal / (estimatedDurations[currentSlide] || 5)) * 100);
+        progressFill.style.width = Math.max(
+            pct,
+            ((elapsed - tempoNoSlide + tempoReal) / totalDuration) * 100
+        ) + '%';
+
+        timeDisplay.textContent = `${formatarTempo(elapsed)} / ${formatarTempo(totalDuration)}`;
+    }
+
+    // ======================================================
+    // NAVEGAÇÃO DE SLIDES
+    // ======================================================
+    function mostrarSlide(idx) {
+        slides.forEach((s, i) => {
+            s.classList.toggle('active', i === idx);
+        });
+        atualizarDots();
+        slideCounter.textContent = `${idx + 1} / ${totalSlides}`;
+    }
+
+    function irParaSlide(idx) {
+        if (idx < 0) idx = 0;
+        if (idx >= totalSlides) {
+            finalizar();
+            return;
+        }
+        currentSlide = idx;
+        mostrarSlide(idx);
+        iniciarProgresso();
+        narrar(idx);
+    }
+
+    // ======================================================
+    // NARRAÇÃO
+    // ======================================================
+    function narrar(idx) {
+        if (!isPlaying) return;
+
+        try {
+            speechSynthesis.cancel();
+        } catch (e) {}
+
+        utterance = new SpeechSynthesisUtterance(narracoes[idx]);
+        utterance.lang = 'pt-BR';
+        utterance.rate = 0.95;
+        utterance.pitch = 1.0;
+        utterance.volume = 1.0;
+
+        if (currentVoice) {
+            utterance.voice = currentVoice;
+        } else {
+            // Tenta achar voz pt-BR
+            const voices = window.speechSynthesis.getVoices();
+            const ptV = voices.find(v => v.lang && v.lang.toLowerCase() === 'pt-br')
+                      || voices.find(v => v.lang && v.lang.toLowerCase().startsWith('pt'));
+            if (ptV) utterance.voice = ptV;
+        }
+
+        utterance.onend = function() {
+            if (!isPlaying) return;
+            // Avança para o próximo slide após pequena pausa
+            setTimeout(() => {
+                if (isPlaying) {
+                    irParaSlide(currentSlide + 1);
+                }
+            }, 550);
+        };
+
+        utterance.onerror = function(e) {
+            // Fallback: se a síntese falhar, avança pelo tempo estimado
+            if (e.error === 'interrupted' || e.error === 'canceled') return;
+            console.warn('Erro na narração:', e);
+            const fallbackTime = (estimatedDurations[idx] || 5) * 1000;
+            setTimeout(() => {
+                if (isPlaying) irParaSlide(currentSlide + 1);
+            }, fallbackTime);
+        };
+
+        speechSynthesis.speak(utterance);
+    }
+
+    // ======================================================
+    // PLAY / PAUSE
+    // ======================================================
+    function play() {
+        isPlaying = true;
+        playPauseBtn.textContent = '⏸';
+        if (!utterance) {
+            irParaSlide(currentSlide);
+        } else {
+            try { speechSynthesis.resume(); } catch (e) {}
+            iniciarProgresso();
+        }
+    }
+
+    function pause() {
+        isPlaying = false;
+        playPauseBtn.textContent = '▶';
+        try { speechSynthesis.pause(); } catch (e) {}
+        pararProgresso();
+    }
+
+    function togglePlayPause() {
+        if (isPlaying) pause();
+        else play();
+    }
+
+    function finalizar() {
+        isPlaying = false;
+        playPauseBtn.textContent = '▶';
+        progressFill.style.width = '100%';
+        timeDisplay.textContent = `${formatarTempo(totalDuration)} / ${formatarTempo(totalDuration)}`;
+        pararProgresso();
+        // Permite reiniciar pelo botão play
+        utterance = null;
+    }
+
+    function reiniciar() {
+        try { speechSynthesis.cancel(); } catch (e) {}
+        isPlaying = false;
+        utterance = null;
+        currentSlide = 0;
+        progressFill.style.width = '0%';
+        timeDisplay.textContent = `00:00 / ${formatarTempo(totalDuration)}`;
+        mostrarSlide(0);
+        pararProgresso();
+        playPauseBtn.textContent = '▶';
+        // Recomeça automaticamente
+        setTimeout(() => { play(); }, 200);
+    }
+
+    // ======================================================
+    // EVENTOS
+    // ======================================================
+    startBtn.addEventListener('click', function() {
+        startOverlay.classList.add('hidden');
+        // Pequeno delay para dar tempo do navegador liberar áudio após clique
+        setTimeout(() => { play(); }, 250);
+    });
+
+    playPauseBtn.addEventListener('click', togglePlayPause);
+    restartBtn.addEventListener('click', reiniciar);
+
+    progressRail.addEventListener('click', function(e) {
+        const rect = this.getBoundingClientRect();
+        const pct = (e.clientX - rect.left) / rect.width;
+        const targetTime = pct * totalDuration;
+
+        let acumulado = 0;
+        let alvo = 0;
+        for (let i = 0; i < estimatedDurations.length; i++) {
+            if (acumulado + estimatedDurations[i] >= targetTime) {
+                alvo = i;
+                break;
+            }
+            acumulado += estimatedDurations[i];
+            alvo = i + 1;
+        }
+        if (!isPlaying) {
+            isPlaying = true;
+            playPauseBtn.textContent = '⏸';
+        }
+        try { speechSynthesis.cancel(); } catch (e) {}
+        irParaSlide(alvo);
+    });
+
+    // Teclado: espaço = play/pause, seta = navegação
+    document.addEventListener('keydown', function(e) {
+        if (startOverlay && !startOverlay.classList.contains('hidden')) return;
+        if (e.code === 'Space') {
+            e.preventDefault();
+            togglePlayPause();
+        } else if (e.code === 'ArrowRight') {
+            e.preventDefault();
+            if (isPlaying) {
+                try { speechSynthesis.cancel(); } catch (err) {}
+                irParaSlide(currentSlide + 1);
+            }
+        } else if (e.code === 'ArrowLeft') {
+            e.preventDefault();
+            if (isPlaying) {
+                try { speechSynthesis.cancel(); } catch (err) {}
+                irParaSlide(currentSlide - 1);
+            }
+        }
+    });
+
+    // ======================================================
+    // INICIALIZAÇÃO
+    // ======================================================
+    mostrarSlide(0);
+    slideCounter.textContent = `1 / ${totalSlides}`;
+    timeDisplay.textContent = `00:00 / ${formatarTempo(totalDuration)}`;
+
+    // Evita que a síntese pare sozinha em navegadores com timeout
+    window.addEventListener('beforeunload', function() {
+        try { speechSynthesis.cancel(); } catch (e) {}
+    });
+
+    // Re-tenta carregar vozes periodicamente nos primeiros segundos
+    let tentativas = 0;
+    const voiceTimer = setInterval(() => {
+        if (voicesLoaded || tentativas > 10) {
+            clearInterval(voiceTimer);
+            return;
+        }
+        loadVoices();
+        tentativas++;
+    }, 500);
+
+})();
+</script>
+</body>
+</html>
