@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dona Rita Embalagens · Tutorial por Telas dos Sistemas</title>
+<title>Dona Rita Embalagens · Tutorial Guiado dos Sistemas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
@@ -51,13 +51,13 @@ body{
   min-height:100vh;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
-  padding-bottom:150px;
+  padding-bottom:160px;
 }
 
 /* ============ TOPBAR ============ */
 .topbar{
   position:sticky;top:0;z-index:100;
-  background:rgba(255,255,255,0.9);
+  background:rgba(255,255,255,0.92);
   backdrop-filter:blur(20px);
   -webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border);
@@ -76,7 +76,7 @@ body{
 .topbar-logo .logo-text{display:flex;flex-direction:column;line-height:1.1}
 .topbar-logo .logo-text strong{font-size:1rem;font-weight:800;color:var(--logo-dark);letter-spacing:0.5px}
 .topbar-logo .logo-text span{font-size:0.65rem;font-weight:600;letter-spacing:2.5px;color:var(--logo-medium);text-transform:uppercase}
-.topbar-actions{display:flex;gap:8px;flex-wrap:wrap}
+.topbar-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .btn{
   display:inline-flex;align-items:center;gap:8px;
   padding:9px 16px;border-radius:20px;border:none;
@@ -89,66 +89,82 @@ body{
 .btn-outline:hover{border-color:var(--logo-soft);background:var(--logo-bg)}
 .btn-pink{background:linear-gradient(135deg,var(--pink),var(--logo-medium));color:#fff;box-shadow:0 6px 16px rgba(236,72,153,0.28)}
 .btn-pink:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(236,72,153,0.4)}
+.btn-green{background:linear-gradient(135deg,#10b981,#059669);color:#fff;box-shadow:0 6px 16px rgba(16,185,129,0.28)}
+.btn-green:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(16,185,129,0.4)}
+
+/* Auto-play indicator */
+.autoplay-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:linear-gradient(135deg,#10b981,#059669);
+  color:#fff;padding:6px 12px;border-radius:20px;
+  font-size:0.7rem;font-weight:700;letter-spacing:0.4px;
+  animation:pulseAuto 1.8s ease-in-out infinite;
+}
+.autoplay-badge.paused{background:linear-gradient(135deg,#f59e0b,#d97706);animation:none}
+@keyframes pulseAuto{
+  0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,0.5)}
+  50%{box-shadow:0 0 0 8px rgba(16,185,129,0)}
+}
 
 /* ============ HERO ============ */
-.hero{max-width:1200px;margin:0 auto;padding:50px 24px 30px;text-align:center}
-.hero .brand-logo{width:min(320px,75vw);height:auto;margin:0 auto 20px;display:block;filter:drop-shadow(0 12px 28px rgba(61,45,143,0.18))}
+.hero{max-width:1200px;margin:0 auto;padding:40px 24px 20px;text-align:center}
+.hero .brand-logo{width:min(300px,72vw);height:auto;margin:0 auto 18px;display:block;filter:drop-shadow(0 12px 28px rgba(61,45,143,0.18))}
 .hero h1{
-  font-size:clamp(1.6rem,3.6vw,2.4rem);font-weight:800;
+  font-size:clamp(1.5rem,3.4vw,2.2rem);font-weight:800;
   background:linear-gradient(135deg,var(--logo-dark),var(--logo-medium),var(--logo-soft));
   -webkit-background-clip:text;background-clip:text;color:transparent;
-  line-height:1.2;margin-bottom:10px;letter-spacing:-0.5px;
+  line-height:1.2;margin-bottom:10px;
 }
-.hero p{font-size:0.98rem;color:var(--text-muted);max-width:680px;margin:0 auto 20px}
+.hero p{font-size:0.95rem;color:var(--text-muted);max-width:660px;margin:0 auto 18px}
 .hero-badge{
   display:inline-flex;align-items:center;gap:8px;
   background:linear-gradient(135deg,#fce7f3,var(--logo-mist));
   color:var(--pink);padding:8px 18px;border-radius:20px;
   font-weight:700;font-size:0.78rem;letter-spacing:0.4px;
-  border:1px solid #f9a8d4;
+  border:1px solid #f9a8d4;margin-bottom:16px;
 }
 
 /* ============ LAYOUT ============ */
 .layout{
   max-width:1280px;margin:0 auto;padding:0 24px;
-  display:grid;grid-template-columns:280px 1fr;gap:28px;align-items:start;
+  display:grid;grid-template-columns:270px 1fr;gap:26px;align-items:start;
 }
 @media(max-width:960px){
-  .layout{grid-template-columns:1fr;padding:0 16px}
-  .hero{padding:30px 16px 20px}
+  .layout{grid-template-columns:1fr;padding:0 14px}
+  .hero{padding:24px 14px 14px}
 }
 
 /* ============ SIDEBAR ============ */
 .sidebar{
-  position:sticky;top:88px;
+  position:sticky;top:84px;
   background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);
   padding:16px;box-shadow:var(--shadow-sm);
 }
 @media(max-width:960px){.sidebar{position:static;top:auto}}
 .sidebar-title{
-  font-size:0.68rem;font-weight:700;color:var(--text-muted);
+  font-size:0.66rem;font-weight:700;color:var(--text-muted);
   text-transform:uppercase;letter-spacing:1.2px;padding:0 12px 10px;
   border-bottom:1px solid var(--border);margin-bottom:10px;
 }
 .nav-item{
-  display:flex;align-items:center;gap:12px;
-  padding:11px 13px;border-radius:var(--radius-sm);
+  display:flex;align-items:center;gap:11px;
+  padding:10px 12px;border-radius:var(--radius-sm);
   cursor:pointer;transition:var(--transition);
-  font-weight:600;font-size:0.85rem;color:var(--text);border:none;
+  font-weight:600;font-size:0.83rem;color:var(--text);border:none;
   background:transparent;width:100%;text-align:left;font-family:inherit;
   margin-bottom:3px;
 }
 .nav-item:hover{background:var(--logo-bg);color:var(--logo-dark)}
 .nav-item.active{background:linear-gradient(135deg,var(--logo-dark),var(--logo-medium));color:#fff;box-shadow:0 6px 16px rgba(61,45,143,0.25)}
 .nav-item .nav-icon{
-  width:32px;height:32px;border-radius:9px;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;font-size:14px;
+  width:30px;height:30px;border-radius:8px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:13px;
   background:var(--logo-mist);color:var(--logo-dark);
 }
 .nav-item.active .nav-icon{background:rgba(255,255,255,0.18);color:#fff}
-.nav-item .nav-info{display:flex;flex-direction:column;line-height:1.25;overflow:hidden}
-.nav-item .nav-info strong{font-size:0.83rem;font-weight:700}
-.nav-item .nav-info small{font-size:0.66rem;opacity:0.75;font-weight:500}
+.nav-item .nav-info{display:flex;flex-direction:column;line-height:1.2;overflow:hidden}
+.nav-item .nav-info strong{font-size:0.81rem;font-weight:700}
+.nav-item .nav-info small{font-size:0.64rem;opacity:0.75;font-weight:500}
 
 /* ============ CONTENT ============ */
 .content{min-width:0}
@@ -157,69 +173,63 @@ body{
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 
 .section-head{
-  display:flex;align-items:center;gap:16px;margin-bottom:20px;
-  background:#fff;padding:20px 24px;border-radius:var(--radius-lg);
+  display:flex;align-items:center;gap:14px;margin-bottom:18px;
+  background:#fff;padding:18px 22px;border-radius:var(--radius-lg);
   border:1px solid var(--border);box-shadow:var(--shadow-sm);
   border-left:6px solid var(--logo-dark);
 }
 .section-head .sh-icon{
-  width:54px;height:54px;border-radius:15px;flex-shrink:0;
+  width:50px;height:50px;border-radius:14px;flex-shrink:0;
   background:linear-gradient(135deg,var(--logo-dark),var(--logo-medium));
-  color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;
+  color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;
   box-shadow:0 8px 20px rgba(61,45,143,0.28);
 }
-.section-head h2{font-size:1.3rem;font-weight:800;color:var(--logo-dark);margin-bottom:2px}
-.section-head p{font-size:0.85rem;color:var(--text-muted)}
+.section-head h2{font-size:1.2rem;font-weight:800;color:var(--logo-dark);margin-bottom:2px}
+.section-head p{font-size:0.82rem;color:var(--text-muted)}
 
-/* ============ TOUR POR TELAS ============ */
+/* ============ TOUR CONTAINER ============ */
 .tour-container{
   background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);
   box-shadow:var(--shadow-md);overflow:hidden;
 }
 .tour-header{
   display:flex;justify-content:space-between;align-items:center;gap:12px;
-  padding:16px 22px;
+  padding:14px 20px;
   background:linear-gradient(135deg,var(--logo-dark),var(--logo-medium));
   color:#fff;flex-wrap:wrap;
 }
 .tour-header .tour-title{
-  font-size:0.95rem;font-weight:800;letter-spacing:0.3px;
+  font-size:0.9rem;font-weight:800;letter-spacing:0.3px;
   display:flex;align-items:center;gap:10px;
 }
-.tour-header .tour-title i{font-size:1.1rem}
 .tour-header .tour-counter{
   background:rgba(255,255,255,0.2);
-  padding:6px 14px;border-radius:20px;
-  font-size:0.78rem;font-weight:700;
+  padding:5px 13px;border-radius:20px;
+  font-size:0.74rem;font-weight:700;
   font-family:'JetBrains Mono',monospace;
 }
 
 /* ============ TELA (SLIDE) ============ */
-.tela{
-  display:none;
-  animation:fadeUp 0.4s ease;
-}
+.tela{display:none;animation:telaFade 0.5s ease}
 .tela.active{display:block}
+@keyframes telaFade{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
 
 .tela-visual{
   background:linear-gradient(135deg,#2d1f6e,#3d2d8f);
-  padding:22px;
-  position:relative;
-  min-height:280px;
+  padding:20px;position:relative;min-height:280px;
 }
 .tela-visual::before{
   content:'';position:absolute;top:-30px;right:-30px;width:140px;height:140px;
   background:rgba(184,168,232,0.15);border-radius:50%;pointer-events:none;
 }
 
-/* Mockup do navegador dentro do visual */
 .tela-browser{
   background:#fff;border-radius:12px;overflow:hidden;
   box-shadow:0 15px 40px rgba(0,0,0,0.35);
   position:relative;z-index:1;
 }
 .tela-browser-bar{
-  background:#f0ecfa;padding:9px 14px;display:flex;align-items:center;gap:7px;
+  background:#f0ecfa;padding:8px 14px;display:flex;align-items:center;gap:7px;
   border-bottom:1px solid #e4dcf5;
 }
 .tela-browser-bar .dot{width:10px;height:10px;border-radius:50%}
@@ -228,18 +238,18 @@ body{
 .tela-browser-bar .dot.g{background:#28c840}
 .tela-browser-bar .url{
   margin-left:10px;background:#fff;padding:3px 12px;border-radius:10px;
-  font-size:0.68rem;color:#8b7cd4;font-family:'JetBrains Mono',monospace;
+  font-size:0.66rem;color:#8b7cd4;font-family:'JetBrains Mono',monospace;
   flex:1;text-align:center;border:1px solid #e4dcf5;
 }
-.tela-browser-content{padding:18px}
+.tela-browser-content{padding:16px}
 
 .tela-browser-title{
-  font-size:0.92rem;font-weight:800;color:var(--logo-dark);
-  margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--logo-mist);
+  font-size:0.88rem;font-weight:800;color:var(--logo-dark);
+  margin-bottom:11px;padding-bottom:7px;border-bottom:2px solid var(--logo-mist);
   display:flex;align-items:center;gap:8px;
 }
 
-.tela-browser-grid{display:grid;gap:8px;margin-bottom:10px}
+.tela-browser-grid{display:grid;gap:8px;margin-bottom:9px}
 .tela-browser-grid.cols-2{grid-template-columns:1fr 1fr}
 .tela-browser-grid.cols-3{grid-template-columns:repeat(3,1fr)}
 .tela-browser-grid.cols-4{grid-template-columns:repeat(4,1fr)}
@@ -249,44 +259,40 @@ body{
 
 .tela-field{
   background:var(--logo-bg);border:1.5px solid var(--border);border-radius:8px;
-  padding:8px 11px;font-size:0.74rem;color:var(--logo-dark);font-weight:600;
+  padding:7px 10px;font-size:0.7rem;color:var(--logo-dark);font-weight:600;
 }
 .tela-field .tf-label{
-  display:block;font-size:0.58rem;font-weight:700;color:var(--logo-medium);
+  display:block;font-size:0.55rem;font-weight:700;color:var(--logo-medium);
   text-transform:uppercase;letter-spacing:0.4px;margin-bottom:2px;
 }
 .tela-field .tf-value{color:#4a4561;font-weight:600}
 
 .tela-stat{
   background:linear-gradient(135deg,var(--logo-mist),#fff);
-  border:1px solid var(--border);border-radius:10px;padding:11px;
+  border:1px solid var(--border);border-radius:10px;padding:10px;
   text-align:center;
 }
 .tela-stat .num{
-  font-size:1.3rem;font-weight:800;color:var(--logo-dark);
+  font-size:1.2rem;font-weight:800;color:var(--logo-dark);
   font-family:'JetBrains Mono',monospace;line-height:1;
 }
 .tela-stat .lbl{
-  font-size:0.6rem;color:var(--text-muted);text-transform:uppercase;
+  font-size:0.58rem;color:var(--text-muted);text-transform:uppercase;
   letter-spacing:0.4px;margin-top:3px;font-weight:600;
 }
 
-.tela-table{
-  width:100%;border-collapse:collapse;font-size:0.7rem;margin-top:6px;
-}
+.tela-table{width:100%;border-collapse:collapse;font-size:0.68rem;margin-top:5px}
 .tela-table th{
   background:var(--logo-mist);color:var(--logo-dark);padding:6px 8px;
-  text-align:left;font-weight:700;font-size:0.6rem;text-transform:uppercase;
+  text-align:left;font-weight:700;font-size:0.58rem;text-transform:uppercase;
   letter-spacing:0.3px;
 }
-.tela-table td{
-  padding:6px 8px;border-bottom:1px solid var(--border);color:#4a4561;
-}
+.tela-table td{padding:6px 8px;border-bottom:1px solid var(--border);color:#4a4561}
 .tela-table tr:last-child td{border-bottom:none}
 
 .tela-pill{
-  display:inline-block;padding:2px 9px;border-radius:10px;
-  font-size:0.6rem;font-weight:700;letter-spacing:0.3px;
+  display:inline-block;padding:2px 8px;border-radius:10px;
+  font-size:0.58rem;font-weight:700;letter-spacing:0.3px;
 }
 .tp-green{background:#dcfce7;color:#15803d}
 .tp-red{background:#fee2e2;color:#b91c1c}
@@ -294,62 +300,53 @@ body{
 .tp-blue{background:#dbeafe;color:#1d4ed8}
 .tp-purple{background:var(--logo-mist);color:var(--logo-dark)}
 
-/* Highlight laranja para destacar o elemento sendo explicado */
 .tela-highlight{
-  position:relative;
   animation:pulseHighlight 2s ease-in-out infinite;
   border-radius:8px;
 }
 @keyframes pulseHighlight{
-  0%,100%{box-shadow:0 0 0 0 rgba(245,158,11,0.7)}
-  50%{box-shadow:0 0 0 8px rgba(245,158,11,0),0 0 20px rgba(245,158,11,0.6)}
+  0%,100%{box-shadow:0 0 0 0 rgba(245,158,11,0.6)}
+  50%{box-shadow:0 0 0 6px rgba(245,158,11,0),0 0 18px rgba(245,158,11,0.6)}
 }
 
 /* ============ INFO DA TELA ============ */
-.tela-info{
-  padding:22px 26px;
-}
+.tela-info{padding:20px 24px}
 .tela-info .tela-step{
   display:inline-flex;align-items:center;gap:6px;
   background:linear-gradient(135deg,var(--pink),var(--logo-medium));
   color:#fff;padding:4px 12px;border-radius:14px;
-  font-size:0.68rem;font-weight:800;letter-spacing:0.6px;
-  text-transform:uppercase;margin-bottom:10px;
+  font-size:0.66rem;font-weight:800;letter-spacing:0.6px;
+  text-transform:uppercase;margin-bottom:8px;
 }
 .tela-info h3{
-  font-size:1.15rem;font-weight:800;color:var(--logo-dark);
+  font-size:1.1rem;font-weight:800;color:var(--logo-dark);
   margin-bottom:8px;line-height:1.3;
 }
-.tela-info p{
-  font-size:0.9rem;color:#4a4561;line-height:1.65;
-  margin-bottom:8px;
-}
+.tela-info p{font-size:0.86rem;color:#4a4561;line-height:1.65;margin-bottom:7px}
+.tela-info p strong{color:var(--logo-dark)}
 .tela-info .tela-tip{
   background:linear-gradient(135deg,#fff8e6,#fffdf5);
   border-left:4px solid var(--warning);
   padding:10px 14px;border-radius:8px;
-  font-size:0.83rem;color:#78570f;
+  font-size:0.8rem;color:#78570f;
   display:flex;gap:10px;align-items:flex-start;
   margin-top:10px;
 }
-.tela-info .tela-tip i{color:var(--warning);font-size:1.05rem;margin-top:1px}
+.tela-info .tela-tip i{color:var(--warning);font-size:1rem;margin-top:1px}
 .tela-info .tela-tip strong{color:#5c420b}
 
 /* ============ NAVEGAÇÃO DO TOUR ============ */
 .tour-nav{
-  display:flex;justify-content:space-between;align-items:center;gap:12px;
-  padding:16px 22px;background:#fafbff;
-  border-top:1px solid var(--border);
-  flex-wrap:wrap;
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  padding:14px 20px;background:#fafbff;
+  border-top:1px solid var(--border);flex-wrap:wrap;
 }
-.tour-nav .tour-dots{
-  display:flex;gap:6px;flex-wrap:wrap;
-}
+.tour-nav .tour-dots{display:flex;gap:5px;flex-wrap:wrap}
 .tour-dot{
-  width:26px;height:26px;border-radius:50%;
+  width:24px;height:24px;border-radius:50%;
   background:#e4dcf5;border:none;cursor:pointer;
   font-family:'JetBrains Mono',monospace;
-  font-size:0.68rem;font-weight:700;color:#6b6489;
+  font-size:0.64rem;font-weight:700;color:#6b6489;
   transition:var(--transition);
   display:flex;align-items:center;justify-content:center;
 }
@@ -363,8 +360,8 @@ body{
 
 .tour-buttons{display:flex;gap:8px}
 .tour-btn{
-  padding:9px 18px;border-radius:20px;border:none;cursor:pointer;
-  font-family:'Poppins',sans-serif;font-weight:700;font-size:0.82rem;
+  padding:8px 16px;border-radius:20px;border:none;cursor:pointer;
+  font-family:'Poppins',sans-serif;font-weight:700;font-size:0.78rem;
   transition:var(--transition);display:inline-flex;align-items:center;gap:6px;
 }
 .tour-btn:disabled{opacity:0.4;cursor:not-allowed}
@@ -383,8 +380,8 @@ body{
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border-top:1px solid var(--border);
   box-shadow:0 -10px 40px rgba(61,45,143,0.12);
-  padding:12px 24px;
-  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  padding:11px 20px;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
   justify-content:center;
 }
 .voice-info{display:flex;align-items:center;gap:10px;flex-shrink:0}
@@ -405,17 +402,17 @@ body{
   100%{transform:scale(1.35);opacity:0}
 }
 .voice-text{display:flex;flex-direction:column;line-height:1.2}
-.voice-text strong{font-size:0.82rem;color:var(--logo-dark);font-weight:700}
-.voice-text small{font-size:0.68rem;color:var(--text-muted);font-weight:500}
+.voice-text strong{font-size:0.8rem;color:var(--logo-dark);font-weight:700}
+.voice-text small{font-size:0.66rem;color:var(--text-muted);font-weight:500}
 .voice-name-badge{
   display:inline-block;background:#fce7f3;color:#be185d;
-  font-size:0.58rem;font-weight:700;padding:2px 7px;border-radius:10px;
+  font-size:0.56rem;font-weight:700;padding:2px 7px;border-radius:10px;
   letter-spacing:0.4px;text-transform:uppercase;margin-left:5px;
 }
-.voice-controls{display:flex;align-items:center;gap:6px}
+.voice-controls{display:flex;align-items:center;gap:5px}
 .vc-btn{
-  width:42px;height:42px;border-radius:50%;border:2px solid var(--border);
-  background:#fff;color:var(--logo-dark);cursor:pointer;font-size:14px;
+  width:40px;height:40px;border-radius:50%;border:2px solid var(--border);
+  background:#fff;color:var(--logo-dark);cursor:pointer;font-size:13px;
   display:flex;align-items:center;justify-content:center;transition:var(--transition);
 }
 .vc-btn:hover{border-color:var(--logo-medium);background:var(--logo-bg);transform:translateY(-2px)}
@@ -430,14 +427,14 @@ body{
   display:flex;align-items:center;gap:6px;background:var(--logo-bg);
   padding:5px 12px;border-radius:20px;border:1px solid var(--border);
 }
-.voice-speed label{font-size:0.68rem;font-weight:700;color:var(--logo-dark);text-transform:uppercase;letter-spacing:0.3px}
-.voice-speed input[type="range"]{width:80px;accent-color:var(--pink);cursor:pointer}
+.voice-speed label{font-size:0.66rem;font-weight:700;color:var(--logo-dark);text-transform:uppercase;letter-spacing:0.3px}
+.voice-speed input[type="range"]{width:75px;accent-color:var(--pink);cursor:pointer}
 .voice-speed .speed-val{
-  font-size:0.72rem;font-weight:700;color:var(--pink);
-  font-family:'JetBrains Mono',monospace;min-width:32px;text-align:center;
+  font-size:0.7rem;font-weight:700;color:var(--pink);
+  font-family:'JetBrains Mono',monospace;min-width:30px;text-align:center;
 }
 .voice-progress{
-  flex:1;min-width:150px;max-width:280px;
+  flex:1;min-width:140px;max-width:260px;
   height:5px;background:var(--logo-mist);border-radius:10px;overflow:hidden;
 }
 .voice-progress .bar{
@@ -446,7 +443,7 @@ body{
   border-radius:10px;transition:width 0.3s ease;
 }
 @media(max-width:768px){
-  .voice-panel{padding:10px 14px;gap:10px}
+  .voice-panel{padding:10px 12px;gap:10px}
   .voice-info .voice-text{display:none}
   .voice-progress{order:3;width:100%;max-width:none}
 }
@@ -460,22 +457,22 @@ body{
 }
 .voice-modal-overlay.active{display:flex}
 .voice-modal{
-  background:#fff;border-radius:var(--radius-xl);padding:28px;
-  max-width:560px;width:100%;box-shadow:0 30px 80px rgba(0,0,0,0.4);
+  background:#fff;border-radius:var(--radius-xl);padding:26px;
+  max-width:540px;width:100%;box-shadow:0 30px 80px rgba(0,0,0,0.4);
   animation:modalIn 0.4s cubic-bezier(0.34,1.56,0.64,1);
   max-height:85vh;overflow-y:auto;
 }
 @keyframes modalIn{from{opacity:0;transform:scale(0.9) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
 .voice-modal h3{
-  font-size:1.15rem;font-weight:800;color:var(--logo-dark);
+  font-size:1.1rem;font-weight:800;color:var(--logo-dark);
   margin-bottom:6px;display:flex;align-items:center;gap:10px;
 }
-.voice-modal p{font-size:0.85rem;color:var(--text-muted);margin-bottom:16px}
-.voice-list{display:flex;flex-direction:column;gap:7px;margin-bottom:18px}
+.voice-modal p{font-size:0.82rem;color:var(--text-muted);margin-bottom:14px}
+.voice-list{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
 .voice-option{
-  padding:11px 14px;border:2px solid var(--border);border-radius:var(--radius-sm);
+  padding:10px 13px;border:2px solid var(--border);border-radius:var(--radius-sm);
   cursor:pointer;transition:var(--transition);background:#fff;
-  display:flex;align-items:center;gap:11px;
+  display:flex;align-items:center;gap:10px;
 }
 .voice-option:hover{border-color:var(--logo-soft);background:var(--logo-bg)}
 .voice-option.selected{border-color:var(--pink);background:#fce7f3;box-shadow:0 0 0 3px rgba(236,72,153,0.15)}
@@ -485,10 +482,10 @@ body{
 }
 .voice-option.selected .vo-radio{border-color:var(--pink);background:var(--pink);box-shadow:inset 0 0 0 3px #fff}
 .voice-option .vo-info{flex:1}
-.voice-option .vo-name{font-weight:700;font-size:0.85rem;color:var(--logo-dark)}
-.voice-option .vo-lang{font-size:0.68rem;color:var(--text-muted);font-weight:500}
+.voice-option .vo-name{font-weight:700;font-size:0.83rem;color:var(--logo-dark)}
+.voice-option .vo-lang{font-size:0.66rem;color:var(--text-muted);font-weight:500}
 .voice-option .vo-gender{
-  font-size:0.6rem;font-weight:700;padding:2px 9px;border-radius:10px;
+  font-size:0.58rem;font-weight:700;padding:2px 9px;border-radius:10px;
   letter-spacing:0.3px;text-transform:uppercase;
 }
 .vo-gender.female{background:#fce7f3;color:#be185d}
@@ -496,44 +493,33 @@ body{
 .vo-gender.unknown{background:#f3f4f6;color:#6b7280}
 .voice-modal-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
 
-/* ============ CARDS DE RESUMO ============ */
+/* ============ SUMMARY CARD ============ */
 .summary-card{
   background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);
-  padding:22px 24px;box-shadow:var(--shadow-sm);margin-bottom:20px;
+  padding:20px 22px;box-shadow:var(--shadow-sm);margin-bottom:18px;
 }
 .summary-card h3{
-  font-size:1rem;font-weight:700;color:var(--logo-dark);
-  margin-bottom:12px;display:flex;align-items:center;gap:10px;
+  font-size:0.98rem;font-weight:700;color:var(--logo-dark);
+  margin-bottom:10px;display:flex;align-items:center;gap:10px;
 }
 .summary-card h3 i{color:var(--logo-medium)}
-.summary-card p{font-size:0.88rem;color:#4a4561;margin-bottom:8px;line-height:1.6}
+.summary-card p{font-size:0.86rem;color:#4a4561;margin-bottom:8px;line-height:1.6}
 .summary-card ul{list-style:none;padding:0;margin:8px 0}
 .summary-card li{
-  padding:6px 0 6px 28px;position:relative;font-size:0.86rem;color:#4a4561;
+  padding:6px 0 6px 26px;position:relative;font-size:0.84rem;color:#4a4561;
   border-bottom:1px dashed #f0ecfa;
 }
 .summary-card li:last-child{border-bottom:none}
 .summary-card li::before{
   content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;
-  position:absolute;left:0;top:6px;color:var(--logo-medium);font-size:0.8rem;
+  position:absolute;left:0;top:6px;color:var(--logo-medium);font-size:0.78rem;
 }
 .summary-card li strong{color:var(--logo-dark)}
 
-/* ============ SUGESTÃO DE FOTO REAL ============ */
-.photo-hint{
-  background:linear-gradient(135deg,#f0f9ff,#e0f2fe);
-  border:2px dashed #7dd3fc;
-  border-radius:var(--radius-sm);
-  padding:10px 14px;margin:12px 0 0;
-  font-size:0.78rem;color:#075985;font-weight:600;
-  display:flex;gap:10px;align-items:center;
-}
-.photo-hint i{color:#0284c7;font-size:1.05rem}
-
 /* ============ FOOTER ============ */
 .footer{
-  max-width:1200px;margin:50px auto 0;padding:24px 24px;text-align:center;
-  color:var(--text-muted);font-size:0.78rem;border-top:1px solid var(--border);
+  max-width:1200px;margin:40px auto 0;padding:22px 24px;text-align:center;
+  color:var(--text-muted);font-size:0.76rem;border-top:1px solid var(--border);
 }
 .footer strong{color:var(--logo-dark)}
 
@@ -556,13 +542,16 @@ body{
     </div>
   </div>
   <div class="topbar-actions">
+    <span class="autoplay-badge" id="autoplayBadge">
+      <i class="fas fa-play-circle"></i> <span id="autoplayText">Auto-play LIGADO</span>
+    </span>
+    <button class="btn btn-outline" onclick="toggleAutoPlay()" id="btnAutoPlay" title="Ativar / Desativar avanço automático">
+      <i class="fas fa-pause"></i> Pausar Auto
+    </button>
     <button class="btn btn-outline" onclick="abrirSeletorVoz()">
       <i class="fas fa-microphone-lines"></i> Escolher Voz
     </button>
-    <button class="btn btn-outline" onclick="pararFala()">
-      <i class="fas fa-stop"></i> Parar Voz
-    </button>
-    <button class="btn btn-pink" onclick="iniciarTour()">
+    <button class="btn btn-pink" onclick="iniciarTutorial()">
       <i class="fas fa-play"></i> Iniciar Tutorial
     </button>
   </div>
@@ -574,13 +563,14 @@ body{
     src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 220'><text x='250' y='90' font-family='Poppins,Arial,sans-serif' font-size='78' font-weight='900' fill='%233d2d8f' text-anchor='middle' letter-spacing='2'>DONA</text><text x='250' y='165' font-family='Poppins,Arial,sans-serif' font-size='78' font-weight='900' fill='%233d2d8f' text-anchor='middle' letter-spacing='2'>RITA</text><path d='M330,145 Q360,110 400,110 Q440,110 460,145 L460,165 L440,165 L440,150 Q425,128 400,128 Q375,128 360,150 L360,165 L340,165 Z' fill='%23b8a8e8'/><rect x='330' y='170' width='130' height='8' fill='%23b8a8e8' rx='2'/><text x='250' y='208' font-family='Poppins,Arial,sans-serif' font-size='28' font-weight='600' fill='%235a45b5' text-anchor='middle' letter-spacing='1'>embalagens</text></svg>">
 
   <div class="hero-badge">
-    <i class="fas fa-images"></i> Tutorial por Telas · Voz de IA Feminina
+    <i class="fas fa-magic"></i> Tutorial Guiado com Auto-Play · Passa as Telas Automaticamente
   </div>
-  <h1>Passe pelas Telas Reais dos Nossos Sistemas</h1>
+  <h1>Tutorial Guiado dos Sistemas</h1>
   <p>
-    Um tour interativo, tela por tela, narrado por inteligência artificial
-    feminina. Cada imagem é explicada em detalhes para que nenhum funcionário
-    novo tenha dúvidas de como cada sistema funciona.
+    A assistente <strong>Ana</strong> vai passar por cada tela dos sistemas
+    <strong>automaticamente</strong>, explicando em detalhes o que faz cada
+    campo, cada botão e cada recurso. Basta clicar em <strong>Iniciar
+    Tutorial</strong> e deixar rodar.
   </p>
 </section>
 
@@ -595,7 +585,7 @@ body{
       <div class="nav-icon"><i class="fas fa-home"></i></div>
       <div class="nav-info">
         <strong>Introdução</strong>
-        <small>Como usar o tutorial</small>
+        <small>Como funciona o tutorial</small>
       </div>
     </button>
 
@@ -603,7 +593,7 @@ body{
       <div class="nav-icon"><i class="fas fa-weight-scale"></i></div>
       <div class="nav-info">
         <strong>Inspeção de Peso</strong>
-        <small>Sistema 1 · 6 telas</small>
+        <small>Sistema 1</small>
       </div>
     </button>
 
@@ -611,7 +601,7 @@ body{
       <div class="nav-icon"><i class="fas fa-boxes-stacked"></i></div>
       <div class="nav-info">
         <strong>Liberação de Bobinas</strong>
-        <small>Sistema 2 · 6 telas</small>
+        <small>Sistema 2</small>
       </div>
     </button>
 
@@ -619,7 +609,7 @@ body{
       <div class="nav-icon"><i class="fas fa-triangle-exclamation"></i></div>
       <div class="nav-info">
         <strong>Não Conformidades</strong>
-        <small>Sistema 3 · 5 telas</small>
+        <small>Sistema 3</small>
       </div>
     </button>
 
@@ -627,7 +617,7 @@ body{
       <div class="nav-icon"><i class="fas fa-headset"></i></div>
       <div class="nav-info">
         <strong>Sistema SAC</strong>
-        <small>Sistema 4 · 6 telas</small>
+        <small>Sistema 4</small>
       </div>
     </button>
 
@@ -635,7 +625,7 @@ body{
       <div class="nav-icon"><i class="fas fa-gift"></i></div>
       <div class="nav-info">
         <strong>Sistema de Amostras</strong>
-        <small>Sistema 5 · 4 telas</small>
+        <small>Sistema 5</small>
       </div>
     </button>
 
@@ -656,48 +646,49 @@ body{
       <div class="section-head">
         <div class="sh-icon"><i class="fas fa-graduation-cap"></i></div>
         <div>
-          <h2>Bem-vindo ao Tutorial por Telas</h2>
-          <p>Vamos passar por cada tela dos sistemas da Dona Rita Embalagens</p>
+          <h2>Bem-vindo ao Tutorial Guiado</h2>
+          <p>A Ana vai passar automaticamente por cada tela dos sistemas</p>
         </div>
       </div>
 
       <div class="summary-card">
-        <h3><i class="fas fa-play-circle"></i> Como funciona este tutorial</h3>
+        <h3><i class="fas fa-magic"></i> Como funciona o Auto-Play</h3>
         <p>
-          Este tutorial foi feito para <strong>novos funcionários</strong>
-          entenderem exatamente como cada sistema funciona. Vamos
-          <strong>passar tela por tela</strong>, mostrando cada imagem do
-          sistema e explicando o que faz cada elemento.
+          Neste tutorial, a assistente <strong>Ana</strong> narra cada tela e
+          <strong>avança automaticamente</strong> para a próxima quando
+          terminar de falar. Você não precisa clicar em nada — basta assistir.
         </p>
         <p>
-          A voz de inteligência artificial feminina (<strong>Ana</strong>) vai
-          narrar cada tela. Você também pode ler as explicações escritas e usar
-          os botões para avançar ou voltar.
+          O sistema vai passar por <strong>todos os 5 sistemas</strong>, tela
+          por tela, com explicações <strong>detalhadas</strong> de cada campo
+          e botão. No final, retorna para a introdução e fica em loop, ou você
+          pode parar quando quiser.
         </p>
+        <div style="background:linear-gradient(135deg,#ecfdf5,#f0fdf4);border-left:4px solid #10b981;padding:10px 14px;border-radius:8px;margin-top:8px;font-size:0.82rem;color:#065f46;">
+          <strong>💡 Auto-play está LIGADO por padrão.</strong> Se quiser
+          pausar o avanço automático, clique no botão <strong>"Pausar
+          Auto"</strong> no topo da tela.
+        </div>
       </div>
 
       <div class="summary-card">
-        <h3><i class="fas fa-list"></i> Os 5 sistemas que você vai aprender</h3>
+        <h3><i class="fas fa-list"></i> Os 5 sistemas que você vai ver</h3>
         <ul>
-          <li><strong>Sistema 1 · Inspeção de Peso</strong> — controle das pesagens das máquinas extrusoras.</li>
-          <li><strong>Sistema 2 · Liberação de Bobinas</strong> — não conformidades, planos de ação, Ishikawa e 5 Porquês.</li>
-          <li><strong>Sistema 3 · Não Conformidades</strong> — gestão de NCs com custo de retrabalho e QR Code.</li>
-          <li><strong>Sistema 4 · SAC</strong> — reclamações de clientes com alertas de prazo e WhatsApp automático.</li>
-          <li><strong>Sistema 5 · Amostras</strong> — solicitação pública de amostras e gestão de envios.</li>
+          <li><strong>Sistema 1 · Inspeção de Peso</strong> — controle das pesagens das máquinas extrusoras (6 telas).</li>
+          <li><strong>Sistema 2 · Liberação de Bobinas</strong> — não conformidades, planos de ação, Ishikawa e 5 Porquês (6 telas).</li>
+          <li><strong>Sistema 3 · Não Conformidades</strong> — gestão de NCs com custo de retrabalho e QR Code (5 telas).</li>
+          <li><strong>Sistema 4 · SAC</strong> — reclamações de clientes com alertas de prazo e WhatsApp automático (6 telas).</li>
+          <li><strong>Sistema 5 · Amostras</strong> — solicitação pública de amostras e gestão de envios (4 telas).</li>
         </ul>
       </div>
 
       <div class="summary-card">
-        <h3><i class="fas fa-lightbulb"></i> Dica de uso</h3>
+        <h3><i class="fas fa-play-circle"></i> Pronto para começar?</h3>
         <p>
-          Recomendamos que você assista ao tutorial <strong>na ordem</strong>,
-          começando por esta introdução. Cada sistema tem entre 4 e 6 telas,
-          e a narração leva em média 3 a 5 minutos por sistema.
+          Clique em <strong>Iniciar Tutorial</strong> no topo da tela e a Ana
+          começa a narrar imediatamente. Aperte o play no painel de voz se
+          necessário, aumente o volume, e deixe o tutorial rodar.
         </p>
-        <div class="photo-hint">
-          <i class="fas fa-info-circle"></i>
-          <span><strong>Nota importante:</strong> as imagens mostradas aqui são representações visuais dos sistemas reais. Substitua-as por capturas de tela reais dos seus sistemas se desejar.</span>
-        </div>
       </div>
     </section>
 
@@ -707,13 +698,13 @@ body{
         <div class="sh-icon"><i class="fas fa-weight-scale"></i></div>
         <div>
           <h2>Sistema 1 — Inspeção de Peso</h2>
-          <p>Tour por 6 telas: da tela inicial ao histórico salvo</p>
+          <p>Tour automático por 6 telas do sistema</p>
         </div>
       </div>
 
       <div class="tour-container" data-tour="inspecao">
         <div class="tour-header">
-          <div class="tour-title"><i class="fas fa-images"></i> Tour por Telas · Inspeção de Peso</div>
+          <div class="tour-title"><i class="fas fa-images"></i> Inspeção de Peso · Tour Guiado</div>
           <div class="tour-counter"><span class="tour-atual">1</span> / <span class="tour-total">6</span></div>
         </div>
 
@@ -726,39 +717,41 @@ body{
                 <div class="url">inspecao-78dd5.firebaseapp.com</div>
               </div>
               <div class="tela-browser-content">
-                <div class="tela-browser-title"><i class="fas fa-clipboard-list" style="color:#5a45b5"></i> Tela Inicial · Inspeção de Peso</div>
-                <div style="background:linear-gradient(135deg,#3d2d8f,#5a45b5);color:#fff;padding:14px 18px;border-radius:10px;margin-bottom:12px;">
-                  <div style="font-size:0.95rem;font-weight:800;">📋 Inspeção de Peso</div>
-                  <div style="font-size:0.7rem;opacity:0.85;margin-top:2px;">Preencha os dados abaixo para cada máquina</div>
+                <div class="tela-browser-title"><i class="fas fa-clipboard-list" style="color:#5a45b5"></i> Tela Inicial · Barra Superior</div>
+                <div style="background:linear-gradient(135deg,#3d2d8f,#5a45b5);color:#fff;padding:12px 16px;border-radius:10px;margin-bottom:12px;">
+                  <div style="font-size:0.9rem;font-weight:800;">📋 Inspeção de Peso</div>
+                  <div style="font-size:0.68rem;opacity:0.85;margin-top:2px;">Preencha os dados abaixo para cada máquina</div>
                 </div>
-                <div class="tela-browser-grid cols-4">
+                <div class="tela-browser-grid cols-2">
                   <div class="tela-field tela-highlight"><span class="tf-label">📅 Data da Inspeção</span><span class="tf-value">28/09/2026</span></div>
-                  <div class="tela-field"><span class="tf-label">Nova Inspeção</span><span class="tf-value">🆕 Limpar</span></div>
-                  <div class="tela-field"><span class="tf-label">Relatório</span><span class="tf-value">📊 Ver</span></div>
-                  <div class="tela-field"><span class="tf-label">Adicionar Máquina</span><span class="tf-value">➕ Nova</span></div>
+                  <div class="tela-field tela-highlight"><span class="tf-label">Botões de Ação</span><span class="tf-value">🆕 Nova · 📊 Relatório · ➕ Adicionar</span></div>
                 </div>
               </div>
             </div>
           </div>
           <div class="tela-info">
             <div class="tela-step">Tela 1 de 6</div>
-            <h3>🎬 Tela inicial — selecione a data</h3>
+            <h3>🎬 Tela inicial — Selecione a data da inspeção</h3>
             <p>
               Esta é a <strong>primeira tela</strong> que você vê ao abrir o
-              sistema. No canto superior direito fica o campo
-              <strong>📅 Data da Inspeção</strong>, que já vem preenchido com a
-              data de hoje automaticamente.
+              sistema. No topo aparece o cabeçalho roxo com o título
+              <strong>Inspeção de Peso</strong> e o subtítulo.
             </p>
             <p>
-              Nesta barra superior também ficam os botões principais:
-              <strong>🆕 Nova Inspeção</strong> (para limpar tudo e começar de
-              novo), <strong>📊 RELATÓRIO</strong> (para ver o relatório
-              completo em tela cheia) e <strong>➕ Adicionar Máquina</strong>
-              (para criar um novo cartão de inspeção).
+              No canto superior direito está o campo
+              <strong>📅 Data da Inspeção</strong>, que já vem preenchido
+              automaticamente com o <strong>dia de hoje</strong>. Se precisar
+              mudar, clique no campo e escolha outra data no calendário.
+            </p>
+            <p>
+              Na mesma barra ficam os <strong>botões principais</strong>:
+              <strong>🆕 Nova Inspeção</strong> (limpa o formulário),
+              <strong>📊 RELATÓRIO</strong> (abre o relatório em tela cheia) e
+              <strong>➕ Adicionar Máquina</strong> (cria um novo cartão).
             </p>
             <div class="tela-tip">
               <i class="fas fa-lightbulb"></i>
-              <span><strong>Dica:</strong> confira sempre se a data está correta antes de começar. Se precisar mudar, clique no campo e escolha outro dia no calendário.</span>
+              <span><strong>Dica:</strong> sempre confira a data antes de começar. Inspeções com data errada podem gerar confusão no histórico.</span>
             </div>
           </div>
         </div>
@@ -773,7 +766,7 @@ body{
               </div>
               <div class="tela-browser-content">
                 <div class="tela-browser-title"><i class="fas fa-plus-circle" style="color:#5a45b5"></i> Cartão de Máquina · Dados Principais</div>
-                <div style="font-size:0.72rem;color:#6b6489;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">Máquina #1</div>
+                <div style="font-size:0.7rem;color:#6b6489;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">MÁQUINA #1</div>
                 <div class="tela-browser-grid cols-3">
                   <div class="tela-field tela-highlight"><span class="tf-label">👤 Inspetor</span><span class="tf-value">MARILHA</span></div>
                   <div class="tela-field tela-highlight"><span class="tf-label">🏭 Máquina</span><span class="tf-value">790/2</span></div>
@@ -781,9 +774,6 @@ body{
                   <div class="tela-field"><span class="tf-label">🏷️ Tipo</span><span class="tf-value">TAMPA</span></div>
                   <div class="tela-field"><span class="tf-label">🔄 Turno</span><span class="tf-value">T2</span></div>
                   <div class="tela-field"><span class="tf-label">✅ Status</span><span class="tf-value">APROVADO</span></div>
-                  <div class="tela-field"><span class="tf-label">🔢 Cavidade (QTD)</span><span class="tf-value">10</span></div>
-                  <div class="tela-field"><span class="tf-label">⚡ Ciclo (Veloc.)</span><span class="tf-value">25.0</span></div>
-                  <div class="tela-field"><span class="tf-label">🧑 Colaborador</span><span class="tf-value">03</span></div>
                 </div>
               </div>
             </div>
@@ -792,26 +782,25 @@ body{
             <div class="tela-step">Tela 2 de 6</div>
             <h3>📝 Preenchendo os dados do cartão de máquina</h3>
             <p>
-              Ao clicar em "Adicionar Máquina", um <strong>cartão novo</strong>
-              aparece. Você precisa preencher os campos destacados:
+              Ao clicar em <strong>➕ Adicionar Máquina</strong>, um cartão
+              novo aparece na tela. É aqui que você vai registrar tudo sobre
+              a inspeção daquela máquina.
             </p>
             <p>
-              <strong>👤 Inspetor:</strong> seu nome ou o nome de quem está
-              fazendo a inspeção. <strong>🏭 Máquina:</strong> número da
-              extrusora (ex: 790/2). <strong>📦 Cód. Produto:</strong> código
-              do produto sendo produzido.
+              Os <strong>3 campos destacados</strong> são os mais importantes:
+              <strong>👤 Inspetor</strong> (seu nome — o campo tem
+              autocompletar), <strong>🏭 Máquina</strong> (o número da
+              extrusora, ex: 790/2) e <strong>📦 Cód. Produto</strong> (o
+              produto em produção).
             </p>
             <p>
-              Além desses, informe também: <strong>Tipo</strong> (Tampa, Base,
-              Pote ou Nenhum), <strong>Turno</strong> (T1, T2 ou T3),
-              <strong>Status</strong> (Aprovado ou Reprovado),
-              <strong>Cavidade</strong> (quantidade de cavidades, de 1 a 10),
-              <strong>Ciclo</strong> (velocidade da máquina) e
-              <strong>Colaborador</strong> (número do operador).
+              Também preencha: <strong>Tipo</strong> do produto (Tampa, Base,
+              Pote ou Nenhum), <strong>Turno</strong> (T1, T2 ou T3) e
+              <strong>Status</strong> (Aprovado ou Reprovado).
             </p>
             <div class="tela-tip">
               <i class="fas fa-lightbulb"></i>
-              <span><strong>Dica:</strong> o campo "Inspetor" tem um autocompletar com nomes já usados. Basta digitar as primeiras letras.</span>
+              <span><strong>Dica:</strong> o campo "Inspetor" guarda os nomes já usados. Comece a digitar as primeiras letras do seu nome.</span>
             </div>
           </div>
         </div>
@@ -840,7 +829,7 @@ body{
                     <div class="lbl">🔺 Máximo</div>
                   </div>
                 </div>
-                <div style="margin-top:12px;font-size:0.72rem;color:#6b6489;font-weight:600;text-align:center;">
+                <div style="margin-top:10px;font-size:0.7rem;color:#6b6489;font-weight:600;text-align:center;">
                   Os valores podem ser editados conforme o produto
                 </div>
               </div>
@@ -851,23 +840,24 @@ body{
             <h3>⚖️ Configurando as tolerâncias do produto</h3>
             <p>
               Antes de registrar as pesagens, você precisa informar a
-              <strong>tolerância do produto</strong>. São três valores:
+              <strong>tolerância do produto</strong>. São três valores
+              essenciais para o controle de qualidade:
             </p>
             <p>
-              <strong style="color:#d35400;">🔻 Mínimo</strong> — peso mínimo
-              aceitável. <strong style="color:#1e7e34;">🎯 Ideal</strong> —
+              <strong style="color:#d35400;">🔻 Mínimo</strong> — o peso mínimo
+              aceitável. <strong style="color:#1e7e34;">🎯 Ideal</strong> — o
               peso alvo do produto. <strong style="color:#a61e1e;">🔺 Máximo</strong>
-              — peso máximo permitido.
+              — o peso máximo permitido.
             </p>
             <p>
               Esses três valores são usados pelo sistema para
-              <strong>colorir automaticamente</strong> as pesagens que você
-              registrar. Os valores vêm preenchidos com um padrão, mas você
-              pode alterar conforme o produto sendo inspecionado.
+              <strong>colorir automaticamente</strong> todas as pesagens que
+              você registrar. Os campos já vêm com valores padrão, mas podem
+              ser alterados conforme cada produto.
             </p>
             <div class="tela-tip">
               <i class="fas fa-lightbulb"></i>
-              <span><strong>Dica:</strong> consulte a ficha técnica do produto ou o supervisor para saber os valores corretos de tolerância.</span>
+              <span><strong>Dica:</strong> consulte a ficha técnica do produto ou o supervisor para saber os valores corretos.</span>
             </div>
           </div>
         </div>
@@ -901,25 +891,22 @@ body{
             <h3>📊 Registrando as pesagens (M1, M3 e M4)</h3>
             <p>
               Esta é a <strong>tabela principal</strong> do sistema. Aqui você
-              registra as pesagens de cada cavidade nos <strong>três
-              horários</strong> do dia:
-            </p>
-            <p>
-              <strong>M1</strong> (primeiro horário, geralmente 14:00),
-              <strong>M3</strong> (segundo, 18:00) e <strong>M4</strong>
-              (terceiro, 20:30). Esses horários podem ser ajustados no topo da
-              tabela, na barra "🕐 Horários das Pesagens".
+              registra as pesagens de cada cavidade nos
+              <strong>três horários do dia</strong>: M1 (primeiro), M3
+              (segundo) e M4 (terceiro). Esses horários aparecem no topo de
+              cada coluna e podem ser ajustados.
             </p>
             <p>
               Conforme você digita os valores, cada célula recebe
               <strong>automaticamente uma cor</strong>:
               <span style="background:#d4edda;color:#155724;padding:1px 6px;border-radius:4px;font-weight:700;">verde = aprovado</span>,
-              <span style="background:#fff3cd;color:#856404;padding:1px 6px;border-radius:4px;font-weight:700;">amarelo = no limite mínimo</span>,
+              <span style="background:#fff3cd;color:#856404;padding:1px 6px;border-radius:4px;font-weight:700;">amarelo = limite mínimo</span> e
               <span style="background:#f8d7da;color:#721c24;padding:1px 6px;border-radius:4px;font-weight:700;">vermelho = fora da tolerância</span>.
             </p>
             <p>
-              No rodapé da tabela aparecem os totais calculados automaticamente:
-              <strong>MÍNIMO, MÉDIA e MÁXIMO</strong> de cada horário.
+              No rodapé da tabela, o sistema calcula automaticamente o
+              <strong>MÍNIMO</strong>, a <strong>MÉDIA</strong> e o
+              <strong>MÁXIMO</strong> de cada horário.
             </p>
             <div class="tela-tip">
               <i class="fas fa-lightbulb"></i>
@@ -947,7 +934,7 @@ body{
           </div>
           <div class="tela-info">
             <div class="tela-step">Tela 5 de 6</div>
-            <h3>🚨 Alertas automáticos de qualidade</h3>
+            <h3>🚨 Alerta automático de qualidade</h3>
             <p>
               O sistema possui um <strong>sistema de alerta inteligente</strong>.
               Se a <strong>média geral</strong> de todas as pesagens de uma
@@ -960,13 +947,13 @@ body{
               produção e que o supervisor precisa ser informado imediatamente.
             </p>
             <p>
-              O alerta também aparece quando há produtos sendo fabricados
-              fora do peso especificado, permitindo ação corretiva antes que
-              mais itens problemáticos sejam produzidos.
+              O alerta aparece sempre que há produtos sendo fabricados fora do
+              peso especificado, permitindo uma ação corretiva antes que mais
+              itens problemáticos sejam produzidos.
             </p>
             <div class="tela-tip">
               <i class="fas fa-exclamation-triangle"></i>
-              <span><strong>Atenção:</strong> ao ver este alerta, comunique <strong>imediatamente</strong> o supervisor ou o responsável de qualidade da linha.</span>
+              <span><strong>Atenção:</strong> ao ver este alerta, comunique <strong>imediatamente</strong> o supervisor ou o responsável de qualidade.</span>
             </div>
           </div>
         </div>
@@ -981,16 +968,16 @@ body{
               </div>
               <div class="tela-browser-content">
                 <div class="tela-browser-title"><i class="fas fa-history" style="color:#5a45b5"></i> Histórico de Inspeções</div>
-                <div class="tela-browser-grid cols-3" style="margin-bottom:12px;">
-                  <div class="tela-field"><span class="tf-label">📅 Consultar data</span><span class="tf-value">28/09/2026</span></div>
+                <div class="tela-browser-grid cols-3" style="margin-bottom:10px;">
+                  <div class="tela-field"><span class="tf-label">📅 Data</span><span class="tf-value">28/09/2026</span></div>
                   <div class="tela-field"><span class="tf-label">🔍 Ação</span><span class="tf-value">Consultar</span></div>
                   <div class="tela-field"><span class="tf-label">🗑️ Ação</span><span class="tf-value">Limpar Base</span></div>
                 </div>
-                <div style="background:var(--logo-bg);border-radius:10px;padding:12px 14px;">
-                  <div style="font-size:0.78rem;font-weight:800;color:var(--logo-dark);margin-bottom:6px;">👤 MARILHA · 1 máquina(s)</div>
-                  <div style="background:#fff;border-left:4px solid var(--logo-medium);padding:10px 14px;border-radius:8px;">
-                    <div style="font-size:0.75rem;color:#4a4561;font-weight:700;">🏭 Máquina: 790/2</div>
-                    <div style="font-size:0.68rem;color:#6b6489;margin-top:3px;">Média Geral: <strong style="color:#3d2d8f;">24,65</strong> · APROVADO</div>
+                <div style="background:var(--logo-bg);border-radius:10px;padding:10px 12px;">
+                  <div style="font-size:0.72rem;font-weight:800;color:var(--logo-dark);margin-bottom:5px;">👤 MARILHA · 1 máquina</div>
+                  <div style="background:#fff;border-left:4px solid var(--logo-medium);padding:8px 12px;border-radius:8px;">
+                    <div style="font-size:0.7rem;color:#4a4561;font-weight:700;">🏭 Máquina: 790/2</div>
+                    <div style="font-size:0.62rem;color:#6b6489;margin-top:2px;">Média Geral: <strong style="color:#3d2d8f;">24,65</strong> · APROVADO</div>
                   </div>
                 </div>
               </div>
@@ -1008,8 +995,8 @@ body{
             <p>
               Para consultar o histórico, clique em <strong>📂
               Histórico</strong>. Você pode escolher uma data específica,
-              clicar em "Consultar" e ver todas as inspeções daquele dia,
-              organizadas por inspetor e produto.
+              clicar em <strong>Consultar</strong> e ver todas as inspeções
+              daquele dia, organizadas por inspetor e produto.
             </p>
             <p>
               Cada item do histórico possui botões para
@@ -1018,12 +1005,11 @@ body{
             </p>
             <div class="tela-tip">
               <i class="fas fa-check-circle"></i>
-              <span><strong>Parabéns!</strong> Você completou o tour do Sistema de Inspeção de Peso. Agora vamos para o próximo sistema!</span>
+              <span><strong>Parabéns!</strong> Você completou o Sistema de Inspeção de Peso. Agora vamos ao próximo sistema!</span>
             </div>
           </div>
         </div>
 
-        <!-- NAVEGAÇÃO -->
         <div class="tour-nav">
           <div class="tour-dots"></div>
           <div class="tour-buttons">
@@ -1044,13 +1030,13 @@ body{
         <div class="sh-icon"><i class="fas fa-boxes-stacked"></i></div>
         <div>
           <h2>Sistema 2 — Liberação de Bobinas</h2>
-          <p>Tour por 6 telas: do login ao plano de ação concluído</p>
+          <p>Tour automático por 6 telas do sistema</p>
         </div>
       </div>
 
       <div class="tour-container" data-tour="bobinas">
         <div class="tour-header">
-          <div class="tour-title"><i class="fas fa-images"></i> Tour por Telas · Liberação de Bobinas</div>
+          <div class="tour-title"><i class="fas fa-images"></i> Liberação de Bobinas · Tour Guiado</div>
           <div class="tour-counter"><span class="tour-atual">1</span> / <span class="tour-total">6</span></div>
         </div>
 
@@ -1064,13 +1050,13 @@ body{
               </div>
               <div class="tela-browser-content">
                 <div class="tela-browser-title"><i class="fas fa-right-to-bracket" style="color:#5a45b5"></i> Tela de Login</div>
-                <div style="max-width:280px;margin:0 auto;text-align:center;padding:16px;background:var(--logo-bg);border-radius:10px;">
-                  <div style="width:48px;height:48px;background:linear-gradient(135deg,#0b3b2f,#1f6d52);border-radius:14px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;margin:0 auto 10px;">
+                <div style="max-width:280px;margin:0 auto;text-align:center;padding:14px;background:var(--logo-bg);border-radius:10px;">
+                  <div style="width:44px;height:44px;background:linear-gradient(135deg,#0b3b2f,#1f6d52);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;margin:0 auto 8px;">
                     <i class="fas fa-shield-halved"></i>
                   </div>
-                  <div style="font-size:0.82rem;font-weight:800;color:#0b3b2f;">Dona Rita Embalagens</div>
-                  <div style="font-size:0.62rem;color:#5b6b64;margin-bottom:12px;">Liberação de Bobinas</div>
-                  <div class="tela-field" style="margin-bottom:6px;text-align:left;"><span class="tf-label">Usuário</span><span class="tf-value">qualidade</span></div>
+                  <div style="font-size:0.78rem;font-weight:800;color:#0b3b2f;">Dona Rita Embalagens</div>
+                  <div style="font-size:0.6rem;color:#5b6b64;margin-bottom:10px;">Liberação de Bobinas</div>
+                  <div class="tela-field" style="margin-bottom:5px;text-align:left;"><span class="tf-label">Usuário</span><span class="tf-value">qualidade</span></div>
                   <div class="tela-field" style="text-align:left;"><span class="tf-label">Senha</span><span class="tf-value">••••••</span></div>
                 </div>
               </div>
@@ -1113,15 +1099,15 @@ body{
               </div>
               <div class="tela-browser-content">
                 <div class="tela-browser-title"><i class="fas fa-chart-pie" style="color:#5a45b5"></i> Dashboard Principal</div>
-                <div class="tela-browser-grid cols-4" style="margin-bottom:10px;">
+                <div class="tela-browser-grid cols-4" style="margin-bottom:9px;">
                   <div class="tela-stat"><div class="num">128</div><div class="lbl">Total Bobinas</div></div>
                   <div class="tela-stat" style="background:#fee2e2;border-color:#fca5a5;"><div class="num" style="color:#b91c1c;">34</div><div class="lbl">Reprovadas</div></div>
                   <div class="tela-stat" style="background:#fef3c7;border-color:#fcd34d;"><div class="num" style="color:#b45309;">12</div><div class="lbl">Assinaturas</div></div>
                   <div class="tela-stat" style="background:#dcfce7;border-color:#86efac;"><div class="num" style="color:#15803d;">R$ 12.480</div><div class="lbl">Retrabalho</div></div>
                 </div>
-                <div style="background:var(--logo-bg);border-radius:8px;padding:10px;">
-                  <div style="font-size:0.68rem;font-weight:700;color:var(--logo-dark);margin-bottom:6px;">🍩 Bobinas por Motivo</div>
-                  <div style="display:flex;gap:4px;align-items:flex-end;height:44px;">
+                <div style="background:var(--logo-bg);border-radius:8px;padding:9px;">
+                  <div style="font-size:0.64rem;font-weight:700;color:var(--logo-dark);margin-bottom:5px;">🍩 Bobinas por Motivo</div>
+                  <div style="display:flex;gap:4px;align-items:flex-end;height:40px;">
                     <div style="flex:1;background:#8b7cd4;height:90%;border-radius:3px;"></div>
                     <div style="flex:1;background:#a868e6;height:65%;border-radius:3px;"></div>
                     <div style="flex:1;background:#c4b5f0;height:45%;border-radius:3px;"></div>
@@ -1141,17 +1127,18 @@ body{
             </p>
             <p>
               <strong>Total de Bobinas</strong> analisadas,
-              <strong>Reprovadas</strong>, <strong>Assinaturas Pendentes</strong>
-              e <strong>Valor Total de Retrabalho</strong> em reais.
+              <strong>Reprovadas</strong> (destacado em vermelho),
+              <strong>Assinaturas Pendentes</strong> (em amarelo) e
+              <strong>Valor Total de Retrabalho</strong> (em verde).
             </p>
             <p>
-              Também há <strong>gráficos</strong> mostrando os motivos mais
-              comuns das não conformidades, o status geral das bobinas e os
-              planos de ação pendentes vs concluídos.
+              Abaixo, há <strong>gráficos coloridos</strong> mostrando os
+              motivos mais comuns das não conformidades, o status geral das
+              bobinas e os planos de ação pendentes vs concluídos.
             </p>
             <div class="tela-tip">
               <i class="fas fa-lightbulb"></i>
-              <span><strong>Dica:</strong> use o dashboard todos os dias pela manhã para saber onde está o foco de problemas.</span>
+              <span><strong>Dica:</strong> use o Dashboard todos os dias pela manhã para saber onde está o foco de problemas.</span>
             </div>
           </div>
         </div>
@@ -1166,15 +1153,15 @@ body{
               </div>
               <div class="tela-browser-content">
                 <div class="tela-browser-title"><i class="fas fa-plus-circle" style="color:#5a45b5"></i> Nova Não Conformidade</div>
-                <div class="tela-browser-grid cols-2" style="margin-bottom:8px;">
+                <div class="tela-browser-grid cols-2" style="margin-bottom:7px;">
                   <div class="tela-field"><span class="tf-label">Produto *</span><span class="tf-value">D50 R PR</span></div>
                   <div class="tela-field"><span class="tf-label">Motivo *</span><span class="tf-value">Rebarba</span></div>
                   <div class="tela-field"><span class="tf-label">Vol *</span><span class="tf-value">100</span></div>
                   <div class="tela-field"><span class="tf-label">Peso (kg) *</span><span class="tf-value">50,5</span></div>
                   <div class="tela-field"><span class="tf-label">Status *</span><span class="tf-value">Reprovado</span></div>
-                  <div class="tela-field"><span class="tf-label">Valor Calculado</span><span class="tf-value">R$ 505,00</span></div>
+                  <div class="tela-field tela-highlight" style="background:#fff3cd;border-color:#fcd34d;"><span class="tf-label">Valor Calculado</span><span class="tf-value" style="color:#b45309;font-weight:800;">R$ 505,00</span></div>
                 </div>
-                <div style="background:var(--logo-bg);padding:8px 12px;border-radius:8px;font-size:0.68rem;color:#5b6b64;">
+                <div style="background:var(--logo-bg);padding:7px 10px;border-radius:8px;font-size:0.62rem;color:#5b6b64;">
                   📷 Fotos (máx. 5) · ➕ Adicionar
                 </div>
               </div>
@@ -1203,7 +1190,7 @@ body{
             </p>
             <div class="tela-tip">
               <i class="fas fa-camera"></i>
-              <span><strong>Importante:</strong> sempre que possível, anexe fotos da bobina com problema. Elas são essenciais para auditorias e para o cliente entender o defeito.</span>
+              <span><strong>Importante:</strong> sempre que possível, anexe fotos da bobina com problema. Elas são essenciais para auditorias.</span>
             </div>
           </div>
         </div>
@@ -1230,11 +1217,6 @@ body{
                       <td><strong>#1023</strong></td><td>D32 RA BR</td>
                       <td>Ajuste no molde</td>
                       <td><span class="tela-pill tp-green">✅ Concluído</span></td>
-                    </tr>
-                    <tr>
-                      <td><strong>#1022</strong></td><td>D56 R PR</td>
-                      <td>Troca de matéria-prima</td>
-                      <td><span class="tela-pill tp-yellow">⏳ Pendente (1/3)</span></td>
                     </tr>
                   </tbody>
                 </table>
@@ -1277,30 +1259,27 @@ body{
               <div class="tela-browser-content">
                 <div class="tela-browser-title"><i class="fas fa-fish" style="color:#5a45b5"></i> Ferramentas: Ishikawa e 5 Porquês</div>
                 <div class="tela-browser-grid cols-2">
-                  <div style="background:#f8faf9;border:1.5px solid #e0e8e4;border-radius:8px;padding:10px;">
-                    <div style="font-size:0.72rem;font-weight:800;color:#386e8c;margin-bottom:6px;">🐟 Ishikawa (6Ms)</div>
-                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;font-size:0.6rem;">
-                      <div style="background:#e9f3ef;padding:4px 6px;border-radius:4px;">Método</div>
-                      <div style="background:#e9f3ef;padding:4px 6px;border-radius:4px;">Máquina</div>
-                      <div style="background:#e9f3ef;padding:4px 6px;border-radius:4px;">Medida</div>
-                      <div style="background:#e9f3ef;padding:4px 6px;border-radius:4px;">M. Ambiente</div>
-                      <div style="background:#e9f3ef;padding:4px 6px;border-radius:4px;">Mão de Obra</div>
-                      <div style="background:#e9f3ef;padding:4px 6px;border-radius:4px;">Material</div>
+                  <div style="background:#f8faf9;border:1.5px solid #e0e8e4;border-radius:8px;padding:9px;">
+                    <div style="font-size:0.68rem;font-weight:800;color:#386e8c;margin-bottom:5px;">🐟 Ishikawa (6Ms)</div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;font-size:0.56rem;">
+                      <div style="background:#e9f3ef;padding:3px 5px;border-radius:4px;">Método</div>
+                      <div style="background:#e9f3ef;padding:3px 5px;border-radius:4px;">Máquina</div>
+                      <div style="background:#e9f3ef;padding:3px 5px;border-radius:4px;">Medida</div>
+                      <div style="background:#e9f3ef;padding:3px 5px;border-radius:4px;">M. Ambiente</div>
+                      <div style="background:#e9f3ef;padding:3px 5px;border-radius:4px;">Mão de Obra</div>
+                      <div style="background:#e9f3ef;padding:3px 5px;border-radius:4px;">Material</div>
                     </div>
                   </div>
-                  <div style="background:#fefdf6;border:1.5px solid #e8d58b;border-radius:8px;padding:10px;">
-                    <div style="font-size:0.72rem;font-weight:800;color:#b5792a;margin-bottom:6px;">❓ 5 Porquês</div>
-                    <div style="font-size:0.6rem;color:#4a4561;line-height:1.5;">
-                      <div>1º Por quê? → <span style="color:#b5792a;">Material</span></div>
-                      <div>2º Por quê? → <span style="color:#b5792a;">Lote</span></div>
-                      <div>3º Por quê? → <span style="color:#b5792a;">Fornecedor</span></div>
-                      <div>4º Por quê? → <span style="color:#b5792a;">Sem inspeção</span></div>
-                      <div>5º Por quê? → <span style="color:#b5792a;">Falta de controle</span></div>
+                  <div style="background:#fefdf6;border:1.5px solid #e8d58b;border-radius:8px;padding:9px;">
+                    <div style="font-size:0.68rem;font-weight:800;color:#b5792a;margin-bottom:5px;">❓ 5 Porquês</div>
+                    <div style="font-size:0.56rem;color:#4a4561;line-height:1.5;">
+                      <div>1º → Material</div>
+                      <div>2º → Lote</div>
+                      <div>3º → Fornecedor</div>
+                      <div>4º → Sem inspeção</div>
+                      <div>5º → Falta de controle</div>
                     </div>
                   </div>
-                </div>
-                <div style="margin-top:8px;background:#fef9f0;border:1.5px solid #c8963e;border-radius:6px;padding:6px 10px;font-size:0.62rem;color:#6b4f1a;">
-                  🎯 <strong>Causa Raiz:</strong> Falta de inspeção na entrada de matéria-prima
                 </div>
               </div>
             </div>
@@ -1344,14 +1323,14 @@ body{
               </div>
               <div class="tela-browser-content">
                 <div class="tela-browser-title"><i class="fas fa-signature" style="color:#5a45b5"></i> Assinatura Digital</div>
-                <div style="text-align:center;padding:16px;background:var(--logo-bg);border-radius:10px;">
-                  <div style="font-size:0.75rem;font-weight:800;color:var(--logo-dark);margin-bottom:10px;">🖊️ Desenhe sua assinatura abaixo</div>
-                  <div style="background:#fff;border:2px dashed var(--logo-medium);border-radius:8px;height:80px;margin-bottom:10px;position:relative;">
+                <div style="text-align:center;padding:14px;background:var(--logo-bg);border-radius:10px;">
+                  <div style="font-size:0.7rem;font-weight:800;color:var(--logo-dark);margin-bottom:8px;">🖊️ Desenhe sua assinatura abaixo</div>
+                  <div style="background:#fff;border:2px dashed var(--logo-medium);border-radius:8px;height:70px;margin-bottom:8px;position:relative;">
                     <svg viewBox="0 0 200 60" style="width:100%;height:100%;">
                       <path d="M20,40 Q40,10 60,30 T100,35 Q120,15 140,30 T180,25" fill="none" stroke="#3d2d8f" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                   </div>
-                  <div style="display:flex;gap:6px;justify-content:center;font-size:0.68rem;">
+                  <div style="display:flex;gap:6px;justify-content:center;font-size:0.62rem;">
                     <span style="background:#fff;border:1px solid #dce5e1;padding:4px 10px;border-radius:12px;">🧹 Limpar</span>
                     <span style="background:#1a6b63;color:#fff;padding:4px 10px;border-radius:12px;font-weight:700;">✅ Confirmar</span>
                   </div>
@@ -1381,12 +1360,11 @@ body{
             </p>
             <div class="tela-tip">
               <i class="fas fa-check-circle"></i>
-              <span><strong>Parabéns!</strong> Você completou o tour do Sistema de Liberação de Bobinas.</span>
+              <span><strong>Parabéns!</strong> Você completou o Sistema de Liberação de Bobinas.</span>
             </div>
           </div>
         </div>
 
-        <!-- NAVEGAÇÃO -->
         <div class="tour-nav">
           <div class="tour-dots"></div>
           <div class="tour-buttons">
@@ -1401,23 +1379,22 @@ body{
       </div>
     </section>
 
-    <!-- ========== SISTEMA 3 — NÃO CONFORMIDADES ========== -->
+    <!-- ========== SISTEMA 3 — NC ========== -->
     <section class="section" id="sec-nc">
       <div class="section-head">
         <div class="sh-icon"><i class="fas fa-triangle-exclamation"></i></div>
         <div>
           <h2>Sistema 3 — Não Conformidades</h2>
-          <p>Tour por 5 telas: registro com custo automático e QR Code</p>
+          <p>Tour automático por 5 telas do sistema</p>
         </div>
       </div>
 
       <div class="tour-container" data-tour="nc">
         <div class="tour-header">
-          <div class="tour-title"><i class="fas fa-images"></i> Tour por Telas · Não Conformidades</div>
+          <div class="tour-title"><i class="fas fa-images"></i> Não Conformidades · Tour Guiado</div>
           <div class="tour-counter"><span class="tour-atual">1</span> / <span class="tour-total">5</span></div>
         </div>
 
-        <!-- TELA 1 -->
         <div class="tela active" data-tela="0">
           <div class="tela-visual">
             <div class="tela-browser">
@@ -1427,9 +1404,9 @@ body{
               </div>
               <div class="tela-browser-content">
                 <div class="tela-browser-title"><i class="fas fa-clipboard-list" style="color:#5a45b5"></i> Lista de Não Conformidades</div>
-                <div class="tela-browser-grid cols-3" style="margin-bottom:10px;">
-                  <div class="tela-field"><span class="tf-label">Filtro Status</span><span class="tf-value">Todos</span></div>
-                  <div class="tela-field"><span class="tf-label">Filtro Palete</span><span class="tf-value">Todos</span></div>
+                <div class="tela-browser-grid cols-3" style="margin-bottom:9px;">
+                  <div class="tela-field"><span class="tf-label">Status</span><span class="tf-value">Todos</span></div>
+                  <div class="tela-field"><span class="tf-label">Palete</span><span class="tf-value">Todos</span></div>
                   <div class="tela-field"><span class="tf-label">Busca</span><span class="tf-value">Digite...</span></div>
                 </div>
                 <table class="tela-table">
@@ -1469,7 +1446,6 @@ body{
           </div>
         </div>
 
-        <!-- TELA 2 -->
         <div class="tela" data-tela="1">
           <div class="tela-visual">
             <div class="tela-browser">
@@ -1479,14 +1455,14 @@ body{
               </div>
               <div class="tela-browser-content">
                 <div class="tela-browser-title"><i class="fas fa-plus-circle" style="color:#5a45b5"></i> Cadastrar Nova NC</div>
-                <div class="tela-browser-grid cols-2" style="margin-bottom:8px;">
+                <div class="tela-browser-grid cols-2" style="margin-bottom:7px;">
                   <div class="tela-field"><span class="tf-label">Número da NC *</span><span class="tf-value">1025</span></div>
-                  <div class="tela-field"><span class="tf-label">Produto *</span><span class="tf-value">D50 R PR</span></div>
+                  <div class="tela-field tela-highlight"><span class="tf-label">Produto *</span><span class="tf-value">D50 R PR</span></div>
                   <div class="tela-field"><span class="tf-label">Palete (PLT) *</span><span class="tf-value">PLT 03</span></div>
                   <div class="tela-field"><span class="tf-label">Qtd. Caixas *</span><span class="tf-value">10</span></div>
                 </div>
-                <div class="tela-field" style="margin-bottom:8px;"><span class="tf-label">Motivo da Não Conformidade *</span><span class="tf-value">Rebarba no fundo do produto</span></div>
-                <div class="tela-browser-grid cols-3" style="margin-bottom:8px;">
+                <div class="tela-field" style="margin-bottom:7px;"><span class="tf-label">Motivo *</span><span class="tf-value">Rebarba no fundo do produto</span></div>
+                <div class="tela-browser-grid cols-3">
                   <div class="tela-field"><span class="tf-label">Qtd. Itens *</span><span class="tf-value">500</span></div>
                   <div class="tela-field"><span class="tf-label">Qtd. Retrabalhada</span><span class="tf-value">20</span></div>
                   <div class="tela-field tela-highlight" style="background:#fff3cd;border-color:#fcd34d;"><span class="tf-label">💰 Custo Retrabalho</span><span class="tf-value" style="color:#b45309;font-weight:800;">R$ 1.017,00</span></div>
@@ -1522,7 +1498,6 @@ body{
           </div>
         </div>
 
-        <!-- TELA 3 -->
         <div class="tela" data-tela="2">
           <div class="tela-visual">
             <div class="tela-browser">
@@ -1569,7 +1544,6 @@ body{
           </div>
         </div>
 
-        <!-- TELA 4 -->
         <div class="tela" data-tela="3">
           <div class="tela-visual">
             <div class="tela-browser">
@@ -1581,14 +1555,14 @@ body{
                 <div class="tela-browser-title"><i class="fas fa-qrcode" style="color:#5a45b5"></i> Detalhes da NC e QR Code</div>
                 <div class="tela-browser-grid cols-2">
                   <div>
-                    <div class="tela-field" style="margin-bottom:6px;"><span class="tf-label">Produto</span><span class="tf-value">D50 R PR</span></div>
-                    <div class="tela-field" style="margin-bottom:6px;"><span class="tf-label">Palete</span><span class="tf-value">PLT 03</span></div>
-                    <div class="tela-field" style="margin-bottom:6px;"><span class="tf-label">Motivo</span><span class="tf-value">Rebarba no fundo</span></div>
-                    <div class="tela-field"><span class="tf-label">Custo Retrabalho</span><span class="tf-value">R$ 1.017,00</span></div>
+                    <div class="tela-field" style="margin-bottom:5px;"><span class="tf-label">Produto</span><span class="tf-value">D50 R PR</span></div>
+                    <div class="tela-field" style="margin-bottom:5px;"><span class="tf-label">Palete</span><span class="tf-value">PLT 03</span></div>
+                    <div class="tela-field" style="margin-bottom:5px;"><span class="tf-label">Motivo</span><span class="tf-value">Rebarba no fundo</span></div>
+                    <div class="tela-field"><span class="tf-label">Custo</span><span class="tf-value">R$ 1.017,00</span></div>
                   </div>
                   <div style="text-align:center;">
-                    <div style="background:#fff;padding:10px;border-radius:10px;display:inline-block;">
-                      <svg viewBox="0 0 60 60" style="width:80px;height:80px;">
+                    <div style="background:#fff;padding:8px;border-radius:10px;display:inline-block;">
+                      <svg viewBox="0 0 60 60" style="width:72px;height:72px;">
                         <rect width="60" height="60" fill="#fff"/>
                         <rect x="0" y="0" width="20" height="20" fill="#3d2d8f"/>
                         <rect x="4" y="4" width="12" height="12" fill="#fff"/>
@@ -1600,11 +1574,9 @@ body{
                         <rect x="35" y="30" width="5" height="5" fill="#3d2d8f"/>
                         <rect x="25" y="40" width="5" height="5" fill="#3d2d8f"/>
                         <rect x="45" y="35" width="5" height="5" fill="#3d2d8f"/>
-                        <rect x="30" y="50" width="5" height="5" fill="#3d2d8f"/>
-                        <rect x="50" y="50" width="5" height="5" fill="#3d2d8f"/>
                       </svg>
                     </div>
-                    <div style="font-size:0.62rem;color:#6b6489;margin-top:6px;font-weight:600;">📱 Escaneie para ver detalhes</div>
+                    <div style="font-size:0.58rem;color:#6b6489;margin-top:5px;font-weight:600;">📱 Escaneie para ver</div>
                   </div>
                 </div>
               </div>
@@ -1637,7 +1609,6 @@ body{
           </div>
         </div>
 
-        <!-- TELA 5 -->
         <div class="tela" data-tela="4">
           <div class="tela-visual">
             <div class="tela-browser">
@@ -1647,13 +1618,13 @@ body{
               </div>
               <div class="tela-browser-content">
                 <div class="tela-browser-title"><i class="fas fa-chart-bar" style="color:#5a45b5"></i> Relatório Gerencial</div>
-                <div class="tela-browser-grid cols-4" style="margin-bottom:10px;">
+                <div class="tela-browser-grid cols-4" style="margin-bottom:9px;">
                   <div class="tela-stat"><div class="num">24</div><div class="lbl">Total NCs</div></div>
                   <div class="tela-stat" style="background:#fee2e2;border-color:#fca5a5;"><div class="num" style="color:#b91c1c;">8</div><div class="lbl">Abertas</div></div>
                   <div class="tela-stat" style="background:#dcfce7;border-color:#86efac;"><div class="num" style="color:#15803d;">16</div><div class="lbl">Resolvidas</div></div>
                   <div class="tela-stat" style="background:#fef3c7;border-color:#fcd34d;"><div class="num" style="color:#b45309;">R$ 4.280</div><div class="lbl">Custo Total</div></div>
                 </div>
-                <div style="background:var(--logo-bg);border-radius:8px;padding:8px 12px;font-size:0.68rem;color:var(--logo-dark);font-weight:700;">
+                <div style="background:var(--logo-bg);border-radius:8px;padding:8px 11px;font-size:0.64rem;color:var(--logo-dark);font-weight:700;">
                   📊 Gráficos: NCs por Motivo · Status · Valor por NC
                 </div>
               </div>
@@ -1682,12 +1653,11 @@ body{
             </p>
             <div class="tela-tip">
               <i class="fas fa-check-circle"></i>
-              <span><strong>Parabéns!</strong> Você completou o tour do Sistema de Não Conformidades.</span>
+              <span><strong>Parabéns!</strong> Você completou o Sistema de Não Conformidades.</span>
             </div>
           </div>
         </div>
 
-        <!-- NAVEGAÇÃO -->
         <div class="tour-nav">
           <div class="tour-dots"></div>
           <div class="tour-buttons">
@@ -1708,17 +1678,16 @@ body{
         <div class="sh-icon"><i class="fas fa-headset"></i></div>
         <div>
           <h2>Sistema 4 — SAC</h2>
-          <p>Tour por 6 telas: reclamações com alerta de prazo e WhatsApp</p>
+          <p>Tour automático por 6 telas do sistema</p>
         </div>
       </div>
 
       <div class="tour-container" data-tour="sac">
         <div class="tour-header">
-          <div class="tour-title"><i class="fas fa-images"></i> Tour por Telas · Sistema SAC</div>
+          <div class="tour-title"><i class="fas fa-images"></i> Sistema SAC · Tour Guiado</div>
           <div class="tour-counter"><span class="tour-atual">1</span> / <span class="tour-total">6</span></div>
         </div>
 
-        <!-- TELA 1 -->
         <div class="tela active" data-tela="0">
           <div class="tela-visual">
             <div class="tela-browser">
@@ -1727,14 +1696,14 @@ body{
                 <div class="url">sacc-91ee3.firebaseapp.com</div>
               </div>
               <div class="tela-browser-content">
-                <div class="tela-browser-title"><i class="fas fa-right-to-bracket" style="color:#5a45b5"></i> Tela de Login do SAC</div>
-                <div style="max-width:280px;margin:0 auto;text-align:center;padding:16px;background:var(--logo-bg);border-radius:10px;">
-                  <div style="width:48px;height:48px;background:linear-gradient(135deg,#3d2d8f,#7c3aed);border-radius:14px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;margin:0 auto 10px;">
+                <div class="tela-browser-title"><i class="fas fa-right-to-bracket" style="color:#5a45b5"></i> Login Exclusivo do SAC</div>
+                <div style="max-width:280px;margin:0 auto;text-align:center;padding:14px;background:var(--logo-bg);border-radius:10px;">
+                  <div style="width:44px;height:44px;background:linear-gradient(135deg,#3d2d8f,#7c3aed);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;margin:0 auto 8px;">
                     📦
                   </div>
-                  <div style="font-size:0.82rem;font-weight:800;color:#3d2d8f;">DONA RITA EMBALAGENS</div>
-                  <div style="font-size:0.6rem;color:#7c3aed;margin-bottom:12px;letter-spacing:1.5px;font-weight:700;">SISTEMA SAC · ACESSO RESTRITO</div>
-                  <div class="tela-field" style="margin-bottom:6px;text-align:left;"><span class="tf-label">Usuário</span><span class="tf-value">Duda</span></div>
+                  <div style="font-size:0.78rem;font-weight:800;color:#3d2d8f;">DONA RITA EMBALAGENS</div>
+                  <div style="font-size:0.56rem;color:#7c3aed;margin-bottom:10px;letter-spacing:1.5px;font-weight:700;">SISTEMA SAC · ACESSO RESTRITO</div>
+                  <div class="tela-field" style="margin-bottom:5px;text-align:left;"><span class="tf-label">Usuário</span><span class="tf-value">Duda</span></div>
                   <div class="tela-field" style="text-align:left;"><span class="tf-label">Senha</span><span class="tf-value">••••</span></div>
                 </div>
               </div>
@@ -1766,7 +1735,6 @@ body{
           </div>
         </div>
 
-        <!-- TELA 2 -->
         <div class="tela" data-tela="1">
           <div class="tela-visual">
             <div class="tela-browser">
@@ -1775,28 +1743,28 @@ body{
                 <div class="url">sacc-91ee3.firebaseapp.com</div>
               </div>
               <div class="tela-browser-content">
-                <div class="tela-browser-title"><i class="fas fa-chart-pie" style="color:#5a45b5"></i> Header com Estatísticas em Tempo Real</div>
-                <div style="background:linear-gradient(135deg,#1a0033,#3d2d8f,#7c3aed);padding:14px 18px;border-radius:10px;color:#fff;">
-                  <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;align-items:center;margin-bottom:10px;">
-                    <div style="font-size:0.85rem;font-weight:800;">📦 DONA RITA EMBALAGENS · SAC</div>
-                    <div style="background:rgba(255,255,255,0.15);padding:3px 10px;border-radius:12px;font-size:0.65rem;font-weight:700;">👤 Duda · 👑 ADMIN</div>
+                <div class="tela-browser-title"><i class="fas fa-chart-pie" style="color:#5a45b5"></i> Header com Estatísticas</div>
+                <div style="background:linear-gradient(135deg,#1a0033,#3d2d8f,#7c3aed);padding:12px 16px;border-radius:10px;color:#fff;">
+                  <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;align-items:center;margin-bottom:9px;">
+                    <div style="font-size:0.78rem;font-weight:800;">📦 DONA RITA · SAC</div>
+                    <div style="background:rgba(255,255,255,0.15);padding:3px 9px;border-radius:12px;font-size:0.6rem;font-weight:700;">👤 Duda · 👑 ADMIN</div>
                   </div>
                   <div class="tela-browser-grid cols-4">
-                    <div style="background:rgba(255,255,255,0.12);border:1.5px solid rgba(255,255,255,0.2);border-radius:8px;padding:8px;text-align:center;">
-                      <div style="font-size:1.1rem;font-weight:800;">87</div>
-                      <div style="font-size:0.55rem;opacity:0.85;text-transform:uppercase;letter-spacing:0.5px;">Registros</div>
+                    <div style="background:rgba(255,255,255,0.12);border:1.5px solid rgba(255,255,255,0.2);border-radius:8px;padding:7px;text-align:center;">
+                      <div style="font-size:1rem;font-weight:800;">87</div>
+                      <div style="font-size:0.52rem;opacity:0.85;text-transform:uppercase;">Registros</div>
                     </div>
-                    <div style="background:rgba(255,255,255,0.12);border:1.5px solid rgba(255,255,255,0.2);border-radius:8px;padding:8px;text-align:center;">
-                      <div style="font-size:1.1rem;font-weight:800;">34</div>
-                      <div style="font-size:0.55rem;opacity:0.85;text-transform:uppercase;letter-spacing:0.5px;">Pendentes</div>
+                    <div style="background:rgba(255,255,255,0.12);border:1.5px solid rgba(255,255,255,0.2);border-radius:8px;padding:7px;text-align:center;">
+                      <div style="font-size:1rem;font-weight:800;">34</div>
+                      <div style="font-size:0.52rem;opacity:0.85;text-transform:uppercase;">Pendentes</div>
                     </div>
-                    <div style="background:rgba(255,255,255,0.12);border:1.5px solid rgba(255,255,255,0.2);border-radius:8px;padding:8px;text-align:center;">
-                      <div style="font-size:1.1rem;font-weight:800;">53</div>
-                      <div style="font-size:0.55rem;opacity:0.85;text-transform:uppercase;letter-spacing:0.5px;">Concluídos</div>
+                    <div style="background:rgba(255,255,255,0.12);border:1.5px solid rgba(255,255,255,0.2);border-radius:8px;padding:7px;text-align:center;">
+                      <div style="font-size:1rem;font-weight:800;">53</div>
+                      <div style="font-size:0.52rem;opacity:0.85;text-transform:uppercase;">Concluídos</div>
                     </div>
-                    <div style="background:linear-gradient(135deg,#b71c1c,#f44336);border:1.5px solid rgba(255,255,255,0.4);border-radius:8px;padding:8px;text-align:center;">
-                      <div style="font-size:1.1rem;font-weight:800;">7</div>
-                      <div style="font-size:0.55rem;opacity:0.95;text-transform:uppercase;letter-spacing:0.5px;">⚠️ Em Atraso</div>
+                    <div style="background:linear-gradient(135deg,#b71c1c,#f44336);border:1.5px solid rgba(255,255,255,0.4);border-radius:8px;padding:7px;text-align:center;">
+                      <div style="font-size:1rem;font-weight:800;">7</div>
+                      <div style="font-size:0.52rem;opacity:0.95;text-transform:uppercase;">⚠️ Atraso</div>
                     </div>
                   </div>
                 </div>
@@ -1831,7 +1799,6 @@ body{
           </div>
         </div>
 
-        <!-- TELA 3 -->
         <div class="tela" data-tela="2">
           <div class="tela-visual">
             <div class="tela-browser">
@@ -1841,20 +1808,15 @@ body{
               </div>
               <div class="tela-browser-content">
                 <div class="tela-browser-title"><i class="fas fa-plus-circle" style="color:#5a45b5"></i> Registro de Reclamação</div>
-                <div class="tela-browser-grid cols-3" style="margin-bottom:8px;">
-                  <div class="tela-field"><span class="tf-label">Nº Registro *</span><span class="tf-value">1043</span></div>
+                <div class="tela-browser-grid cols-3" style="margin-bottom:7px;">
+                  <div class="tela-field"><span class="tf-label">Nº Reg. *</span><span class="tf-value">1043</span></div>
                   <div class="tela-field"><span class="tf-label">Cliente *</span><span class="tf-value">Metalúrgica ABC</span></div>
-                  <div class="tela-field"><span class="tf-label">Data da Ocorrência *</span><span class="tf-value">28/09/2026</span></div>
-                  <div class="tela-field"><span class="tf-label">Área Envolvida *</span><span class="tf-value">Transporte</span></div>
+                  <div class="tela-field"><span class="tf-label">Data *</span><span class="tf-value">28/09/2026</span></div>
+                  <div class="tela-field"><span class="tf-label">Área *</span><span class="tf-value">Transporte</span></div>
                   <div class="tela-field tela-highlight"><span class="tf-label">Origem *</span><span class="tf-value">🌐 Externo</span></div>
-                  <div class="tela-field"><span class="tf-label">Andamento *</span><span class="tf-value">🔓 Abertura da RNC</span></div>
+                  <div class="tela-field"><span class="tf-label">Andamento *</span><span class="tf-value">🔓 Abertura RNC</span></div>
                 </div>
-                <div class="tela-field" style="margin-bottom:8px;"><span class="tf-label">Causa Resumida *</span><span class="tf-value">Atraso na entrega</span></div>
-                <div class="tela-browser-grid cols-3" style="margin-bottom:8px;">
-                  <div class="tela-field"><span class="tf-label">Código Item</span><span class="tf-value">100011</span></div>
-                  <div class="tela-field"><span class="tf-label">Descrição Produto</span><span class="tf-value">D50 R PR</span></div>
-                  <div class="tela-field"><span class="tf-label">Qtd Reclamada</span><span class="tf-value">300</span></div>
-                </div>
+                <div class="tela-field"><span class="tf-label">Causa Resumida *</span><span class="tf-value">Atraso na entrega</span></div>
               </div>
             </div>
           </div>
@@ -1889,7 +1851,6 @@ body{
           </div>
         </div>
 
-        <!-- TELA 4 -->
         <div class="tela" data-tela="3">
           <div class="tela-visual">
             <div class="tela-browser">
@@ -1903,9 +1864,9 @@ body{
                   <thead><tr><th>Nº</th><th>Cliente</th><th>Andamento</th><th>Tempo</th></tr></thead>
                   <tbody>
                     <tr style="background:#ffebee;">
-                      <td><strong>#1042</strong> <span style="background:#e53935;color:#fff;padding:1px 5px;border-radius:8px;font-size:0.55rem;font-weight:800;">14 DIAS</span></td>
+                      <td><strong>#1042</strong> <span style="background:#e53935;color:#fff;padding:1px 5px;border-radius:8px;font-size:0.52rem;font-weight:800;">14 DIAS</span></td>
                       <td>Metalúrgica ABC</td>
-                      <td><span class="tela-pill tp-yellow">⏳ Aguardando liberação</span></td>
+                      <td><span class="tela-pill tp-yellow">⏳ Aguardando</span></td>
                       <td style="color:#b91c1c;font-weight:700;">14 dias</td>
                     </tr>
                     <tr>
@@ -1917,7 +1878,7 @@ body{
                     <tr>
                       <td><strong>#1040</strong></td>
                       <td>Supermercados Silva</td>
-                      <td><span class="tela-pill tp-blue">🔍 Aguardando qualidade</span></td>
+                      <td><span class="tela-pill tp-blue">🔍 Qualidade</span></td>
                       <td>3 dias</td>
                     </tr>
                   </tbody>
@@ -1958,7 +1919,6 @@ body{
           </div>
         </div>
 
-        <!-- TELA 5 -->
         <div class="tela" data-tela="4">
           <div class="tela-visual">
             <div class="tela-browser">
@@ -1967,37 +1927,37 @@ body{
                 <div class="url">sacc-91ee3.firebaseapp.com</div>
               </div>
               <div class="tela-browser-content">
-                <div class="tela-browser-title"><i class="fas fa-chart-bar" style="color:#5a45b5"></i> Dashboard · 6 Gráficos Analíticos</div>
-                <div class="tela-browser-grid cols-2" style="margin-bottom:8px;">
-                  <div style="background:var(--logo-bg);border-radius:8px;padding:8px;">
-                    <div style="font-size:0.62rem;font-weight:800;color:#3d2d8f;margin-bottom:4px;">🍩 Ocorrência por Área</div>
+                <div class="tela-browser-title"><i class="fas fa-chart-bar" style="color:#5a45b5"></i> Dashboard · 6 Gráficos</div>
+                <div class="tela-browser-grid cols-2" style="margin-bottom:7px;">
+                  <div style="background:var(--logo-bg);border-radius:8px;padding:7px;">
+                    <div style="font-size:0.58rem;font-weight:800;color:#3d2d8f;margin-bottom:4px;">🍩 Ocorrência por Área</div>
                     <div style="display:flex;justify-content:center;">
-                      <div style="width:50px;height:50px;border-radius:50%;background:conic-gradient(#5a45b5 0deg 130deg, #ec4899 130deg 220deg, #f59e0b 220deg 300deg, #10b981 300deg 360deg);"></div>
+                      <div style="width:44px;height:44px;border-radius:50%;background:conic-gradient(#5a45b5 0deg 130deg, #ec4899 130deg 220deg, #f59e0b 220deg 300deg, #10b981 300deg 360deg);"></div>
                     </div>
                   </div>
-                  <div style="background:var(--logo-bg);border-radius:8px;padding:8px;">
-                    <div style="font-size:0.62rem;font-weight:800;color:#3d2d8f;margin-bottom:4px;">📊 Abertas vs Concluídas</div>
-                    <div style="display:flex;gap:4px;align-items:flex-end;height:44px;">
+                  <div style="background:var(--logo-bg);border-radius:8px;padding:7px;">
+                    <div style="font-size:0.58rem;font-weight:800;color:#3d2d8f;margin-bottom:4px;">📊 Abertas vs Concluídas</div>
+                    <div style="display:flex;gap:4px;align-items:flex-end;height:40px;">
                       <div style="flex:1;background:#f59e0b;height:65%;border-radius:3px;"></div>
                       <div style="flex:1;background:#5a45b5;height:90%;border-radius:3px;"></div>
                     </div>
                   </div>
-                  <div style="background:var(--logo-bg);border-radius:8px;padding:8px;">
-                    <div style="font-size:0.62rem;font-weight:800;color:#3d2d8f;margin-bottom:4px;">📈 Evolução Diária</div>
-                    <svg viewBox="0 0 100 30" style="width:100%;height:30px;">
-                      <polyline points="0,25 15,22 30,18 45,20 60,12 75,8 90,5 100,3" fill="none" stroke="#5a45b5" stroke-width="1.5"/>
+                  <div style="background:var(--logo-bg);border-radius:8px;padding:7px;">
+                    <div style="font-size:0.58rem;font-weight:800;color:#3d2d8f;margin-bottom:4px;">📈 Evolução Diária</div>
+                    <svg viewBox="0 0 100 25" style="width:100%;height:25px;">
+                      <polyline points="0,22 15,18 30,15 45,17 60,10 75,7 90,5 100,3" fill="none" stroke="#5a45b5" stroke-width="1.5"/>
                     </svg>
                   </div>
-                  <div style="background:var(--logo-bg);border-radius:8px;padding:8px;">
-                    <div style="font-size:0.62rem;font-weight:800;color:#3d2d8f;margin-bottom:4px;">💰 Valores por Área</div>
-                    <div style="display:flex;gap:4px;align-items:flex-end;height:44px;">
+                  <div style="background:var(--logo-bg);border-radius:8px;padding:7px;">
+                    <div style="font-size:0.58rem;font-weight:800;color:#3d2d8f;margin-bottom:4px;">💰 Valores por Área</div>
+                    <div style="display:flex;gap:4px;align-items:flex-end;height:40px;">
                       <div style="flex:1;background:#00897b;height:70%;border-radius:3px;"></div>
                       <div style="flex:1;background:#00897b;height:45%;border-radius:3px;"></div>
                       <div style="flex:1;background:#3d2d8f;height:95%;border-radius:3px;"></div>
                     </div>
                   </div>
                 </div>
-                <div style="font-size:0.6rem;color:#6b6489;text-align:center;font-weight:600;">+ 2 gráficos detalhados de Atrasos e Prorrogação</div>
+                <div style="font-size:0.56rem;color:#6b6489;text-align:center;font-weight:600;">+ 2 gráficos: Atrasos e Prorrogação</div>
               </div>
             </div>
           </div>
@@ -2021,7 +1981,7 @@ body{
               Todos os gráficos são <strong>interativos</strong> — passe o
               mouse para ver os valores exatos. Você também pode
               <strong>filtrar por dia</strong>, <strong>mês</strong>,
-              <strong>área</strong> ou <strong>origem</strong> (Interno/Externo).
+              <strong>área</strong> ou <strong>origem</strong>.
             </p>
             <div class="tela-tip">
               <i class="fas fa-lightbulb"></i>
@@ -2030,7 +1990,6 @@ body{
           </div>
         </div>
 
-        <!-- TELA 6 -->
         <div class="tela" data-tela="5">
           <div class="tela-visual">
             <div class="tela-browser">
@@ -2042,19 +2001,19 @@ body{
                 <div class="tela-browser-title"><i class="fas fa-file-pdf" style="color:#dc2626"></i> Geração de PDF e Gerenciamento</div>
                 <div class="tela-browser-grid cols-3">
                   <div class="tela-field" style="text-align:center;background:#fee2e2;border-color:#fca5a5;">
-                    <i class="fas fa-file-pdf" style="font-size:1.4rem;color:#dc2626;display:block;margin-bottom:4px;"></i>
-                    <div style="font-weight:700;color:#dc2626;font-size:0.72rem;">PDF Interno</div>
+                    <i class="fas fa-file-pdf" style="font-size:1.2rem;color:#dc2626;display:block;margin-bottom:3px;"></i>
+                    <div style="font-weight:700;color:#dc2626;font-size:0.66rem;">PDF Interno</div>
                   </div>
                   <div class="tela-field" style="text-align:center;background:#fee2e2;border-color:#fca5a5;">
-                    <i class="fas fa-file-pdf" style="font-size:1.4rem;color:#dc2626;display:block;margin-bottom:4px;"></i>
-                    <div style="font-weight:700;color:#dc2626;font-size:0.72rem;">PDF Externo</div>
+                    <i class="fas fa-file-pdf" style="font-size:1.2rem;color:#dc2626;display:block;margin-bottom:3px;"></i>
+                    <div style="font-weight:700;color:#dc2626;font-size:0.66rem;">PDF Externo</div>
                   </div>
                   <div class="tela-field" style="text-align:center;background:#fee2e2;border-color:#fca5a5;">
-                    <i class="fas fa-file-pdf" style="font-size:1.4rem;color:#dc2626;display:block;margin-bottom:4px;"></i>
-                    <div style="font-weight:700;color:#dc2626;font-size:0.72rem;">PDF Total</div>
+                    <i class="fas fa-file-pdf" style="font-size:1.2rem;color:#dc2626;display:block;margin-bottom:3px;"></i>
+                    <div style="font-weight:700;color:#dc2626;font-size:0.66rem;">PDF Total</div>
                   </div>
                 </div>
-                <div style="margin-top:10px;background:var(--logo-bg);border-radius:8px;padding:8px 12px;font-size:0.68rem;color:#4a4561;">
+                <div style="margin-top:9px;background:var(--logo-bg);border-radius:8px;padding:7px 11px;font-size:0.62rem;color:#4a4561;">
                   📋 <strong>Controle de usuários:</strong> criar, listar e excluir usuários com perfil Admin ou Padrão.
                 </div>
               </div>
@@ -2081,16 +2040,15 @@ body{
               <strong>👥 Gerenciamento de Usuários:</strong> o administrador
               pode acessar a aba "Usuários" para <strong>criar</strong>,
               <strong>listar</strong> e <strong>excluir</strong> usuários. O
-              usuário "Duda" é o admin fixo protegido (não pode ser excluído).
+              usuário "Duda" é o admin fixo protegido.
             </p>
             <div class="tela-tip">
               <i class="fas fa-check-circle"></i>
-              <span><strong>Parabéns!</strong> Você completou o tour do Sistema SAC.</span>
+              <span><strong>Parabéns!</strong> Você completou o Sistema SAC.</span>
             </div>
           </div>
         </div>
 
-        <!-- NAVEGAÇÃO -->
         <div class="tour-nav">
           <div class="tour-dots"></div>
           <div class="tour-buttons">
@@ -2111,17 +2069,16 @@ body{
         <div class="sh-icon"><i class="fas fa-gift"></i></div>
         <div>
           <h2>Sistema 5 — Amostras</h2>
-          <p>Tour por 4 telas: do formulário público ao dashboard</p>
+          <p>Tour automático por 4 telas do sistema</p>
         </div>
       </div>
 
       <div class="tour-container" data-tour="amostras">
         <div class="tour-header">
-          <div class="tour-title"><i class="fas fa-images"></i> Tour por Telas · Sistema de Amostras</div>
+          <div class="tour-title"><i class="fas fa-images"></i> Sistema de Amostras · Tour Guiado</div>
           <div class="tour-counter"><span class="tour-atual">1</span> / <span class="tour-total">4</span></div>
         </div>
 
-        <!-- TELA 1 -->
         <div class="tela active" data-tela="0">
           <div class="tela-visual">
             <div class="tela-browser">
@@ -2131,20 +2088,17 @@ body{
               </div>
               <div class="tela-browser-content">
                 <div class="tela-browser-title"><i class="fas fa-gift" style="color:#5a45b5"></i> Formulário Público de Solicitação</div>
-                <div style="text-align:center;margin-bottom:10px;">
-                  <div style="font-size:0.78rem;font-weight:800;color:#3d2d8f;">🎁 Solicitação de Amostra</div>
-                  <div style="font-size:0.6rem;color:#6b6489;">Preencha os dados abaixo para solicitar sua amostra</div>
+                <div style="text-align:center;margin-bottom:8px;">
+                  <div style="font-size:0.72rem;font-weight:800;color:#3d2d8f;">🎁 Solicitação de Amostra</div>
+                  <div style="font-size:0.56rem;color:#6b6489;">Preencha os dados abaixo para solicitar</div>
                 </div>
-                <div class="tela-browser-grid cols-2" style="margin-bottom:8px;">
+                <div class="tela-browser-grid cols-2" style="margin-bottom:7px;">
                   <div class="tela-field tela-highlight"><span class="tf-label">Material *</span><span class="tf-value">Sacola personalizada</span></div>
                   <div class="tela-field tela-highlight"><span class="tf-label">Quantidade *</span><span class="tf-value">10 unidades</span></div>
                   <div class="tela-field"><span class="tf-label">Nome *</span><span class="tf-value">Maria Silva</span></div>
                   <div class="tela-field"><span class="tf-label">Empresa *</span><span class="tf-value">Loja Flor de Lis</span></div>
                 </div>
-                <div style="background:var(--logo-bg);padding:6px 10px;border-radius:6px;font-size:0.6rem;color:#4a4561;margin-bottom:6px;">
-                  📍 Endereço completo · 📅 Prazo · 🚚 Tipo de envio
-                </div>
-                <div style="background:linear-gradient(135deg,#5a45b5,#3d2d8f);color:#fff;text-align:center;padding:8px;border-radius:20px;font-size:0.72rem;font-weight:700;">
+                <div style="background:linear-gradient(135deg,#5a45b5,#3d2d8f);color:#fff;text-align:center;padding:7px;border-radius:20px;font-size:0.68rem;font-weight:700;">
                   ✈️ ENVIAR SOLICITAÇÃO
                 </div>
               </div>
@@ -2179,7 +2133,6 @@ body{
           </div>
         </div>
 
-        <!-- TELA 2 -->
         <div class="tela" data-tela="1">
           <div class="tela-visual">
             <div class="tela-browser">
@@ -2188,16 +2141,16 @@ body{
                 <div class="url">amostras-77a5b.firebaseapp.com</div>
               </div>
               <div class="tela-browser-content">
-                <div class="tela-browser-title"><i class="fas fa-search-location" style="color:#5a45b5"></i> Consultar Rastreio Pelo ID</div>
-                <div style="max-width:300px;margin:0 auto;background:var(--logo-bg);border-radius:10px;padding:14px;text-align:center;">
-                  <div style="font-size:0.72rem;font-weight:800;color:#3d2d8f;margin-bottom:8px;">🔍 Consultar Rastreio</div>
-                  <div class="tela-field" style="margin-bottom:8px;text-align:left;"><span class="tf-label">ID da Solicitação</span><span class="tf-value">AM-DEMO001</span></div>
-                  <div style="background:linear-gradient(135deg,#5a45b5,#3d2d8f);color:#fff;text-align:center;padding:6px;border-radius:20px;font-size:0.68rem;font-weight:700;">🔍 Buscar Rastreio</div>
-                  <div style="margin-top:10px;background:#fff;border-radius:8px;padding:8px;text-align:left;">
-                    <div style="font-size:0.6rem;color:#6b6489;">Status:</div>
-                    <div style="font-size:0.72rem;font-weight:800;color:#15803d;">🚚 Enviado</div>
-                    <div style="font-size:0.6rem;color:#6b6489;margin-top:4px;">Código:</div>
-                    <div style="font-size:0.72rem;font-weight:800;color:#5a45b5;">BR123456789SP</div>
+                <div class="tela-browser-title"><i class="fas fa-search-location" style="color:#5a45b5"></i> Consultar Rastreio</div>
+                <div style="max-width:280px;margin:0 auto;background:var(--logo-bg);border-radius:10px;padding:12px;text-align:center;">
+                  <div style="font-size:0.68rem;font-weight:800;color:#3d2d8f;margin-bottom:6px;">🔍 Consultar Rastreio</div>
+                  <div class="tela-field" style="margin-bottom:6px;text-align:left;"><span class="tf-label">ID</span><span class="tf-value">AM-DEMO001</span></div>
+                  <div style="background:linear-gradient(135deg,#5a45b5,#3d2d8f);color:#fff;text-align:center;padding:5px;border-radius:20px;font-size:0.62rem;font-weight:700;">🔍 Buscar</div>
+                  <div style="margin-top:8px;background:#fff;border-radius:8px;padding:7px;text-align:left;">
+                    <div style="font-size:0.56rem;color:#6b6489;">Status:</div>
+                    <div style="font-size:0.68rem;font-weight:800;color:#15803d;">🚚 Enviado</div>
+                    <div style="font-size:0.56rem;color:#6b6489;margin-top:3px;">Código:</div>
+                    <div style="font-size:0.68rem;font-weight:800;color:#5a45b5;">BR123456789SP</div>
                   </div>
                 </div>
               </div>
@@ -2229,7 +2182,6 @@ body{
           </div>
         </div>
 
-        <!-- TELA 3 -->
         <div class="tela" data-tela="2">
           <div class="tela-visual">
             <div class="tela-browser">
@@ -2238,19 +2190,19 @@ body{
                 <div class="url">amostras-77a5b.firebaseapp.com</div>
               </div>
               <div class="tela-browser-content">
-                <div class="tela-browser-title"><i class="fas fa-list" style="color:#5a45b5"></i> Painel Administrativo · Lista de Pedidos</div>
-                <div class="tela-browser-grid cols-4" style="margin-bottom:10px;">
+                <div class="tela-browser-title"><i class="fas fa-list" style="color:#5a45b5"></i> Painel Admin · Lista de Pedidos</div>
+                <div class="tela-browser-grid cols-4" style="margin-bottom:9px;">
                   <div class="tela-stat"><div class="num">87</div><div class="lbl">Total</div></div>
                   <div class="tela-stat" style="background:#fef3c7;border-color:#fcd34d;"><div class="num" style="color:#b45309;">42</div><div class="lbl">Pendentes</div></div>
                   <div class="tela-stat" style="background:#dbeafe;border-color:#93c5fd;"><div class="num" style="color:#1d4ed8;">28</div><div class="lbl">Enviados</div></div>
                   <div class="tela-stat" style="background:#dcfce7;border-color:#86efac;"><div class="num" style="color:#15803d;">17</div><div class="lbl">Concluídos</div></div>
                 </div>
                 <table class="tela-table">
-                  <thead><tr><th>Data</th><th>Empresa</th><th>Material</th><th>Status</th><th>Valor</th></tr></thead>
+                  <thead><tr><th>Data</th><th>Empresa</th><th>Material</th><th>Status</th></tr></thead>
                   <tbody>
-                    <tr><td>05/09</td><td>Flor de Lis</td><td>Sacola</td><td><span class="tela-pill tp-red">Urgente</span></td><td>R$ 25,90</td></tr>
-                    <tr><td>03/09</td><td>Empório Natural</td><td>Caixa kraft</td><td><span class="tela-pill tp-yellow">Pendente</span></td><td>—</td></tr>
-                    <tr><td>28/08</td><td>Ateliê Ana</td><td>Fita adesiva</td><td><span class="tela-pill tp-blue">Enviado</span></td><td>R$ 38,50</td></tr>
+                    <tr><td>05/09</td><td>Flor de Lis</td><td>Sacola</td><td><span class="tela-pill tp-red">Urgente</span></td></tr>
+                    <tr><td>03/09</td><td>Empório Natural</td><td>Caixa kraft</td><td><span class="tela-pill tp-yellow">Pendente</span></td></tr>
+                    <tr><td>28/08</td><td>Ateliê Ana</td><td>Fita adesiva</td><td><span class="tela-pill tp-blue">Enviado</span></td></tr>
                   </tbody>
                 </table>
               </div>
@@ -2287,7 +2239,6 @@ body{
           </div>
         </div>
 
-        <!-- TELA 4 -->
         <div class="tela" data-tela="3">
           <div class="tela-visual">
             <div class="tela-browser">
@@ -2297,30 +2248,30 @@ body{
               </div>
               <div class="tela-browser-content">
                 <div class="tela-browser-title"><i class="fas fa-chart-line" style="color:#5a45b5"></i> Dashboard Analítico</div>
-                <div class="tela-browser-grid cols-4" style="margin-bottom:10px;">
+                <div class="tela-browser-grid cols-4" style="margin-bottom:9px;">
                   <div class="tela-stat"><div class="num">87</div><div class="lbl">Solicitações</div></div>
                   <div class="tela-stat"><div class="num">42</div><div class="lbl">Clientes</div></div>
                   <div class="tela-stat" style="background:#dcfce7;border-color:#86efac;"><div class="num" style="color:#15803d;">R$ 3.240</div><div class="lbl">Valor Total</div></div>
                   <div class="tela-stat" style="background:#fef3c7;border-color:#fcd34d;"><div class="num" style="color:#b45309;">78,5%</div><div class="lbl">Conclusão</div></div>
                 </div>
-                <div class="tela-browser-grid cols-2" style="margin-bottom:8px;">
-                  <div style="background:var(--logo-bg);border-radius:8px;padding:8px;">
-                    <div style="font-size:0.62rem;font-weight:800;color:#3d2d8f;margin-bottom:4px;">📈 Evolução de Solicitações</div>
-                    <svg viewBox="0 0 200 40" style="width:100%;height:40px;">
-                      <polyline points="0,35 40,30 80,20 120,25 160,12 200,5" fill="none" stroke="#5a45b5" stroke-width="2"/>
+                <div class="tela-browser-grid cols-2" style="margin-bottom:7px;">
+                  <div style="background:var(--logo-bg);border-radius:8px;padding:7px;">
+                    <div style="font-size:0.58rem;font-weight:800;color:#3d2d8f;margin-bottom:4px;">📈 Evolução de Solicitações</div>
+                    <svg viewBox="0 0 200 35" style="width:100%;height:35px;">
+                      <polyline points="0,30 40,25 80,18 120,22 160,10 200,4" fill="none" stroke="#5a45b5" stroke-width="1.8"/>
                     </svg>
                   </div>
-                  <div style="background:var(--logo-bg);border-radius:8px;padding:8px;">
-                    <div style="font-size:0.62rem;font-weight:800;color:#3d2d8f;margin-bottom:4px;">🏆 Top 8 Clientes</div>
-                    <div style="font-size:0.6rem;color:#4a4561;line-height:1.5;">
-                      <div>🥇 Empório Natural · R$ 890</div>
-                      <div>🥈 Loja Flor de Lis · R$ 640</div>
-                      <div>🥉 Presentes Finos · R$ 420</div>
+                  <div style="background:var(--logo-bg);border-radius:8px;padding:7px;">
+                    <div style="font-size:0.58rem;font-weight:800;color:#3d2d8f;margin-bottom:4px;">🏆 Top 3 Clientes</div>
+                    <div style="font-size:0.56rem;color:#4a4561;line-height:1.4;">
+                      <div>🥇 Empório · R$ 890</div>
+                      <div>🥈 Flor de Lis · R$ 640</div>
+                      <div>🥉 Presentes · R$ 420</div>
                     </div>
                   </div>
                 </div>
-                <div style="background:#fee2e2;border:1.5px solid #fca5a5;border-radius:6px;padding:5px 10px;text-align:center;font-size:0.65rem;color:#b91c1c;font-weight:700;">
-                  📄 Botão "Gerar PDF" para baixar relatório completo
+                <div style="background:#fee2e2;border:1.5px solid #fca5a5;border-radius:6px;padding:5px 10px;text-align:center;font-size:0.62rem;color:#b91c1c;font-weight:700;">
+                  📄 Botão "Gerar PDF" para baixar relatório
                 </div>
               </div>
             </div>
@@ -2354,12 +2305,11 @@ body{
             </p>
             <div class="tela-tip">
               <i class="fas fa-check-circle"></i>
-              <span><strong>Parabéns!</strong> Você completou o tour do Sistema de Amostras e de todos os 5 sistemas da Dona Rita Embalagens! 🎉</span>
+              <span><strong>Parabéns!</strong> Você completou o Sistema de Amostras e todos os 5 sistemas da Dona Rita Embalagens! 🎉</span>
             </div>
           </div>
         </div>
 
-        <!-- NAVEGAÇÃO -->
         <div class="tour-nav">
           <div class="tour-dots"></div>
           <div class="tour-buttons">
@@ -2385,7 +2335,7 @@ body{
       </div>
 
       <div class="summary-card">
-        <h3><i class="fas fa-trophy"></i> Parabéns! Você concluiu todos os tours</h3>
+        <h3><i class="fas fa-trophy"></i> Parabéns! Você concluiu todo o tutorial</h3>
         <p>
           Agora você conhece, <strong>tela por tela</strong>, os cinco
           sistemas digitais da Dona Rita Embalagens. Você viu onde fica cada
@@ -2421,10 +2371,6 @@ body{
           <strong>responsável de qualidade</strong> da sua unidade ou seu
           supervisor direto. Estamos aqui para te ajudar!
         </p>
-        <div class="photo-hint">
-          <i class="fas fa-redo"></i>
-          <span><strong>Reveja quando quiser:</strong> use o menu lateral para voltar a qualquer sistema. A narração da Ana está sempre disponível.</span>
-        </div>
       </div>
     </section>
 
@@ -2432,9 +2378,9 @@ body{
 </div>
 
 <footer class="footer">
-  <strong>Dona Rita Embalagens</strong> · Tutorial por Telas dos Sistemas
+  <strong>Dona Rita Embalagens</strong> · Tutorial Guiado com Auto-Play
   <br>
-  Narração por IA Feminina (Ana) · Versão 4.0
+  Narração por IA Feminina (Ana) · Versão 5.0
 </footer>
 
 <!-- ==================== VOICE PANEL ==================== -->
@@ -2450,13 +2396,13 @@ body{
   </div>
 
   <div class="voice-controls">
-    <button class="vc-btn" id="btnAnterior" onclick="secaoAnterior()" title="Seção anterior">
+    <button class="vc-btn" id="btnAnterior" onclick="voltarEtapa()" title="Voltar">
       <i class="fas fa-backward-step"></i>
     </button>
     <button class="vc-btn primary" id="btnPlayPause" onclick="togglePlayPause()" title="Play / Pausar">
       <i class="fas fa-play" id="playIcon"></i>
     </button>
-    <button class="vc-btn" id="btnProxima" onclick="proximaSecao()" title="Próxima seção">
+    <button class="vc-btn" id="btnProxima" onclick="avancarEtapa()" title="Avançar">
       <i class="fas fa-forward-step"></i>
     </button>
     <button class="vc-btn" id="btnStop" onclick="pararFala()" title="Parar">
@@ -2479,7 +2425,7 @@ body{
 <div class="voice-modal-overlay" id="voiceModal" onclick="if(event.target===this) fecharSeletorVoz()">
   <div class="voice-modal">
     <h3><i class="fas fa-microphone-lines" style="color:#ec4899"></i> Escolha a Voz da Narração</h3>
-    <p>Selecione uma das vozes disponíveis no seu dispositivo. Recomendamos as vozes <strong>femininas em português brasileiro</strong> para a melhor experiência.</p>
+    <p>Selecione uma das vozes disponíveis. Recomendamos as <strong>femininas em português brasileiro</strong>.</p>
     <div class="voice-list" id="voiceList"></div>
     <div class="voice-modal-actions">
       <button class="btn btn-outline" onclick="testarVozSelecionada()">
@@ -2508,27 +2454,24 @@ const state = {
   ordem: ['intro','inspecao','bobinas','nc','sac','amostras','encerramento'],
   vozesDisponiveis: [],
   vozesOrdenadas: [],
-  tourAtual: {
-    inspecao: 0,
-    bobinas: 0,
-    nc: 0,
-    sac: 0,
-    amostras: 0
-  }
+  tourAtual: { inspecao: 0, bobinas: 0, nc: 0, sac: 0, amostras: 0 },
+  autoAdvance: true,       // avanço automático LIGADO por padrão
+  autoAdvanceTimer: null,
+  aguardandoAvanco: false
 };
 
 /* ============================================================
-   NARRAÇÕES POR TELA (para cada sistema)
-   Cada tela tem seu próprio texto de narração
+   NARRAÇÕES DAS SEÇÕES SEM TOUR (intro e encerramento)
    ============================================================ */
 const narracoes = {
-  intro: `Olá! Seja muito bem-vindo ao tutorial por telas dos sistemas da Dona Rita Embalagens.
+  intro: `Olá! Seja muito bem-vindo ao tutorial guiado dos sistemas da Dona Rita Embalagens.
     Eu sou a Ana, sua assistente virtual, e vou te acompanhar nesta jornada de aprendizado.
-    Neste tutorial, vamos passar por cada tela dos cinco sistemas da empresa, mostrando exatamente onde fica cada campo, para que serve cada botão, e como usar cada recurso.
-    Assim, mesmo quem está começando agora não vai ter nenhuma dúvida sobre como cada sistema funciona.
-    Use os controles de voz na parte inferior da tela para ouvir as explicações, e use os botões "Próxima" e "Anterior" para navegar entre as telas.
-    Se quiser escolher outra voz, é só clicar em "Escolher Voz" aqui em cima.
-    Pronto? Então vamos começar pelo Sistema de Inspeção de Peso!`,
+    Neste tutorial, vou passar automaticamente por cada tela dos cinco sistemas da empresa, explicando detalhadamente cada campo, cada botão e cada recurso.
+    O avanço é automático: quando eu terminar de explicar uma tela, o sistema passa sozinho para a próxima.
+    Você pode apenas assistir e ouvir com atenção.
+    Se quiser pausar o avanço automático, clique no botão "Pausar Auto" no topo da tela.
+    E se quiser trocar a voz, clique em "Escolher Voz".
+    Vamos começar pelo Sistema de Inspeção de Peso!`,
 
   encerramento: `E chegamos ao final do nosso tutorial.
     Parabéns! Você completou o tour por telas dos cinco sistemas de qualidade da Dona Rita Embalagens.
@@ -2547,136 +2490,248 @@ const narracoes = {
 };
 
 /* ============================================================
-   NARRAÇÕES ESPECÍFICAS DE CADA TELA DOS TOURS
+   NARRAÇÕES DETALHADAS POR TELA DE CADA SISTEMA
    ============================================================ */
 const narracoesTelas = {
   inspecao: [
-    `Nesta primeira tela do Sistema de Inspeção de Peso, você vê a barra superior.
-    No canto direito fica o campo de Data da Inspeção, que já vem preenchido com o dia de hoje.
-    Nesta barra também ficam os botões principais: Nova Inspeção, Relatório, Adicionar Máquina, Salvar Histórico e Histórico.
-    Confira sempre se a data está correta antes de começar.`,
+    `Vamos começar pelo Sistema de Inspeção de Peso.
+    Esta é a primeira tela que você vê ao abrir o sistema.
+    No topo da tela, aparece o cabeçalho roxo com o título Inspeção de Peso.
+    No canto superior direito está o campo Data da Inspeção, que já vem preenchido com o dia de hoje.
+    Se precisar alterar, clique no campo e escolha outra data no calendário.
+    Na mesma barra ficam três botões principais: o botão Nova Inspeção, que limpa o formulário.
+    O botão Relatório, que abre o relatório completo em tela cheia.
+    E o botão Adicionar Máquina, que cria um novo cartão de inspeção.
+    Aqui embaixo há também os botões Salvar Histórico do Dia e Histórico.
+    Sempre confira a data antes de começar.`,
 
-    `Ao clicar em Adicionar Máquina, um cartão novo aparece.
-    Aqui você vai preencher: o nome do inspetor, o número da máquina, o código do produto, o tipo do produto, o turno, o status, a cavidade, o ciclo e o colaborador.
-    Esses são os dados básicos da inspeção.`,
+    `Ao clicar em Adicionar Máquina, um cartão novo aparece na tela.
+    É aqui que você vai registrar tudo sobre a inspeção daquela máquina.
+    Os três campos mais importantes estão destacados.
+    O primeiro é o campo Inspetor, onde você coloca seu nome.
+    Comece a digitar e o sistema vai sugerir nomes já usados.
+    O segundo é o campo Máquina, onde você digita o número da extrusora, por exemplo, setecentos e noventa barra dois.
+    O terceiro é o campo Código do Produto, onde você digita o produto que está sendo produzido.
+    Também preencha o Tipo do produto, que pode ser Tampa, Base, Pote com Tampa ou Nenhum.
+    O Turno, que pode ser T1, T2 ou T3.
+    O Status, que é Aprovado ou Reprovado.
+    A quantidade de Cavidades, de uma a dez.
+    O Ciclo, que é a velocidade da máquina.
+    E o Colaborador, que é o número do operador.`,
 
     `Antes de registrar as pesagens, você precisa informar a tolerância do produto.
-    São três valores: peso mínimo, peso ideal e peso máximo.
-    Esses valores serão usados pelo sistema para colorir automaticamente as pesagens.
-    Você pode editar os valores a qualquer momento conforme o produto.`,
+    São três valores essenciais para o controle de qualidade.
+    O primeiro é o peso mínimo, mostrado em laranja.
+    O segundo é o peso ideal, mostrado em verde.
+    O terceiro é o peso máximo, mostrado em vermelho.
+    Esses três valores são usados pelo sistema para colorir automaticamente todas as pesagens que você registrar.
+    Os campos já vêm com valores padrão, mas podem ser alterados conforme cada produto.
+    Consulte a ficha técnica do produto ou o supervisor para saber os valores corretos.`,
 
     `Esta é a tabela principal do sistema.
-    Aqui você registra as pesagens de cada cavidade nos três horários: M1, M3 e M4.
-    Conforme você digita, cada célula é colorida automaticamente: verde para aprovado, amarelo para limite mínimo e vermelho para fora da tolerância.
-    No rodapé, o sistema calcula automaticamente o mínimo, a média e o máximo de cada horário.
-    Use a tecla Enter para pular de uma cavidade para outra, é muito mais rápido.`,
+    Aqui você registra as pesagens de cada cavidade nos três horários do dia.
+    M1, M3 e M4.
+    Esses horários aparecem no topo de cada coluna e podem ser ajustados no topo da tabela.
+    Conforme você digita os valores, cada célula recebe automaticamente uma cor.
+    Verde significa aprovado. Amarelo significa que o peso ficou exatamente no limite mínimo. E vermelho significa que o peso está fora da tolerância.
+    No rodapé da tabela, o sistema calcula automaticamente o mínimo, a média e o máximo de cada horário.
+    Uma dica importante de produtividade: use a tecla Enter para pular de uma cavidade para outra. Isso deixa o preenchimento muito mais rápido.`,
 
     `Este é o alerta automático de qualidade.
-    Se a média geral das pesagens ultrapassar o peso máximo permitido, este aviso vermelho piscante aparece.
-    É um sinal de que existe um problema na produção e o supervisor precisa ser avisado imediatamente.`,
+    Se a média geral de todas as pesagens de uma máquina ficar acima do peso máximo permitido, este aviso vermelho piscante aparece automaticamente no rodapé do cartão.
+    Esse alerta é essencial para o controle de qualidade, porque avisa em tempo real que existe um problema na produção.
+    O supervisor precisa ser informado imediatamente.
+    O alerta aparece sempre que há produtos sendo fabricados fora do peso especificado, permitindo uma ação corretiva antes que mais itens problemáticos sejam produzidos.`,
 
-    `Depois de registrar tudo, é hora de salvar.
-    Clique em Salvar Histórico do Dia para enviar os dados para a nuvem.
-    Para consultar depois, clique em Histórico e escolha a data desejada.
-    Você também pode carregar uma inspeção antiga para editar, ou excluir com senha de segurança.`
+    `Depois de registrar todas as pesagens, é hora de salvar.
+    Clique em Salvar Histórico do Dia na barra superior.
+    Os dados são enviados para a nuvem e ficam acessíveis de qualquer dispositivo.
+    Para consultar o histórico, clique em Histórico.
+    Você pode escolher uma data específica, clicar em Consultar e ver todas as inspeções daquele dia, organizadas por inspetor e produto.
+    Cada item do histórico possui botões para carregar novamente, para editar, ou excluir, com senha de segurança.
+    Parabéns! Você completou o Sistema de Inspeção de Peso. Agora vamos ao próximo sistema.`
   ],
 
   bobinas: [
-    `Esta é a tela de login do Sistema de Liberação de Bobinas.
-    Informe seu usuário e senha para entrar.
-    Existem dois perfis: Administrador, que tem acesso total, e Padrão, que apenas visualiza.
-    Sempre que alguém faz login, o sistema envia uma notificação automática por WhatsApp.`,
+    `Vamos conhecer agora o Sistema de Liberação de Bobinas.
+    Esta é a tela de login.
+    Aqui você informa seu usuário e sua senha para entrar no sistema.
+    Existem dois tipos de perfil: o Administrador, que tem acesso total para criar, editar, excluir, gerar PDF e gerenciar usuários.
+    E o perfil Padrão, que apenas visualiza o histórico e o dashboard.
+    Assim que você faz login, o sistema envia uma notificação automática por WhatsApp avisando que o usuário entrou.
+    Nunca compartilhe sua senha. Cada pessoa tem seu próprio login para que toda ação fique registrada.`,
 
-    `Após o login, você chega ao Dashboard.
-    Aqui estão os indicadores principais: total de bobinas, reprovadas, assinaturas pendentes e valor de retrabalho.
-    Também há gráficos mostrando os motivos mais comuns e o status dos planos de ação.
-    Use o Dashboard diariamente para saber onde estão os problemas.`,
+    `Após o login, você é levado ao Dashboard.
+    Aqui estão os indicadores principais da qualidade, atualizados em tempo real.
+    Total de Bobinas analisadas, mostrado em roxo.
+    Reprovadas, destacado em vermelho.
+    Assinaturas Pendentes, em amarelo.
+    E Valor Total de Retrabalho, em verde.
+    Abaixo, há gráficos coloridos mostrando os motivos mais comuns das não conformidades, o status geral das bobinas e os planos de ação pendentes versus concluídos.
+    Use o Dashboard todos os dias pela manhã para saber onde está o foco dos problemas.`,
 
-    `Nesta tela você registra uma nova não conformidade.
-    Preencha o produto, o motivo, o volume, o peso e o status, que pode ser Reprovado ou Acompanhamento.
-    O sistema calcula automaticamente o valor do retrabalho a dez reais por quilo.
-    Anexe até cinco fotos para documentar bem o problema.`,
+    `No menu lateral, clique em Nova NC.
+    Um formulário aparece com os campos essenciais para registrar uma não conformidade.
+    Preencha o Produto, o Motivo, o Volume e o Peso.
+    Escolha o Status, que pode ser Reprovado ou Acompanhamento.
+    O sistema calcula automaticamente o valor do retrabalho: dez reais por quilo para bobinas reprovadas.
+    Além disso, você pode anexar até cinco fotos diretamente da câmera ou da galeria.
+    Sempre que possível, anexe fotos da bobina com problema, porque elas são essenciais para auditorias.`,
 
     `Na aba Planos de Ação, você vê a lista de todas as NCs e o status do plano associado.
+    Para criar um novo plano, clique em Criar Plano na linha da NC desejada.
     Cada linha mostra quantas pessoas já assinaram o plano.
-    Quando todos assinam, o plano fica marcado como Concluído.`,
+    Por exemplo, três de cinco significa que três de cinco pessoas assinaram.
+    Quando todos assinam, o plano é marcado como Concluído.
+    Cada pessoa envolvida precisa assinar digitalmente no quadro branco que aparece na tela.`,
 
     `O sistema oferece duas ferramentas para análise de causa raiz.
-    O Diagrama de Ishikawa, com as seis categorias de causa: Método, Máquina, Medida, Meio Ambiente, Mão de Obra e Material.
-    E a ferramenta dos Cinco Porquês, onde você pergunta Por quê cinco vezes até chegar à causa raiz verdadeira.`,
+    A primeira é o Diagrama de Ishikawa, também conhecido como Espinha de Peixe.
+    Nele você preenche as causas em cada uma das seis categorias: Método, Máquina, Medida, Meio Ambiente, Mão de Obra e Material.
+    A segunda é a ferramenta dos Cinco Porquês.
+    Nela, você responde a pergunta Por quê cinco vezes seguidas até chegar à causa raiz verdadeira do problema.
+    No final, você define a Causa Raiz, que vai aparecer no plano de ação e no PDF gerado.
+    Use as duas ferramentas juntas. O Ishikawa dá uma visão ampla, e os Cinco Porquês aprofundam a análise.`,
 
-    `Ao salvar o plano, o criador precisa assinar primeiro.
-    Uma tela aparece com um quadro branco onde você desenha sua assinatura.
-    Depois, cada pessoa envolvida recebe uma notificação para assinar.
-    Quando todos assinam, o plano é marcado automaticamente como Concluído.`
+    `Ao salvar o plano de ação, o criador precisa assinar primeiro.
+    Uma tela aparece com um quadro branco onde você desenha sua assinatura com o dedo, no celular ou tablet, ou com o mouse, no computador.
+    Depois, cada pessoa envolvida recebe uma notificação.
+    Quando ela entra no sistema e clica em Assinar, o mesmo quadro aparece para ela assinar.
+    Quando todos assinam, o plano é marcado automaticamente como Concluído.
+    E o histórico fica registrado com data e hora de cada assinatura.
+    Parabéns! Você completou o Sistema de Liberação de Bobinas.`
   ],
 
   nc: [
-    `Esta é a tela principal do Sistema de Não Conformidades.
-    Aqui você vê todas as NCs registradas, com filtros por status, por palete e por busca de texto.
-    Cada linha mostra o ID, o produto, o palete, o custo de retrabalho e o status atual.`,
+    `Vamos agora ao Sistema de Não Conformidades.
+    Esta é a tela principal do sistema.
+    Aqui você vê todas as não conformidades registradas, ordenadas da mais recente para a mais antiga.
+    No topo existem filtros por status, podendo ver Todas, Abertas ou Resolvidas.
+    Filtro por palete, para filtrar por lote.
+    E um campo de busca por texto, para buscar cliente, produto, motivo ou qualquer outra informação.
+    Cada linha mostra o ID da NC, o produto, o palete, o custo retrabalhado em reais e o status atual.`,
 
-    `Ao clicar em Nova NC, este formulário aparece.
-    Preencha o número da NC, o produto, o palete, o motivo e as quantidades de caixas, itens, retrabalhadas e descartadas.
-    Assim que você digita os dados, o sistema calcula automaticamente o custo de retrabalho com base na tabela de preços.`,
+    `Ao clicar em Nova NC no menu lateral, este formulário aparece.
+    Preencha o número da NC, você escolhe um número.
+    Selecione o Produto na lista de mais de cem produtos pré-cadastrados.
+    Informe o Palete, por exemplo, PLT zero três.
+    Preencha o Motivo da não conformidade, a quantidade de Caixas, a quantidade de Itens, a quantidade Retrabalhada e a quantidade Descartada.
+    Assim que você digita a quantidade retrabalhada e seleciona o produto, o sistema calcula automaticamente o custo de retrabalho com base na tabela de preços interna.
+    Você não precisa fazer conta. O sistema já sabe o preço de cada produto e multiplica pela quantidade retrabalhada.`,
 
     `Uma das funcionalidades mais úteis deste sistema é o cronômetro em tempo real.
-    Cada NC aberta mostra exatamente há quanto tempo ela está sem solução, atualizando a cada segundo.
-    NCs com mais de dez dias abertas precisam de atenção prioritária.`,
+    Cada NC aberta mostra exatamente há quanto tempo ela está sem solução.
+    Dias, horas, minutos e segundos.
+    O cronômetro atualiza automaticamente a cada segundo.
+    Assim você sabe na hora quais NCs estão mais antigas e precisam de atenção prioritária.
+    Quando a NC é marcada como Resolvida, o cronômetro para e mostra o tempo total que ficou aberta.
+    NCs com mais de dez dias abertas devem ser tratadas como prioridade máxima. Comunique seu supervisor.`,
 
-    `Ao clicar no ícone de olho, você vê todos os detalhes da NC em um modal.
-    Aqui também está o QR Code.
-    Ao escanear com o celular, qualquer pessoa pode ver os detalhes em modo somente leitura, ideal para auditorias.`,
+    `Ao clicar no ícone de olho na lista, um modal com todos os detalhes da NC aparece.
+    Aqui você vê todas as informações: produto, palete, motivo, quantidades, custo, fotos, histórico e status.
+    Um dos recursos mais poderosos é o QR Code.
+    Clique no botão QR Code na lista. O sistema gera um código QR que pode ser escaneado por qualquer celular.
+    Ao escanear, a pessoa é levada a uma tela em modo somente leitura com todos os detalhes da NC.
+    Isso é perfeito para auditorias, inspeções, ou para mostrar ao cliente sem permitir edição.
+    O QR Code nunca permite edição. Quem escanear apenas visualiza os dados.`,
 
-    `Na aba Relatórios, você gera relatórios completos com filtros por período: diário, semanal, mensal ou personalizado.
-    O relatório mostra estatísticas, gráficos coloridos e uma tabela detalhada de todas as NCs do período.
-    Você pode baixar tudo em PDF para enviar para a diretoria.`
+    `Na aba Relatórios, você pode gerar relatórios completos com filtros por período.
+    Diário, que é hoje.
+    Semanal, últimos sete dias.
+    Mensal, últimos trinta dias.
+    Ou Personalizado, onde você escolhe as datas.
+    O relatório mostra estatísticas gerais, como total, abertas, resolvidas e custo.
+    Gráficos coloridos por motivo, por status e por valor.
+    E uma tabela detalhada com todas as NCs do período.
+    Você também pode clicar em Gerar PDF para baixar o relatório completo em PDF e enviar para a diretoria ou para o cliente.
+    Parabéns! Você completou o Sistema de Não Conformidades.`
   ],
 
   sac: [
-    `Esta é a tela de login do Sistema SAC.
-    O Sistema tem login próprio, separado dos outros.
-    O admin fixo é o usuário Duda, mas outros usuários podem ser criados.
-    Ao fazer login, o sistema envia uma notificação automática por WhatsApp.`,
+    `Vamos conhecer o Sistema SAC, o Serviço de Atendimento ao Cliente da Dona Rita Embalagens.
+    Esta é a tela de login.
+    O Sistema tem login próprio, separado dos outros sistemas.
+    O admin fixo é o usuário Duda.
+    Mas outros usuários podem ser criados pelo administrador, com dois perfis: Administrador, com acesso total, e Padrão, apenas visualização.
+    Ao fazer login, o sistema envia uma notificação automática por WhatsApp avisando que o usuário entrou.`,
 
-    `Após o login, você vê o cabeçalho com estatísticas em tempo real.
-    São quatro cards: Registros, Pendentes, Concluídos e Em Atraso.
-    O card Em Atraso fica em vermelho piscante quando há reclamações abertas há mais de dez dias.
-    Se esse card estiver piscando, existem reclamações críticas para tratar.`,
+    `Após o login, você vê o cabeçalho com as estatísticas em tempo real.
+    São quatro cards.
+    Registros, mostrando o total de reclamações.
+    Pendentes, mostrando as que ainda não foram concluídas.
+    Concluídos, mostrando as já resolvidas.
+    E Em Atraso.
+    O card Em Atraso aparece em vermelho com animação piscante quando há reclamações abertas há mais de dez dias.
+    Se esse card estiver piscando, significa que existem reclamações críticas para tratar com urgência.`,
 
     `Nesta tela você registra uma nova reclamação de cliente.
-    Preencha o número do registro, cliente, data, área envolvida, origem, causa, produto, quantidade e andamento.
+    Preencha o número do registro, o cliente, a data da ocorrência.
+    Selecione a área envolvida, que pode ser Produção, Qualidade, Transporte, Expedição, Comercial, Compras, Manutenção, Administrativo ou Outro.
+    Escolha a origem, que pode ser Interno ou Externo.
+    Preencha a causa resumida, o andamento, o código do item, a descrição do produto, a quantidade reclamada, os atrasos em dias, a solução, o Nf ou Nfd, a bonificação, a prorrogação e a reemissão.
     Ao salvar, o sistema envia imediatamente um alerta formatado por WhatsApp para a equipe.`,
 
-    `Na aba Histórico, você vê todas as reclamações registradas.
-    O destaque principal são os alertas de prazo: reclamações com mais de dez dias em aberto ficam com fundo vermelho e um badge piscante mostrando os dias corridos.
-    Clique em qualquer linha para ver os detalhes completos com timeline.`,
+    `Na aba Histórico, você vê todas as reclamações registradas, ordenadas por número.
+    Você pode filtrar por data específica, por mês, ou buscar por cliente, registro ou Nf.
+    O destaque principal são os alertas de prazo.
+    Reclamações com mais de dez dias em aberto ficam com fundo vermelho e um badge piscante mostrando os dias corridos.
+    Ao lado, cada linha mostra o tempo total em dias que a reclamação está aberta.
+    Quando mais de dez dias, fica em vermelho escuro.
+    Você pode clicar em qualquer linha para ver os detalhes completos, incluindo timeline das etapas, fotos e valores.
+    Reclamações em vermelho são as que precisam de ação imediata. Trate-as antes das demais.`,
 
-    `Na aba Dashboard, você encontra seis gráficos analíticos: ocorrência por área, motivos, abertas versus concluídas, quantidade reclamada por produto, Nf Nfd por área, e atrasos com prorrogação.
-    Você pode filtrar por dia, mês, área ou origem.`,
+    `Na aba Dashboard, você encontra seis gráficos analíticos.
+    Ocorrência por Área, em formato de pizza.
+    Motivos de Ocorrência, em formato de rosca.
+    Abertas versus Concluídas, em barras.
+    Quantidade Reclamada por Produto.
+    Nf e Nfd por Área, mostrando valores em reais.
+    E Atrasos com Prorrogação, em barras, com detalhamento por reclamação e por cliente.
+    Todos os gráficos são interativos. Passe o mouse para ver os valores exatos.
+    Você também pode filtrar por dia, mês, área ou origem.`,
 
-    `Neste sistema, o botão Gerar PDF produz três arquivos separados: um com as reclamações Internas, um com as Externas e um Total.
-    No Histórico, o PDF mostra somente os registros filtrados na tela.
-    O administrador também pode gerenciar usuários: criar, listar e excluir, definindo o perfil Admin ou Padrão.`
+    `Neste sistema, o botão Gerar PDF produz três arquivos separados.
+    Um com as reclamações Internas.
+    Um com as Externas.
+    E um Total, com ambas somadas.
+    Cada PDF inclui todos os gráficos, os indicadores e as listas detalhadas.
+    No Histórico, o botão Gerar PDF gera um PDF somente com os registros filtrados na tela.
+    O administrador também pode gerenciar usuários: criar, listar e excluir, definindo o perfil Admin ou Padrão.
+    O usuário Duda é o admin fixo protegido, e não pode ser excluído.
+    Parabéns! Você completou o Sistema SAC.`
   ],
 
   amostras: [
-    `Esta é a tela pública do Sistema de Amostras, acessível por qualquer pessoa.
-    O cliente preenche seus dados para solicitar amostras: material, quantidade, nome, empresa, endereço completo, prazo e tipo de envio.
-    Pode adicionar múltiplas amostras na mesma solicitação.
-    Ao enviar, o sistema abre automaticamente o aplicativo de e-mail do cliente.`,
+    `Por último, vamos conhecer o Sistema de Amostras.
+    Esta é a tela pública do sistema, acessível por qualquer pessoa.
+    O cliente preenche seus dados para solicitar amostras de material.
+    Material desejado, quantidade, nome, empresa.
+    Endereço completo com rua, número, bairro, cidade, UF e CEP.
+    Prazo de envio.
+    E o tipo de envio, que pode ser Pedido Recente, Correio, Transportadora ou Motorista DRT.
+    O cliente pode adicionar múltiplas amostras clicando em Adicionar Outra Amostra.
+    Ao enviar, o sistema abre automaticamente o aplicativo de e-mail do cliente com a mensagem formatada.
+    Após enviar, o cliente recebe um ID no formato A M, seguido de um código, para consultar o status depois.`,
 
     `Nesta tela, o cliente consulta o rastreio da sua solicitação.
-    É só digitar o ID no formato AM-XXXXX que recebeu por e-mail.
-    O sistema mostra o status atual e o código de rastreio, quando já cadastrado.`,
+    É só digitar o ID no formato A M traço X X X X X, que recebeu por e-mail.
+    O sistema busca no banco de dados e mostra o status atual, que pode ser Pendente, Enviado ou Concluído.
+    E o código de rastreio, quando já cadastrado pela equipe.
+    Se a equipe ainda não cadastrou o código, o sistema mostra uma mensagem avisando que o rastreio está em processamento.`,
 
     `Na Área do Administrador, você vê a lista completa de solicitações.
-    Existem quatro cards de estatísticas, filtros por status, busca por texto e filtro por data.
-    Cada linha tem botões de ação para ver detalhes, alterar status ou excluir.`,
+    Existem quatro cards de estatísticas: Total, Pendentes, Enviados e Concluídos.
+    Filtros por status, podendo ver Todos, Pendente, Urgente, Enviado ou Concluído.
+    Busca por texto.
+    E filtro por mês ou por dia.
+    Cada linha tem botões de ação para ver detalhes, alterar status ou excluir.
+    O valor total filtrado aparece sempre no canto direito da barra de filtros. Útil para fechamentos.`,
 
     `Na aba Dashboard, você tem nove indicadores e seis gráficos interativos.
-    Você pode filtrar por mês, dia, usar atalhos como Hoje e Mês Atual, e baixar o relatório completo em PDF.
-    Tudo em um arquivo formatado pronto para enviar.`
+    Você pode filtrar por mês, por dia, usar atalhos como Hoje e Mês Atual, e baixar o relatório completo em PDF.
+    Tudo em um arquivo formatado pronto para enviar.
+    Os gráficos mostram evolução de solicitações, valores gastos, ranking dos clientes que mais pedem e que mais gastam.
+    Parabéns! Você completou o Sistema de Amostras e todos os cinco sistemas da Dona Rita Embalagens. Foi um prazer te acompanhar!`
   ]
 };
 
@@ -2684,36 +2739,26 @@ const narracoesTelas = {
    DETECÇÃO DE GÊNERO DA VOZ
    ============================================================ */
 const NOMES_FEMININOS = [
-  'google português do brasil','google portuguese','google us english','google uk english female',
+  'google português do brasil','google portuguese','google us english',
   'maria','francisca','luciana','helena','zira','hazel','susan','samantha',
-  'microsoft maria','microsoft francisca','microsoft luciana','microsoft helena',
   'joana','fernanda','marina','isabela','alice','karen','moira','tessa',
   'ana','camila','catarina','ines','vitoria','beatriz'
 ];
 
 const NOMES_MASCULINOS = [
-  'daniel','felipe','david','mark','george','james','paulo','ricardo',
-  'microsoft daniel','microsoft felipe','microsoft ricardo',
-  'thomas','alex','fred','oliver','aaron'
+  'daniel','felipe','david','mark','george','james','paulo','ricardo','thomas','alex','fred'
 ];
 
 function detectarGenero(voz) {
   const nomeLower = (voz.name || '').toLowerCase();
-  const langLower = (voz.lang || '').toLowerCase();
-
-  for (const nome of NOMES_FEMININOS) {
-    if (nomeLower.includes(nome)) return 'female';
-  }
-  for (const nome of NOMES_MASCULINOS) {
-    if (nomeLower.includes(nome)) return 'male';
-  }
-
-  if (nomeLower.includes('google') && langLower === 'pt-br') return 'female';
+  for (const n of NOMES_FEMININOS) if (nomeLower.includes(n)) return 'female';
+  for (const n of NOMES_MASCULINOS) if (nomeLower.includes(n)) return 'male';
+  if (nomeLower.includes('google') && (voz.lang||'').toLowerCase() === 'pt-br') return 'female';
   return 'unknown';
 }
 
 /* ============================================================
-   INICIALIZAÇÃO DAS VOZES
+   CARREGAR VOZES
    ============================================================ */
 function carregarVozes() {
   if (!('speechSynthesis' in window)) return;
@@ -2721,10 +2766,7 @@ function carregarVozes() {
   if (!vozes || vozes.length === 0) return;
 
   state.vozesDisponiveis = vozes.map(v => ({
-    voz: v,
-    nome: v.name,
-    lang: v.lang,
-    genero: detectarGenero(v)
+    voz: v, nome: v.name, lang: v.lang, genero: detectarGenero(v)
   }));
 
   const prioridades = [
@@ -2748,10 +2790,8 @@ function carregarVozes() {
     state.vozEscolhida = vozEncontrada.voz;
     const nomeCurto = vozEncontrada.nome.split(' ').slice(0, 2).join(' ');
     const strongEl = document.querySelector('.voice-text strong');
-    if (strongEl) {
-      strongEl.innerHTML = `Ana · <span class="voice-name-badge">${nomeCurto}</span>`;
-    }
-    console.log('%c🎤 Voz selecionada:', 'color:#ec4899;font-weight:bold;', vozEncontrada.nome);
+    if (strongEl) strongEl.innerHTML = `Ana · <span class="voice-name-badge">${nomeCurto}</span>`;
+    console.log('%c🎤 Voz:', 'color:#ec4899;font-weight:bold;', vozEncontrada.nome);
   }
 }
 
@@ -2759,9 +2799,8 @@ if ('speechSynthesis' in window) {
   carregarVozes();
   window.speechSynthesis.onvoiceschanged = carregarVozes;
   setTimeout(carregarVozes, 100);
-  setTimeout(carregarVozes, 300);
-  setTimeout(carregarVozes, 800);
-  setTimeout(carregarVozes, 1500);
+  setTimeout(carregarVozes, 400);
+  setTimeout(carregarVozes, 900);
 }
 
 /* ============================================================
@@ -2773,7 +2812,7 @@ function atualizarUI(status) {
   const playIcon = document.getElementById('playIcon');
 
   if (status === 'falando') {
-    statusEl.textContent = 'Narrando com voz natural...';
+    statusEl.textContent = 'Narrando...';
     avatar.classList.add('speaking');
     playIcon.className = 'fas fa-pause';
   } else if (status === 'pausado') {
@@ -2789,19 +2828,17 @@ function atualizarUI(status) {
 
 function falarTexto(texto) {
   if (!('speechSynthesis' in window)) {
-    alert('Seu navegador não suporta síntese de voz. Recomendamos usar Chrome, Edge ou Safari.');
+    alert('Seu navegador não suporta síntese de voz. Use Chrome, Edge ou Safari.');
     return;
   }
   if (!texto) return;
 
   window.speechSynthesis.cancel();
+  clearTimeout(state.autoAdvanceTimer);
+  state.aguardandoAvanco = false;
 
-  const frases = texto
-    .replace(/\s+/g, ' ')
-    .trim()
-    .split(/(?<=[.!?])\s+/)
-    .map(f => f.trim())
-    .filter(f => f.length > 0);
+  const frases = texto.replace(/\s+/g, ' ').trim()
+    .split(/(?<=[.!?])\s+/).map(f => f.trim()).filter(f => f.length > 0);
 
   state.filaFalas = frases;
   state.indiceFala = 0;
@@ -2814,9 +2851,19 @@ function falarTexto(texto) {
 function falarProximaFrase() {
   if (!state.falando) return;
   if (state.indiceFala >= state.filaFalas.length) {
+    // Terminou a narração desta tela
     state.falando = false;
     atualizarUI('parado');
     document.getElementById('voiceProgressBar').style.width = '100%';
+
+    // Se auto-advance estiver ligado, agenda o avanço automático
+    if (state.autoAdvance && !state.aguardandoAvanco) {
+      state.aguardandoAvanco = true;
+      state.autoAdvanceTimer = setTimeout(() => {
+        state.aguardandoAvanco = false;
+        avancarEtapa();
+      }, 1800); // aguarda 1.8s antes de avançar
+    }
     return;
   }
 
@@ -2857,29 +2904,28 @@ function falarProximaFrase() {
 }
 
 function togglePlayPause() {
-  if (!('speechSynthesis' in window)) {
-    alert('Seu navegador não suporta síntese de voz.');
-    return;
-  }
+  if (!('speechSynthesis' in window)) return;
+
   if (state.falando && !state.pausado) {
     window.speechSynthesis.pause();
     state.pausado = true;
     atualizarUI('pausado');
+    clearTimeout(state.autoAdvanceTimer);
   } else if (state.pausado) {
     window.speechSynthesis.resume();
     state.pausado = false;
     atualizarUI('falando');
   } else {
-    narrarSecaoAtual();
+    narrarEtapaAtual();
   }
 }
 
 function pararFala() {
-  if ('speechSynthesis' in window) {
-    window.speechSynthesis.cancel();
-  }
+  if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+  clearTimeout(state.autoAdvanceTimer);
   state.falando = false;
   state.pausado = false;
+  state.aguardandoAvanco = false;
   atualizarUI('parado');
   document.getElementById('voiceProgressBar').style.width = '0%';
 }
@@ -2889,13 +2935,94 @@ function ajustarVelocidade(valor) {
   document.getElementById('speedVal').textContent = state.velocidade.toFixed(2).replace(/0$/, '') + 'x';
 
   if (state.falando && !state.pausado) {
-    const indiceAtual = state.indiceFala;
+    const idx = state.indiceFala;
     window.speechSynthesis.cancel();
     state.falando = true;
-    state.indiceFala = indiceAtual;
-    setTimeout(() => {
-      if (state.falando) falarProximaFrase();
-    }, 100);
+    state.indiceFala = idx;
+    setTimeout(() => { if (state.falando) falarProximaFrase(); }, 100);
+  }
+}
+
+/* ============================================================
+   AUTO-ADVANCE
+   ============================================================ */
+function toggleAutoPlay() {
+  state.autoAdvance = !state.autoAdvance;
+  const badge = document.getElementById('autoplayBadge');
+  const badgeTxt = document.getElementById('autoplayText');
+  const btn = document.getElementById('btnAutoPlay');
+
+  if (state.autoAdvance) {
+    badge.classList.remove('paused');
+    badgeTxt.textContent = 'Auto-play LIGADO';
+    btn.innerHTML = '<i class="fas fa-pause"></i> Pausar Auto';
+    // Se estava aguardando avanço, avança agora
+    if (state.aguardandoAvanco) {
+      clearTimeout(state.autoAdvanceTimer);
+      state.aguardandoAvanco = false;
+      avancarEtapa();
+    }
+  } else {
+    badge.classList.add('paused');
+    badgeTxt.textContent = 'Auto-play PAUSADO';
+    btn.innerHTML = '<i class="fas fa-play"></i> Retomar Auto';
+    clearTimeout(state.autoAdvanceTimer);
+    state.aguardandoAvanco = false;
+  }
+}
+
+/* ============================================================
+   NAVEGAÇÃO DE ETAPA (avança entre telas e seções)
+   ============================================================ */
+function avancarEtapa() {
+  clearTimeout(state.autoAdvanceTimer);
+  state.aguardandoAvanco = false;
+
+  const secao = state.secaoAtual;
+
+  // Se for um sistema com tour
+  if (narracoesTelas[secao]) {
+    const telaAtual = state.tourAtual[secao] || 0;
+    const total = narracoesTelas[secao].length;
+
+    if (telaAtual < total - 1) {
+      // Vai para a próxima tela do mesmo sistema
+      irParaTela(secao, telaAtual + 1);
+    } else {
+      // Última tela: vai para a próxima seção
+      const proximaSecao = state.ordem[state.ordem.indexOf(secao) + 1];
+      if (proximaSecao) irPara(proximaSecao);
+    }
+  } else {
+    // Está em intro ou encerramento: vai para a próxima seção
+    const idx = state.ordem.indexOf(secao);
+    if (idx < state.ordem.length - 1) {
+      irPara(state.ordem[idx + 1]);
+    } else {
+      // Última seção: volta para intro (loop)
+      irPara('intro');
+    }
+  }
+}
+
+function voltarEtapa() {
+  clearTimeout(state.autoAdvanceTimer);
+  state.aguardandoAvanco = false;
+
+  const secao = state.secaoAtual;
+
+  if (narracoesTelas[secao]) {
+    const telaAtual = state.tourAtual[secao] || 0;
+    if (telaAtual > 0) {
+      irParaTela(secao, telaAtual - 1);
+    } else {
+      // Volta para a seção anterior
+      const idx = state.ordem.indexOf(secao);
+      if (idx > 0) irPara(state.ordem[idx - 1]);
+    }
+  } else {
+    const idx = state.ordem.indexOf(secao);
+    if (idx > 0) irPara(state.ordem[idx - 1]);
   }
 }
 
@@ -2910,146 +3037,107 @@ function irPara(secao, btnEl) {
   if (alvo) alvo.classList.add('active');
 
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  if (btnEl) {
-    btnEl.classList.add('active');
-  } else {
-    const navBtn = document.querySelector(`.nav-item[data-sec="${secao}"]`);
-    if (navBtn) navBtn.classList.add('active');
+  if (btnEl) btnEl.classList.add('active');
+  else {
+    const nb = document.querySelector(`.nav-item[data-sec="${secao}"]`);
+    if (nb) nb.classList.add('active');
   }
 
   state.secaoAtual = secao;
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  setTimeout(() => {
-    narrarSecaoAtual();
-  }, 400);
+  setTimeout(() => narrarEtapaAtual(), 500);
 }
 
-function narrarSecaoAtual() {
+function narrarEtapaAtual() {
   const secao = state.secaoAtual;
 
-  // Se for um sistema com tour, narra a tela atual
   if (narracoesTelas[secao]) {
-    const telaIdx = state.tourAtual[secao] || 0;
-    const texto = narracoesTelas[secao][telaIdx];
+    const idx = state.tourAtual[secao] || 0;
+    const texto = narracoesTelas[secao][idx];
     if (texto) falarTexto(texto);
   } else {
-    // Se for intro ou encerramento, narra o texto principal
     const texto = narracoes[secao];
     if (texto) falarTexto(texto);
   }
 }
 
-function proximaSecao() {
-  const idx = state.ordem.indexOf(state.secaoAtual);
-  if (idx < state.ordem.length - 1) {
-    irPara(state.ordem[idx + 1]);
-  }
-}
-
-function secaoAnterior() {
-  const idx = state.ordem.indexOf(state.secaoAtual);
-  if (idx > 0) {
-    irPara(state.ordem[idx - 1]);
-  }
-}
-
-function iniciarTour() {
-  irPara('intro');
-}
-
 /* ============================================================
-   NAVEGAÇÃO POR TELAS (dentro de um sistema)
+   NAVEGAÇÃO DENTRO DO TOUR
    ============================================================ */
 function atualizarTourUI(sistema) {
   const container = document.querySelector(`.tour-container[data-tour="${sistema}"]`);
   if (!container) return;
 
   const telas = container.querySelectorAll('.tela');
-  const telaAtual = state.tourAtual[sistema] || 0;
+  const atual = state.tourAtual[sistema] || 0;
   const total = telas.length;
 
-  // Atualiza contador
   const counter = container.querySelector('.tour-counter');
-  if (counter) {
-    counter.innerHTML = `<span class="tour-atual">${telaAtual + 1}</span> / <span class="tour-total">${total}</span>`;
-  }
+  if (counter) counter.innerHTML = `<span class="tour-atual">${atual + 1}</span> / <span class="tour-total">${total}</span>`;
 
-  // Atualiza telas visíveis
-  telas.forEach((tela, idx) => {
-    tela.classList.toggle('active', idx === telaAtual);
-  });
+  telas.forEach((t, i) => t.classList.toggle('active', i === atual));
 
-  // Atualiza dots
-  const dotsContainer = container.querySelector('.tour-dots');
-  if (dotsContainer) {
-    dotsContainer.innerHTML = '';
+  const dots = container.querySelector('.tour-dots');
+  if (dots) {
+    dots.innerHTML = '';
     for (let i = 0; i < total; i++) {
-      const dot = document.createElement('button');
-      dot.className = 'tour-dot';
-      if (i === telaAtual) dot.classList.add('active');
-      else if (i < telaAtual) dot.classList.add('visited');
-      dot.textContent = i + 1;
-      dot.onclick = () => irParaTela(sistema, i);
-      dotsContainer.appendChild(dot);
+      const d = document.createElement('button');
+      d.className = 'tour-dot';
+      if (i === atual) d.classList.add('active');
+      else if (i < atual) d.classList.add('visited');
+      d.textContent = i + 1;
+      d.onclick = () => irParaTela(sistema, i);
+      dots.appendChild(d);
     }
   }
 
-  // Atualiza botões
   const btnPrev = container.querySelector('.tour-btn-prev');
   const btnNext = container.querySelector('.tour-btn-next');
-  if (btnPrev) btnPrev.disabled = (telaAtual === 0);
-  if (btnNext) {
-    if (telaAtual === total - 1) {
-      btnNext.innerHTML = 'Concluir <i class="fas fa-check"></i>';
-    } else {
-      btnNext.innerHTML = 'Próxima <i class="fas fa-arrow-right"></i>';
-    }
-  }
+  if (btnPrev) btnPrev.disabled = (atual === 0);
+  if (btnNext) btnNext.innerHTML = (atual === total - 1)
+    ? 'Concluir <i class="fas fa-check"></i>'
+    : 'Próxima <i class="fas fa-arrow-right"></i>';
 }
 
-function irParaTela(sistema, telaIdx) {
+function irParaTela(sistema, idx) {
   if (!narracoesTelas[sistema]) return;
   const total = narracoesTelas[sistema].length;
-  if (telaIdx < 0 || telaIdx >= total) return;
+  if (idx < 0 || idx >= total) return;
 
-  state.tourAtual[sistema] = telaIdx;
+  state.tourAtual[sistema] = idx;
   atualizarTourUI(sistema);
 
-  // Rola até o topo do tour
   const container = document.querySelector(`.tour-container[data-tour="${sistema}"]`);
-  if (container) {
-    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
+  if (container) container.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-  // Narra a nova tela
   pararFala();
   setTimeout(() => {
-    const texto = narracoesTelas[sistema][telaIdx];
+    const texto = narracoesTelas[sistema][idx];
     if (texto) falarTexto(texto);
   }, 500);
 }
 
 function proximaTela(sistema) {
-  const telaAtual = state.tourAtual[sistema] || 0;
+  const atual = state.tourAtual[sistema] || 0;
   const total = narracoesTelas[sistema] ? narracoesTelas[sistema].length : 0;
 
-  if (telaAtual >= total - 1) {
-    // Última tela: avança para a próxima seção
-    const proximaSistema = state.ordem[state.ordem.indexOf(sistema) + 1];
-    if (proximaSistema) {
-      irPara(proximaSistema);
-    }
+  clearTimeout(state.autoAdvanceTimer);
+  state.aguardandoAvanco = false;
+
+  if (atual >= total - 1) {
+    const prox = state.ordem[state.ordem.indexOf(sistema) + 1];
+    if (prox) irPara(prox);
   } else {
-    irParaTela(sistema, telaAtual + 1);
+    irParaTela(sistema, atual + 1);
   }
 }
 
 function telaAnterior(sistema) {
-  const telaAtual = state.tourAtual[sistema] || 0;
-  if (telaAtual > 0) {
-    irParaTela(sistema, telaAtual - 1);
-  }
+  const atual = state.tourAtual[sistema] || 0;
+  clearTimeout(state.autoAdvanceTimer);
+  state.aguardandoAvanco = false;
+  if (atual > 0) irParaTela(sistema, atual - 1);
 }
 
 /* ============================================================
@@ -3059,67 +3147,60 @@ function abrirSeletorVoz() {
   const modal = document.getElementById('voiceModal');
   const lista = document.getElementById('voiceList');
 
-  if (state.vozesDisponiveis.length === 0) {
-    carregarVozes();
-  }
+  if (state.vozesDisponiveis.length === 0) carregarVozes();
 
-  const vozesOrdenadas = [...state.vozesDisponiveis].sort((a, b) => {
-    return calcularScoreVoz(b) - calcularScoreVoz(a);
-  });
-  state.vozesOrdenadas = vozesOrdenadas;
+  const ordenadas = [...state.vozesDisponiveis].sort((a, b) => scoreVoz(b) - scoreVoz(a));
+  state.vozesOrdenadas = ordenadas;
 
   let html = '';
-  vozesOrdenadas.forEach((v, idx) => {
-    const isSelected = state.vozEscolhida && state.vozEscolhida.name === v.nome && state.vozEscolhida.lang === v.lang;
-    const generoLabel = v.genero === 'female' ? 'Feminina' : (v.genero === 'male' ? 'Masculina' : 'Neutra');
-    const generoClass = v.genero === 'female' ? 'female' : (v.genero === 'male' ? 'male' : 'unknown');
+  ordenadas.forEach((v, i) => {
+    const sel = state.vozEscolhida && state.vozEscolhida.name === v.nome && state.vozEscolhida.lang === v.lang;
+    const gl = v.genero === 'female' ? 'Feminina' : (v.genero === 'male' ? 'Masculina' : 'Neutra');
+    const gc = v.genero === 'female' ? 'female' : (v.genero === 'male' ? 'male' : 'unknown');
     html += `
-      <div class="voice-option ${isSelected ? 'selected' : ''}" data-voice-index="${idx}" onclick="selecionarVoz(${idx})">
+      <div class="voice-option ${sel ? 'selected' : ''}" data-voice-index="${i}" onclick="selecionarVoz(${i})">
         <div class="vo-radio"></div>
         <div class="vo-info">
           <div class="vo-name">${v.nome}</div>
           <div class="vo-lang">${v.lang}</div>
         </div>
-        <span class="vo-gender ${generoClass}">${generoLabel}</span>
-      </div>
-    `;
+        <span class="vo-gender ${gc}">${gl}</span>
+      </div>`;
   });
 
   lista.innerHTML = html;
   modal.classList.add('active');
 }
 
-function calcularScoreVoz(v) {
-  let score = 0;
-  if (v.lang === 'pt-BR') score += 100;
-  else if (v.lang && v.lang.startsWith('pt')) score += 50;
-  if (v.genero === 'female') score += 40;
-  if (/Google/i.test(v.nome)) score += 20;
-  if (/Microsoft|Luciana|Maria|Francisca|Joana|Fernanda/i.test(v.nome)) score += 15;
-  return score;
+function scoreVoz(v) {
+  let s = 0;
+  if (v.lang === 'pt-BR') s += 100;
+  else if (v.lang && v.lang.startsWith('pt')) s += 50;
+  if (v.genero === 'female') s += 40;
+  if (/Google/i.test(v.nome)) s += 20;
+  if (/Microsoft|Luciana|Maria|Francisca|Joana|Fernanda/i.test(v.nome)) s += 15;
+  return s;
 }
 
-function selecionarVoz(index) {
-  const v = state.vozesOrdenadas[index];
+function selecionarVoz(idx) {
+  const v = state.vozesOrdenadas[idx];
   if (!v) return;
   state.vozEscolhida = v.voz;
 
   document.querySelectorAll('.voice-option').forEach(el => el.classList.remove('selected'));
-  const targetEl = document.querySelector(`.voice-option[data-voice-index="${index}"]`);
-  if (targetEl) targetEl.classList.add('selected');
+  const el = document.querySelector(`.voice-option[data-voice-index="${idx}"]`);
+  if (el) el.classList.add('selected');
 
   const nomeCurto = v.nome.split(' ').slice(0, 2).join(' ');
   const strongEl = document.querySelector('.voice-text strong');
-  if (strongEl) {
-    strongEl.innerHTML = `Ana · <span class="voice-name-badge">${nomeCurto}</span>`;
-  }
+  if (strongEl) strongEl.innerHTML = `Ana · <span class="voice-name-badge">${nomeCurto}</span>`;
 }
 
 function testarVozSelecionada() {
   if (!state.vozEscolhida) return;
   window.speechSynthesis.cancel();
   const utt = new SpeechSynthesisUtterance(
-    'Olá! Eu sou a Ana, sua assistente virtual da Dona Rita Embalagens. Estou pronta para te acompanhar no tutorial por telas.'
+    'Olá! Eu sou a Ana, sua assistente virtual da Dona Rita Embalagens. Estou pronta para te acompanhar no tutorial dos sistemas.'
   );
   utt.voice = state.vozEscolhida;
   utt.lang = state.vozEscolhida.lang;
@@ -3135,81 +3216,69 @@ function fecharSeletorVoz() {
 }
 
 /* ============================================================
+   INICIAR TUTORIAL
+   ============================================================ */
+function iniciarTutorial() {
+  // Garante que o auto-play esteja ligado
+  if (!state.autoAdvance) toggleAutoPlay();
+  // Reseta para a introdução
+  state.tourAtual = { inspecao: 0, bobinas: 0, nc: 0, sac: 0, amostras: 0 };
+  ['inspecao','bobinas','nc','sac','amostras'].forEach(s => atualizarTourUI(s));
+  irPara('intro');
+}
+
+/* ============================================================
    ATALHOS DE TECLADO
    ============================================================ */
 document.addEventListener('keydown', function(e) {
   if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
 
-  if (e.code === 'Space') {
-    e.preventDefault();
-    togglePlayPause();
-  } else if (e.code === 'ArrowRight' && !e.ctrlKey) {
-    // Se estiver em um sistema, avança a tela do tour
-    if (narracoesTelas[state.secaoAtual]) {
-      e.preventDefault();
-      proximaTela(state.secaoAtual);
-    }
-  } else if (e.code === 'ArrowLeft' && !e.ctrlKey) {
-    if (narracoesTelas[state.secaoAtual]) {
-      e.preventDefault();
-      telaAnterior(state.secaoAtual);
-    }
-  } else if (e.code === 'ArrowRight' && e.ctrlKey) {
-    e.preventDefault();
-    proximaSecao();
-  } else if (e.code === 'ArrowLeft' && e.ctrlKey) {
-    e.preventDefault();
-    secaoAnterior();
-  } else if (e.code === 'Escape') {
-    if (document.getElementById('voiceModal').classList.contains('active')) {
-      fecharSeletorVoz();
-    } else {
-      pararFala();
-    }
+  if (e.code === 'Space') { e.preventDefault(); togglePlayPause(); }
+  else if (e.code === 'ArrowRight') { e.preventDefault(); avancarEtapa(); }
+  else if (e.code === 'ArrowLeft') { e.preventDefault(); voltarEtapa(); }
+  else if (e.code === 'Escape') {
+    if (document.getElementById('voiceModal').classList.contains('active')) fecharSeletorVoz();
+    else pararFala();
   }
+  else if (e.code === 'KeyA') { e.preventDefault(); toggleAutoPlay(); }
 });
 
 /* ============================================================
    LIMPEZA AO FECHAR
    ============================================================ */
 window.addEventListener('beforeunload', function() {
-  if ('speechSynthesis' in window) {
-    window.speechSynthesis.cancel();
-  }
+  if ('speechSynthesis' in window) window.speechSynthesis.cancel();
 });
 
 /* ============================================================
-   INICIALIZAÇÃO GERAL
+   INICIALIZAÇÃO
    ============================================================ */
 window.addEventListener('load', function() {
-  let tentativas = 0;
-  const tentarCarregarVozes = setInterval(() => {
+  let t = 0;
+  const timer = setInterval(() => {
     carregarVozes();
-    tentativas++;
-    if (state.vozEscolhida || tentativas > 10) {
-      clearInterval(tentarCarregarVozes);
-    }
+    t++;
+    if (state.vozEscolhida || t > 10) clearInterval(timer);
   }, 300);
 
   if ('speechSynthesis' in window) {
     setInterval(() => {
       if (state.falando && !state.pausado && !window.speechSynthesis.speaking) {
-        if (state.indiceFala < state.filaFalas.length) {
-          falarProximaFrase();
-        }
+        if (state.indiceFala < state.filaFalas.length) falarProximaFrase();
       }
     }, 5000);
   }
 
-  // Inicializa a UI dos tours
-  ['inspecao','bobinas','nc','sac','amostras'].forEach(sis => atualizarTourUI(sis));
+  ['inspecao','bobinas','nc','sac','amostras'].forEach(s => atualizarTourUI(s));
 
-  console.log('%c🎓 Tutorial por Telas Dona Rita Embalagens v4.0 carregado!', 
+  console.log('%c🎓 Tutorial Guiado Dona Rita v5.0 carregado!', 
     'color:#3d2d8f;font-size:16px;font-weight:bold;');
-  console.log('%c🎤 Voz feminina realista ativa · Clique em "Iniciar Tutorial"', 
-    'color:#ec4899;font-size:13px;font-weight:bold;');
-  console.log('%c💡 Use as setas ← → para navegar entre as telas', 
-    'color:#6b6489;font-size:12px;font-style:italic;');
+  console.log('%c✅ AUTO-PLAY ATIVO · A Ana vai passar as telas automaticamente', 
+    'color:#10b981;font-size:13px;font-weight:bold;');
+  console.log('%c💡 Clique em "Iniciar Tutorial" para começar a narração automática', 
+    'color:#ec4899;font-size:12px;font-weight:bold;');
+  console.log('%c⌨️ Atalhos: SPACE = play/pause · → = avançar · ← = voltar · A = ligar/desligar auto-play', 
+    'color:#6b6489;font-size:11px;font-style:italic;');
 });
 </script>
 </body>
